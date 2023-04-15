@@ -10,7 +10,7 @@ const InterFont = Inter({
 });
 const LoraFont = Lora({
   subsets: ["latin"],
-  variable: "--loar-font",
+  variable: "--lora-font",
 });
 
 import "src/styles/globals.css";

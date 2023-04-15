@@ -48,9 +48,63 @@ function CTABttn() {
   );
 }
 
-const IllnessCard: NextPage = () => {
+const diseasesCopy = [
+  {
+    title: "Endocrinologia",
+    description:
+      "Si buscas alivio para enfermedades relacionadas con la tiroides, diabetes, o cualquier otra condición endocrina, la terapia hiperbárica de Hiperbarica del Sur Perú puede ayudarte",
+  },
+  {
+    title: "Fertilidad",
+    description:
+      "Ofrecemos una variedad de tratamientos de terapia hiperbárica diseñados para mejorar la salud reproductiva y aumentar las posibilidades de fertilidad exitosa.",
+  },
+  {
+    title: "Envejecimiento",
+    description:
+      "Nuestro tratamiento de última generación está diseñado para mejorar la salud celular y puede ayudar a reducir los signos del envejecimiento",
+  },
+  {
+    title: "Lesiones",
+    description:
+      "Nuestro tratamiento de terapia hiperbárica de última generación puede ayudarte a acelerar la curación de lesiones deportivas, mejorar la fuerza y la resistencia, y reducir el dolor y la inflamación",
+  },
+  {
+    title: "Reumatologia",
+    description:
+      "Si estás buscando alivio para enfermedades reumatológicas como la fibromialgia, la terapia hiperbárica de Hiperbarica del Sur Perú puede ayudarte a mejorar tu calidad de vida y reducir los síntomas",
+  },
+  {
+    title: "Lesiones por radioterapia",
+    description:
+      "En Hiperbarica del Sur Perú, ofrecemos tratamientos de terapia hiperbárica diseñados específicamente para aliviar los efectos secundarios de la radioterapia",
+  },
+  {
+    title: "Heridas y Ulceras",
+    description:
+      "Nuestro tratamiento de terapia hiperbárica de última generación puede acelerar el proceso de cicatrización y prevenir complicaciones adicionales",
+  },
+  {
+    title: "Lesiones neurológicas",
+    description:
+      "Si buscas alivio para lesiones neurológicas como el Alzheimer, Parkinson y el Accidente Cerebrovascular, la terapia hiperbárica de Hiperbarica del Sur Perú puede ayudarte",
+  },
+  {
+    title: "Cirugías estéticas ",
+    description:
+      "Si quieres recuperarte rápido después de una cirugía estética, Hiperbarica del Sur Perú puede ayudarte.",
+  },
+];
+
+const IllnessCard = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
   return (
-    <div className="absolute left-[0.04rem] top-[0.06rem] box-border flex h-[32.56rem] flex-col items-center justify-center gap-[2.25rem] rounded-md border-[1px] border-solid border-gray-200 p-[1rem] text-center font-lora text-[1.76rem] text-gray-500">
+    <div className="flex h-[32.56rem] flex-col items-center justify-center gap-[2.25rem] rounded-md border-[1px] border-solid border-gray-200 p-[1rem] text-center font-lora text-[1.76rem] text-gray-500">
       <div className="flex h-[16.88rem] w-[22.29rem] shrink-0 flex-col items-center justify-end">
         <img
           className="relative h-[16.88rem] w-[22.29rem] shrink-0 overflow-hidden rounded-md object-cover"
@@ -67,13 +121,11 @@ const IllnessCard: NextPage = () => {
       </div>
       <div className="flex flex-col items-center justify-center gap-[1rem]">
         <div className="relative flex h-[2.25rem] w-[21.38rem] shrink-0 items-center justify-center leading-[2.11rem] tracking-[-0.7px]">
-          Endocrinologia
+          {title}
         </div>
         <div className="box-border flex h-[5.06rem] w-[20.39rem] shrink-0 flex-col items-center justify-start px-[0rem] py-[1.94rem] font-inter text-[0.88rem] text-gray-200">
           <div className="relative flex h-[1.06rem] w-[20.39rem] shrink-0 items-center justify-center leading-[1.41rem]">
-            Si buscas alivio para enfermedades relacionadas con la tiroides,
-            diabetes, o cualquier otra condición endocrina, la terapia
-            hiperbárica de Hiperbarica del Sur Perú puede ayudarte
+            {description}
           </div>
         </div>
       </div>
@@ -364,16 +416,13 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            <div className="relative h-[101.5rem] w-[77.06rem] shrink-0">
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
-              <IllnessCard />
+            <div className="relative grid h-[101.5rem] w-[77.06rem] shrink-0 grid-cols-3 gap-8">
+              {diseasesCopy.map((copy) => (
+                <IllnessCard
+                  title={copy.title}
+                  description={copy.description}
+                />
+              ))}
             </div>
           </div>
         </div>
