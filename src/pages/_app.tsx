@@ -1,5 +1,7 @@
 import { type AppType } from "next/dist/shared/lib/utils";
 import { Inter, Lora } from "next/font/google";
+import { initSuperflow } from "@usesuperflow/client";
+initSuperflow("P9inIQP5Zn7dFA1Thh1j").catch(console.error);
 
 // config Inter and Lora fonts from Google Fonts with the latin subset
 const InterFont = Inter({
