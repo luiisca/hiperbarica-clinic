@@ -178,11 +178,13 @@ const Home: NextPage = () => {
                 * Es gratis!
               </div>
             </div>
-            <img
-              className="relative h-[43.06rem] w-[51.19rem] shrink-0 rounded-[101px] object-cover"
-              alt=""
-              src="/frame-20@2x.png"
-            />
+            <div className="rounded-3xl bg-primary-200">
+              <img
+                className="relative h-[43.06rem] w-[51.19rem] shrink-0 rounded-[101px] object-cover"
+                alt=""
+                src="/hero.png"
+              />
+            </div>
           </div>
         </div>
         <div className="box-border flex w-[120rem] flex-row items-center justify-center bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
