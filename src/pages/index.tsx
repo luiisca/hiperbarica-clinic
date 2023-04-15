@@ -1,5 +1,52 @@
 import { type NextPage } from "next";
+import { useEffect } from "react";
 import Head from "next/head";
+import Cal, { getCalApi } from "@calcom/embed-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+
+function CalDialog({ Trigger }: { Trigger: React.ElementType }) {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      (async function () {
+        const cal = await getCalApi();
+        cal("ui", {
+          theme: "light",
+          styles: {
+            branding: { brandColor: "#74c0fc" },
+          },
+          hideEventTypeDetails: false,
+        });
+      })().catch(console.error);
+    }
+  }, []);
+
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <Trigger />
+      </DialogTrigger>
+      <DialogContent>
+        <div className="h-auto w-[40vw]">
+          <Cal
+            calLink="hiperbaricadelsurperu/cita-gratuita"
+            style={{
+              width: "100%",
+              height: "100%",
+              overflow: "hidden",
+            }}
+          />
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+function CTABttn() {
+  return (
+    <span className="rounded-4xs [border:none ] box-border flex h-[3.13rem] w-[13.44rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.38rem] py-[0rem] text-left font-inter text-[0.99rem] font-semibold leading-[1.25rem] text-white">
+      Agendar cita gratuita
+    </span>
+  );
+}
 
 const IllnessCard: NextPage = () => {
   return (
@@ -39,6 +86,86 @@ const IllnessCard: NextPage = () => {
   );
 };
 
+const Hero = () => {
+  return (
+    <div className="box-border flex h-[51.48rem] w-[120rem] shrink-0 flex-col items-center justify-end bg-primary-100 px-[0rem] py-[4.19rem] text-[3.52rem] text-gray-200">
+      <div className="flex h-[43.04rem] w-[96rem] shrink-0 flex-row items-center justify-start">
+        <div className="relative h-[29.86rem] w-[44.72rem] shrink-0">
+          <div className="absolute left-[0rem] top-[0rem] box-border flex h-[16.23rem] w-[44.72rem] flex-col items-center justify-start gap-[1.81rem] px-[0rem] pb-[0rem] pt-[0rem] font-lora text-gray-500">
+            <div className="flex h-[10.55rem] w-[44.72rem] shrink-0 flex-col items-center justify-start">
+              <div className="relative flex h-[9.44rem] w-[44.69rem] shrink-0 items-center leading-[3.52rem] tracking-[-1.41px]">
+                Experimenta la tecnología de última generación en terapias
+                hiperbáricas
+              </div>
+            </div>
+            <div className="flex h-[3.81rem] w-[44.72rem] shrink-0 flex-col items-start justify-center font-inter text-[1.05rem] text-gray-200">
+              <div className="relative flex h-[2.56rem] w-[42.63rem] shrink-0 items-center leading-[1.9rem]">
+                Obtén un diagnóstico personalizado y un tratamiento eficaz con
+                Hiperbarica del sur peru.
+              </div>
+            </div>
+          </div>
+          <div className="absolute left-[0rem] top-[19.04rem] flex flex-row items-center justify-center gap-[1rem] text-[1.05rem]">
+            <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.63rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.56rem] py-[0rem] [border:none]">
+              <CalDialog Trigger={CTABttn} />
+            </div>
+            <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.97rem] shrink-0 flex-col items-start justify-center bg-white px-[1.88rem] py-[0rem]">
+              <div className="relative font-semibold leading-[1.25rem]">
+                Más información ↓
+              </div>
+            </div>
+          </div>
+          <div className="absolute left-[0rem] top-[26.86rem] flex h-[3rem] w-[44.72rem] flex-row items-center justify-start gap-[0.94rem] text-[0.99rem] text-primary-500">
+            <div className="flex h-[3rem] w-[11rem] shrink-0 flex-row items-center justify-start">
+              <img
+                className="rounded-9980xl relative h-[3rem] w-[3rem] shrink-0 object-cover"
+                alt=""
+                src="/image@2x.png"
+              />
+              <img
+                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
+                alt=""
+                src="/image1@2x.png"
+              />
+              <img
+                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
+                alt=""
+                src="/image2@2x.png"
+              />
+              <img
+                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
+                alt=""
+                src="/image3@2x.png"
+              />
+              <img
+                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
+                alt=""
+                src="/image4@2x.png"
+              />
+            </div>
+            <div className="flex flex-row items-start justify-start pb-[0.05rem] pl-[0rem] pr-[0.87rem] pt-[0rem]">
+              <div className="relative leading-[1.06rem]">
+                <b>250+</b>
+                <span className="font-semibold text-gray-200">
+                  {" "}
+                  pacientes satisfechos con nuestros servicios.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="rounded-3xl bg-primary-200">
+          <img
+            className="relative h-[43.06rem] w-[51.19rem] shrink-0 rounded-[101px] object-cover"
+            alt=""
+            src="/hero.png"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Home: NextPage = () => {
   return (
     <>
@@ -70,123 +197,28 @@ const Home: NextPage = () => {
           <div className="box-border flex h-[2.63rem] w-[31.25rem] shrink-0 flex-row items-center justify-start gap-[1.81rem] px-[0rem] pb-[0.04rem] pt-[0.05rem] font-inter text-[0.81rem] text-gray-500">
             <a
               className="relative font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
-              href="https://osteocenter.vercel.app/servicios"
               target="_blank"
             >
               Servicios
             </a>
             <a
               className="relative font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
-              href="https://osteocenter.vercel.app/#footer"
               target="_blank"
             >
               Contáctanos
             </a>
             <a
               className="relative text-[0.88rem] font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
-              href="https://osteocenter.vercel.app/blog"
               target="_blank"
             >
               Blog
             </a>
-            <button className="rounded-4xs flex cursor-pointer flex-row items-start justify-start bg-primary-400 pb-[0.6rem] pl-[1.41rem] pr-[1.44rem] pt-[0.81rem] [border:none]">
-              <a
-                className="relative text-left font-inter text-[0.99rem] font-medium leading-[1.13rem] text-white [text-decoration:none]"
-                href="https://osteocenter.vercel.app/"
-                target="_blank"
-              >
-                Reserva una cita
-              </a>
-            </button>
-            <a
-              className="relative text-[0.88rem] font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
-              href="https://osteocenter-scheduling.herokuapp.com/auth/login"
-              target="_blank"
-            >
-              Entrar
-            </a>
-          </div>
-        </div>
-        <div className="box-border flex h-[51.48rem] w-[120rem] shrink-0 flex-col items-center justify-end bg-primary-100 px-[0rem] py-[4.19rem] text-[3.52rem] text-gray-200">
-          <div className="flex h-[43.04rem] w-[96rem] shrink-0 flex-row items-center justify-start">
-            <div className="relative h-[29.86rem] w-[44.72rem] shrink-0">
-              <div className="absolute left-[0rem] top-[0rem] box-border flex h-[16.23rem] w-[44.72rem] flex-col items-center justify-start gap-[1.81rem] px-[0rem] pb-[0rem] pt-[0rem] font-lora text-gray-500">
-                <div className="flex h-[10.55rem] w-[44.72rem] shrink-0 flex-col items-center justify-start">
-                  <div className="relative flex h-[9.44rem] w-[44.69rem] shrink-0 items-center leading-[3.52rem] tracking-[-1.41px]">
-                    Experimenta la tecnología de última generación en terapias
-                    hiperbáricas
-                  </div>
-                </div>
-                <div className="flex h-[3.81rem] w-[44.72rem] shrink-0 flex-col items-start justify-center font-inter text-[1.05rem] text-gray-200">
-                  <div className="relative flex h-[2.56rem] w-[42.63rem] shrink-0 items-center leading-[1.9rem]">
-                    Obtén un diagnóstico personalizado y un tratamiento eficaz
-                    con Hiperbarica del sur peru.
-                  </div>
-                </div>
-              </div>
-              <div className="absolute left-[0rem] top-[19.04rem] flex flex-row items-center justify-center gap-[1rem] text-[1.05rem]">
-                <button className="rounded-4xs box-border flex h-[3.13rem] w-[13.63rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.56rem] py-[0rem] [border:none]">
-                  <div className="relative text-left font-inter text-[0.99rem] font-semibold leading-[1.25rem] text-white">
-                    Agendar cita gratuita
-                  </div>
-                </button>
-                <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.97rem] shrink-0 flex-col items-start justify-center bg-white px-[1.88rem] py-[0rem]">
-                  <div className="relative font-semibold leading-[1.25rem]">
-                    Más información ↓
-                  </div>
-                </div>
-              </div>
-              <div className="absolute left-[0rem] top-[26.86rem] flex h-[3rem] w-[44.72rem] flex-row items-center justify-start gap-[0.94rem] text-[0.99rem] text-primary-500">
-                <div className="flex h-[3rem] w-[11rem] shrink-0 flex-row items-center justify-start">
-                  <img
-                    className="rounded-9980xl relative h-[3rem] w-[3rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image@2x.png"
-                  />
-                  <img
-                    className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image1@2x.png"
-                  />
-                  <img
-                    className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image2@2x.png"
-                  />
-                  <img
-                    className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image3@2x.png"
-                  />
-                  <img
-                    className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image4@2x.png"
-                  />
-                </div>
-                <div className="flex flex-row items-start justify-start pb-[0.05rem] pl-[0rem] pr-[0.87rem] pt-[0rem]">
-                  <div className="relative leading-[1.06rem]">
-                    <b>250+</b>
-                    <span className="font-semibold text-gray-200">
-                      {" "}
-                      pacientes satisfechos con nuestros servicios.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="absolute left-[0.25rem] top-[22.41rem] flex h-[1.19rem] w-[5rem] items-center text-[0.75rem] leading-[1.25rem]">
-                * Es gratis!
-              </div>
-            </div>
-            <div className="rounded-3xl bg-primary-200">
-              <img
-                className="relative h-[43.06rem] w-[51.19rem] shrink-0 rounded-[101px] object-cover"
-                alt=""
-                src="/hero.png"
-              />
+            <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.63rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.56rem] py-[0rem] [border:none]">
+              <CalDialog Trigger={CTABttn} />
             </div>
           </div>
         </div>
+        <Hero />
         <div className="box-border flex w-[120rem] flex-row items-center justify-center bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
           <div className="flex w-[69.53rem] shrink-0 flex-row items-center justify-center gap-[2rem]">
             <img
@@ -300,11 +332,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
               <div className="flex w-[13.44rem] flex-col items-center justify-center overflow-hidden">
-                <button className="rounded-4xs box-border flex h-[3.13rem] w-[13.44rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.38rem] py-[0rem] [border:none]">
-                  <div className="relative text-left font-inter text-[0.99rem] font-semibold leading-[1.25rem] text-white">
-                    Agendar cita gratuita
-                  </div>
-                </button>
+                <CalDialog Trigger={CTABttn} />
               </div>
             </div>
             <img
@@ -662,11 +690,9 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="flex w-[13.44rem] flex-col items-center justify-center overflow-hidden">
-              <button className="rounded-4xs box-border flex h-[3.13rem] w-[13.44rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.38rem] py-[0rem] [border:none]">
-                <div className="relative text-left font-inter text-[0.99rem] font-semibold leading-[1.25rem] text-white">
-                  Agendar cita gratuita
-                </div>
-              </button>
+              <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.44rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.38rem] py-[0rem] [border:none]">
+                <CalDialog Trigger={CTABttn} />
+              </div>
             </div>
           </div>
         </div>
