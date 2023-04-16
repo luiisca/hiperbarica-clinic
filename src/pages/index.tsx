@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import Head from "next/head";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ExternalLink } from "lucide-react";
+import Link from "next/link";
 
 function CalDialog({ Trigger }: { Trigger: React.ElementType }) {
   useEffect(() => {
@@ -40,6 +42,7 @@ function CalDialog({ Trigger }: { Trigger: React.ElementType }) {
     </Dialog>
   );
 }
+
 function CTABttn() {
   return (
     <span className="rounded-4xs [border:none ] box-border flex h-[3.13rem] w-[13.44rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.38rem] py-[0rem] text-left font-inter text-[0.99rem] font-semibold leading-[1.25rem] text-white">
@@ -212,6 +215,86 @@ const Hero = () => {
             alt=""
             src="/hero.png"
           />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const benefitsCopy = [
+  {
+    percentage: 30,
+    description:
+      "Reduce la inflamación en un promedio del 30% en pacientes con enfermedades crónicas.",
+    logo: "/hospital.svg",
+  },
+  {
+    percentage: 92,
+    description:
+      "Tasa de éxito del 92% en la cicatrización de úlceras diabéticas.",
+    logo: "/patches.svg",
+  },
+  {
+    percentage: 27,
+    description:
+      "Aumento del 27% en la producción de células blancas en pacientes con enfermedades autoinmunes.",
+    logo: "/dna.svg",
+  },
+  {
+    percentage: 70,
+    description:
+      "Tasa de éxito del 70% en la reducción del dolor de espalda crónico.",
+    logo: "/heart.svg",
+  },
+];
+const Benefits = () => {
+  return (
+    <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-white px-[0rem] py-[6rem]">
+      <div className="box-border flex w-[96rem] flex-col items-center justify-center gap-[4rem] overflow-hidden bg-white px-[12.25rem] py-[0rem]">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center justify-center gap-[0.75rem]">
+            <div className="relative font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
+              BENEFICIOS
+            </div>
+            <div className="relative flex w-[44.09rem] items-center justify-center text-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
+              Los beneficios de la terapia hiperbárica que debes conocer para
+              mejorar tu salud y bienestar
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row items-end justify-start gap-[2rem] px-[0.06rem] py-[0rem] text-[4.16rem]">
+          {benefitsCopy.map((copy) => (
+            <Link className="group relative" href="#">
+              <div className="relative flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
+                <div className="flex flex-col items-start justify-start">
+                  <div className="relative font-semibold leading-[5.04rem]">
+                    <p>{copy.percentage}</p>
+                    <span className="absolute left-full top-0 inline-block text-2xl">
+                      %
+                    </span>
+                  </div>
+                  <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
+                    {copy.description}
+                  </div>
+                </div>
+                <div className="relative flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
+                  <img
+                    className="relative z-20 h-[4.06rem] w-[4.06rem] shrink-0"
+                    alt=""
+                    src={copy.logo}
+                  />
+                  <img
+                    className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
+                    alt=""
+                    src="/image8@2x.png"
+                  />
+                </div>
+              </div>
+              <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 p-2.5 text-sm opacity-0 transition-all group-hover:opacity-100">
+                <ExternalLink />
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
@@ -426,112 +509,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-white px-[0rem] py-[6rem]">
-          <div className="box-border flex w-[96rem] flex-col items-center justify-center gap-[4rem] overflow-hidden bg-white px-[12.25rem] py-[0rem]">
-            <div className="flex flex-col items-center justify-center">
-              <div className="flex flex-col items-center justify-center gap-[0.75rem]">
-                <div className="relative font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-                  BENEFICIOS
-                </div>
-                <div className="relative flex w-[44.09rem] items-center justify-center text-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">{`Los beneficios de la terapia hiperbárica que debes conocer para mejorar tu salud y bienestar `}</div>
-              </div>
-            </div>
-            <div className="flex flex-row items-end justify-start gap-[2rem] px-[0.06rem] py-[0rem] text-[4.16rem]">
-              <div className="flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
-                <div className="flex flex-col items-start justify-start">
-                  <div className="relative font-semibold leading-[5.04rem]">
-                    30%
-                  </div>
-                  <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
-                    Reduce la inflamación en un promedio del 30% en pacientes
-                    con enfermedades crónicas.
-                  </div>
-                </div>
-                <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                  <img
-                    className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                    alt=""
-                    src="/vector4.svg"
-                  />
-                  <img
-                    className="relative mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image8@2x.png"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
-                <div className="flex flex-col items-start justify-start">
-                  <div className="relative font-semibold leading-[5.04rem]">
-                    30%
-                  </div>
-                  <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
-                    Reduce la inflamación en un promedio del 30% en pacientes
-                    con enfermedades crónicas.
-                  </div>
-                </div>
-                <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                  <img
-                    className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                    alt=""
-                    src="/vector4.svg"
-                  />
-                  <img
-                    className="relative mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image8@2x.png"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
-                <div className="flex flex-col items-start justify-start">
-                  <div className="relative font-semibold leading-[5.04rem]">
-                    30%
-                  </div>
-                  <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
-                    Reduce la inflamación en un promedio del 30% en pacientes
-                    con enfermedades crónicas.
-                  </div>
-                </div>
-                <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                  <img
-                    className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                    alt=""
-                    src="/vector4.svg"
-                  />
-                  <img
-                    className="relative mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image8@2x.png"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
-                <div className="flex flex-col items-start justify-start">
-                  <div className="relative font-semibold leading-[5.04rem]">
-                    30%
-                  </div>
-                  <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
-                    Reduce la inflamación en un promedio del 30% en pacientes
-                    con enfermedades crónicas.
-                  </div>
-                </div>
-                <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                  <img
-                    className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                    alt=""
-                    src="/vector4.svg"
-                  />
-                  <img
-                    className="relative mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image8@2x.png"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Benefits />
         <div className="box-border flex w-[120rem] flex-row items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem]">
           <div className="box-border flex h-[143.21rem] w-[80rem] shrink-0 flex-col items-start justify-end gap-[2.81rem] px-[1.88rem] py-[0rem]">
             <div className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]">
