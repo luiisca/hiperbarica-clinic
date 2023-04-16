@@ -6,6 +6,12 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
+const Container = (props: { children: React.ReactNode }) => {
+  return (
+    <div className="mx-auto max-w-screen-xl px-8 py-24">{props.children}</div>
+  );
+};
+
 function CalDialog({ Trigger }: { Trigger: React.ElementType }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -247,6 +253,7 @@ const benefitsCopy = [
     logo: "/heart.svg",
   },
 ];
+
 const Benefits = () => {
   return (
     <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-white px-[0rem] py-[6rem]">
@@ -298,6 +305,78 @@ const Benefits = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const processCopy = [
+  {
+    number: 1,
+    title: "Evaluación inicial",
+    description:
+      "Al programar una cita gratuita, ya sea virtual o presencial con un profesional, se evaluará el estado del paciente y recomendará el número de sesiones necesarias. También se informará al paciente sobre los efectos secundarios posibles durante y después de la sesión.",
+    image: "/frame9@2x.png",
+  },
+  {
+    number: 2,
+    title: "Preparación",
+    description:
+      "Antes de comenzar el tratamiento, el paciente será instruido en los procedimientos de seguridad y las normas de la terapia hiperbárica",
+    image: "/frame10@2x.png",
+  },
+  {
+    number: 3,
+    title: "Durante el procedimiento",
+    description:
+      "La sesión de terapia hiperbárica se lleva a cabo en una cámara hiperbárica con oxígeno al 100% a presión mayor que la atmosférica. El paciente es monitoreado constantemente por el equipo médico para asegurar su seguridad y cumplir con los estándares de calidad.",
+    image: "/frame11@2x.png",
+  },
+  {
+    number: 4,
+    title: "Seguimiento",
+    description:
+      "Después de cada sesión, nuestro equipo médico se asegurará de que el paciente esté completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar la recuperación completa del paciente. Contamos conun seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo.",
+    image: "/frame12@2x.png",
+  },
+];
+
+const Process = () => {
+  return (
+    <Container>
+      <div className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]">
+        <div className="relative flex h-[1rem] w-[4.28rem] shrink-0 items-center font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
+          Proceso
+        </div>
+        <div className="relative flex h-[3.56rem] w-[31.09rem] shrink-0 items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
+          La atención que mereces
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        {processCopy.map((copy) => (
+          <div className="flex w-full flex-col items-start justify-end ">
+            <div className="flex w-[76.31rem] flex-row items-center justify-start gap-[5.63rem]">
+              <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
+                <span className="flex items-center text-5xl font-semibold leading-[5.04rem]">
+                  0{copy.number}
+                </span>
+                <p className="font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
+                  {copy.title}
+                </p>
+                <p className="relative flex shrink-0 items-center text-base text-gray-200">
+                  {copy.description}
+                </p>
+              </div>
+              <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
+                <img
+                  className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
+                  alt=""
+                  src="/frame9@2x.png"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
   );
 };
 
@@ -510,150 +589,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <Benefits />
-        <div className="box-border flex w-[120rem] flex-row items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem]">
-          <div className="box-border flex h-[143.21rem] w-[80rem] shrink-0 flex-col items-start justify-end gap-[2.81rem] px-[1.88rem] py-[0rem]">
-            <div className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]">
-              <div className="relative flex h-[1rem] w-[4.28rem] shrink-0 items-center font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-                Proceso
-              </div>
-              <div className="relative flex h-[3.56rem] w-[31.09rem] shrink-0 items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-                La atención que mereces
-              </div>
-            </div>
-            <div className="text-gainsboro flex h-[135.48rem] w-[76.25rem] shrink-0 flex-col items-start justify-end gap-[5.56rem] text-[4.85rem]">
-              <div className="flex w-[76.31rem] flex-row items-center justify-start gap-[5.63rem]">
-                <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
-                  <div className="absolute left-[0rem] top-[-0.31rem] flex h-[5.63rem] w-[5.62rem] items-center font-semibold leading-[5.04rem]">
-                    01
-                  </div>
-                  <div className="absolute left-[0rem] top-[5.68rem] font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
-                    Evaluación inicial
-                  </div>
-                  <div className="absolute left-[-0.03rem] top-[8.6rem] box-border flex h-[4.69rem] w-[43.66rem] flex-col items-center justify-start px-[0rem] py-[1.68rem] text-[0.93rem] text-gray-200">
-                    <div className="relative flex h-[1.19rem] w-[43.63rem] shrink-0 items-center leading-[1.9rem]">
-                      Al programar una cita gratuita, ya sea virtual o
-                      presencial con un profesional, se evaluará el estado del
-                      paciente y recomendará el número de sesiones necesarias.
-                      También se informará al paciente sobre los efectos
-                      secundarios posibles durante y después de la sesión.
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
-                  <img
-                    className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
-                    alt=""
-                    src="/frame9@2x.png"
-                  />
-                </div>
-              </div>
-              <div className="flex h-[22.6rem] w-[76.25rem] shrink-0 flex-row items-center justify-start gap-[5.63rem] text-[4.35rem]">
-                <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
-                  <img
-                    className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
-                    alt=""
-                    src="/frame10@2x.png"
-                  />
-                </div>
-                <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
-                  <div className="absolute left-[0rem] top-[-0.31rem] flex h-[5.63rem] w-[5.62rem] items-center font-semibold leading-[5.04rem]">
-                    02
-                  </div>
-                  <div className="absolute left-[0rem] top-[5.55rem] flex h-[2.69rem] w-[11.89rem] items-center font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
-                    Preparación
-                  </div>
-                  <div className="absolute left-[-0.03rem] top-[9.5rem] box-border flex h-[2.88rem] w-[43.65rem] flex-col items-center justify-start px-[0rem] py-[0.77rem] text-[0.93rem] text-gray-200">
-                    <div className="relative flex h-[1.19rem] w-[43.63rem] shrink-0 items-center leading-[1.9rem]">
-                      Antes de comenzar el tratamiento, el paciente será
-                      instruido en los procedimientos de seguridad y las normas
-                      de la terapia hiperbárica.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex h-[22.6rem] w-[76.25rem] shrink-0 flex-row items-center justify-end gap-[5.63rem] text-[4.23rem]">
-                <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
-                  <div className="absolute left-[0rem] top-[-0.31rem] flex h-[5.63rem] w-[5.62rem] items-center font-semibold leading-[5.04rem]">
-                    03
-                  </div>
-                  <div className="absolute left-[0rem] top-[5.68rem] font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
-                    Durante el procedimiento
-                  </div>
-                  <div className="absolute left-[0rem] top-[8.59rem] box-border flex h-[4.75rem] w-[43.63rem] flex-col items-center justify-start px-[0rem] py-[1.68rem] text-[0.93rem] text-gray-200">
-                    <div className="relative flex h-[1.19rem] w-[43.63rem] shrink-0 items-center leading-[1.9rem]">
-                      La sesión de terapia hiperbárica se lleva a cabo en una
-                      cámara hiperbárica con oxígeno al 100% a presión mayor que
-                      la atmosférica. El paciente es monitoreado constantemente
-                      por el equipo médico para asegurar su seguridad y cumplir
-                      con los estándares de calidad.
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
-                  <img
-                    className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
-                    alt=""
-                    src="/frame11@2x.png"
-                  />
-                </div>
-              </div>
-              <div className="flex h-[22.6rem] w-[76.25rem] shrink-0 flex-row items-center justify-start gap-[5.63rem] text-[4.16rem]">
-                <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
-                  <img
-                    className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
-                    alt=""
-                    src="/frame12@2x.png"
-                  />
-                </div>
-                <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
-                  <div className="absolute left-[0rem] top-[-0.31rem] flex h-[5.63rem] w-[5.62rem] items-center font-semibold leading-[5.04rem]">
-                    04
-                  </div>
-                  <div className="absolute left-[0rem] top-[5.56rem] flex h-[2.69rem] w-[12.08rem] items-center font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
-                    Tratamiento.
-                  </div>
-                  <div className="absolute left-[0rem] top-[9.96rem] box-border flex h-[3.8rem] w-[45.19rem] flex-col items-start justify-start gap-[0.69rem] px-[0rem] py-[0.31rem] text-[0.93rem] text-gray-200">
-                    <div className="relative flex h-[1.19rem] w-[43.63rem] shrink-0 items-center leading-[1.9rem]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vivamus vulputate lorem hendrerit est
-                    </div>
-                    <div className="relative flex h-[1.19rem] w-[35.57rem] shrink-0 items-center leading-[1.9rem]">
-                      hendrerit egestas. Proin ac metus egestas, luctus ligula
-                      finibus, dictum urna.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex h-[22.6rem] w-[76.25rem] shrink-0 flex-row items-center justify-end gap-[5.63rem] text-[4.29rem]">
-                <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
-                  <div className="absolute left-[0rem] top-[-0.31rem] flex h-[5.63rem] w-[5.62rem] items-center font-semibold leading-[5.04rem]">
-                    05
-                  </div>
-                  <div className="absolute left-[0rem] top-[5.56rem] flex h-[2.69rem] w-[14.9rem] items-center font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
-                    Hospitalización.
-                  </div>
-                  <div className="absolute left-[0rem] top-[9.96rem] box-border flex h-[3.8rem] w-[45.19rem] flex-col items-start justify-start gap-[0.69rem] px-[0rem] py-[0.31rem] text-[0.93rem] text-gray-200">
-                    <div className="relative flex h-[1.19rem] w-[43.63rem] shrink-0 items-center leading-[1.9rem]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vivamus vulputate lorem hendrerit est
-                    </div>
-                    <div className="relative flex h-[1.19rem] w-[35.57rem] shrink-0 items-center leading-[1.9rem]">
-                      hendrerit egestas. Proin ac metus egestas, luctus ligula
-                      finibus, dictum urna.
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
-                  <img
-                    className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
-                    alt=""
-                    src="/frame13@2x.png"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Process />
         <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-primary-100 px-[0rem] py-[6rem] text-center">
           <div className="flex flex-col items-center justify-center gap-[1.56rem] px-[16.75rem] py-[0rem]">
             <div className="flex flex-col items-center justify-center gap-[1.5rem]">
