@@ -2,14 +2,19 @@ import { type NextPage } from "next";
 import { useEffect } from "react";
 import Head from "next/head";
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const Container = (props: { children: React.ReactNode }) => {
-  return (
-    <div className="mx-auto max-w-screen-xl px-8 py-24">{props.children}</div>
-  );
+  return <div className="mx-8 max-w-screen-xl py-24">{props.children}</div>;
 };
 
 function CalDialog({ Trigger }: { Trigger: React.ElementType }) {
@@ -380,6 +385,71 @@ const Process = () => {
   );
 };
 
+const faqCopy = [
+  {
+    question: "¿Qué es la terapia de oxígeno hiperbárico?",
+    answer:
+      "La terapia de oxígeno hiperbárico es un tratamiento médico que consiste en respirar oxígeno puro en una cámara presurizada. Esta terapia aumenta la cantidad de oxígeno en la sangre y en los tejidos, lo que ayuda a acelerar la recuperación de diversas condiciones médicas.",
+  },
+  {
+    question:
+      "¿Cómo funciona la terapia de oxígeno hiperbárico para aliviar las secuelas del COVID?",
+    answer:
+      "La terapia de oxígeno hiperbárico aumenta la cantidad de oxígeno en la sangre y en los tejidos, lo que ayuda a reducir la inflamación y mejorar la circulación sanguínea. Esto puede ayudar a aliviar las secuelas del COVID, como la fatiga, la dificultad para respirar y la niebla cerebral.",
+  },
+  {
+    question:
+      "¿Cuántas sesiones de terapia de oxígeno hiperbárico se necesitan?",
+    answer:
+      "La cantidad de sesiones de terapia de oxígeno hiperbárico necesarias varía según la condición médica y la gravedad de los síntomas. Nuestros profesionales pueden ayudar a determinar la cantidad de sesiones necesarias después de una evaluación inicial.",
+  },
+  {
+    question:
+      "¿Hay algún efecto secundario de la terapia de oxígeno hiperbárico?",
+    answer:
+      "La terapia de oxígeno hiperbárico es generalmente segura y no tiene efectos secundarios graves. Sin embargo, algunos pacientes pueden experimentar dolor de oídos o sinusitis durante el tratamiento.",
+  },
+  {
+    question: "¿Cuál es el costo de la terapia de oxígeno hiperbárico?",
+    answer:
+      "El costo de la terapia de oxígeno hiperbárico varía según la cantidad de sesiones necesarias y el tipo de seguro médico que tenga el paciente. Ofrecemos una evaluación gratuita para determinar el costo de la terapia y podemos ayudar a los pacientes a explorar opciones de seguro médico.",
+  },
+  {
+    question: "¿Cómo puedo programar una cita para una evaluación inicial?",
+    answer:
+      "Puede programar una cita para una evaluación inicial gratis ya sea virtual o presencial en nuestra clínica llamando a nuestro número de teléfono o enviando un correo electrónico a nuestro equipo de atención al cliente.",
+  },
+  {
+    question:
+      "¿Qué tipo de resultados puedo esperar de la terapia de oxígeno hiperbárico?",
+    answer:
+      "Los resultados de la terapia de oxígeno hiperbárico varían según la condición médica y la gravedad de los síntomas. Sin embargo, la terapia ha demostrado ser efectiva para una amplia variedad de condiciones médicas, incluyendo las secuelas del COVID.",
+  },
+];
+const Faq = () => {
+  return (
+    <Container>
+      <div className="flex flex-col items-start justify-center gap-[0.75rem]">
+        <p className="relative max-w-prose font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
+          PREGUNTAS FREQUENTES
+        </p>
+        <p className="relative flex items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
+          Descubre todo lo que necesitas saber sobre la terapia hiperbárica
+        </p>
+      </div>
+
+      <Accordion type="single" collapsible>
+        {faqCopy.map((copy, i) => (
+          <AccordionItem value={`question-${i}`}>
+            <AccordionTrigger>{copy.question}</AccordionTrigger>
+            <AccordionContent>{copy.answer}</AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </Container>
+  );
+};
+
 const Home: NextPage = () => {
   return (
     <>
@@ -392,6 +462,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="relative flex w-full flex-col items-center justify-center text-left font-inter text-[0.82rem] text-primary-500">
+        {/* NAV */}
         <div className="box-border flex h-[6.44rem] w-[120rem] shrink-0 flex-row items-center justify-between bg-primary-100 px-[3rem] py-[0rem] font-lora text-[1.25rem] text-black shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)]">
           <div className="flex flex-row items-center justify-center gap-[0.75rem]">
             <img
@@ -433,6 +504,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <Hero />
+        {/* INTRO */}
         <div className="box-border flex w-[120rem] flex-row items-center justify-center bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
           <div className="flex w-[69.53rem] shrink-0 flex-row items-center justify-center gap-[2rem]">
             <img
@@ -522,6 +594,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
+        {/* TRATAMIENTO POST-COVID */}
         <div className="flex flex-col items-center justify-center overflow-hidden bg-primary-100 px-[12rem] py-[6rem]">
           <div className="flex w-[96rem] flex-row items-center justify-center gap-[4rem] overflow-hidden">
             <div className="flex flex-col items-start justify-center gap-[2rem]">
@@ -590,6 +663,7 @@ const Home: NextPage = () => {
         </div>
         <Benefits />
         <Process />
+        {/* TESTIMONIALS */}
         <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-primary-100 px-[0rem] py-[6rem] text-center">
           <div className="flex flex-col items-center justify-center gap-[1.56rem] px-[16.75rem] py-[0rem]">
             <div className="flex flex-col items-center justify-center gap-[1.5rem]">
@@ -634,6 +708,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
+        {/* CTA */}
         <div className="box-border flex w-[120rem] flex-col items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
           <div className="flex flex-col items-center justify-center gap-[2rem] overflow-hidden rounded-3xl bg-primary-200 px-[25.94rem] py-[6.5rem]">
             <div className="flex flex-col items-center justify-center gap-[1rem]">
@@ -659,19 +734,8 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="box-border flex w-[120rem] flex-col items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem]">
-          <div className="box-border flex w-[96rem] flex-col items-start justify-start overflow-hidden px-[0rem] py-[0.06rem]">
-            <div className="flex flex-col items-start justify-center gap-[0.75rem]">
-              <div className="relative font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-                PREGUNTAS FREQUENTES
-              </div>
-              <div className="relative flex w-[44.09rem] items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-                Descubre todo lo que necesitas saber sobre la terapia
-                hiperbárica
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* FAQ */}
+        <Faq />
         <div className="box-border flex w-[120rem] flex-col items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem]">
           <div className="flex w-[96rem] flex-col items-center justify-center overflow-hidden">
             <div className="flex flex-row items-end justify-start self-stretch">
