@@ -275,8 +275,8 @@ const Benefits = () => {
           </div>
         </div>
         <div className="flex flex-row items-end justify-start gap-[2rem] px-[0.06rem] py-[0rem] text-[4.16rem]">
-          {benefitsCopy.map((copy) => (
-            <Link className="group relative" href="#">
+          {benefitsCopy.map((copy, i) => (
+            <Link className="group relative" href="#" key={i}>
               <div className="relative flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
                 <div className="flex flex-col items-start justify-start">
                   <div className="relative font-semibold leading-[5.04rem]">
@@ -356,8 +356,11 @@ const Process = () => {
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        {processCopy.map((copy) => (
-          <div className="flex w-full flex-col items-start justify-end ">
+        {processCopy.map((copy, i) => (
+          <div
+            className="flex w-full flex-col items-start justify-end "
+            key={i}
+          >
             <div className="flex w-[76.31rem] flex-row items-center justify-start gap-[5.63rem]">
               <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
                 <span className="flex items-center text-5xl font-semibold leading-[5.04rem]">
@@ -440,7 +443,7 @@ const Faq = () => {
 
       <Accordion type="single" collapsible>
         {faqCopy.map((copy, i) => (
-          <AccordionItem value={`question-${i}`}>
+          <AccordionItem value={`question-${i}`} key={i}>
             <AccordionTrigger>{copy.question}</AccordionTrigger>
             <AccordionContent>{copy.answer}</AccordionContent>
           </AccordionItem>
@@ -652,8 +655,9 @@ const Home: NextPage = () => {
               </div>
             </div>
             <div className="relative grid h-[101.5rem] w-[77.06rem] shrink-0 grid-cols-3 gap-8">
-              {diseasesCopy.map((copy) => (
+              {diseasesCopy.map((copy, i) => (
                 <IllnessCard
+                  key={i}
                   title={copy.title}
                   description={copy.description}
                 />
