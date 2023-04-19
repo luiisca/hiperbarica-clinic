@@ -16,7 +16,6 @@ export default {
           200: "#555",
           500: "#333",
         },
-        // gainsboro: "#ddd",
       },
       fontFamily: {
         inter: ["var(--inter-font)", "sans-serif"],
