@@ -8,6 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import CalDialog from "@/components/calDialog";
+import { Button } from "@/components/ui/core/button";
 
 const Container = (props: { children: React.ReactNode }) => {
   return <div className="mx-8 max-w-screen-xl py-24">{props.children}</div>;
@@ -88,13 +89,13 @@ const IllnessCard = ({
         <div className="relative flex h-[2.25rem] w-[21.38rem] shrink-0 items-center justify-center leading-[2.11rem] tracking-[-0.7px]">
           {title}
         </div>
-        <div className="box-border flex h-[5.06rem] w-[20.39rem] shrink-0 flex-col items-center justify-start px-[0rem] py-[1.94rem] font-inter text-[0.88rem] text-gray-200">
+        <div className="box-border flex h-[5.06rem] w-[20.39rem] shrink-0 flex-col items-center justify-start px-[0rem] py-[1.94rem] text-[0.88rem] text-gray-200">
           <div className="relative flex h-[1.06rem] w-[20.39rem] shrink-0 items-center justify-center leading-[1.41rem]">
             {description}
           </div>
         </div>
       </div>
-      <div className="flex w-[6rem] flex-col items-center justify-center overflow-hidden font-inter text-[0.81rem] text-primary-400">
+      <div className="flex w-[6rem] flex-col items-center justify-center overflow-hidden text-[0.81rem] text-primary-400">
         <div className="relative leading-[0.88rem] tracking-[-0.7px]">
           Ver tratamientos
         </div>
@@ -115,7 +116,7 @@ const Hero = () => {
                 hiperbáricas
               </div>
             </div>
-            <div className="flex h-[3.81rem] w-[44.72rem] shrink-0 flex-col items-start justify-center font-inter text-[1.05rem] text-gray-200">
+            <div className="flex h-[3.81rem] w-[44.72rem] shrink-0 flex-col items-start justify-center text-[1.05rem] text-gray-200">
               <div className="relative flex h-[2.56rem] w-[42.63rem] shrink-0 items-center leading-[1.9rem]">
                 Obtén un diagnóstico personalizado y un tratamiento eficaz con
                 Hiperbarica del sur peru.
@@ -123,14 +124,10 @@ const Hero = () => {
             </div>
           </div>
           <div className="absolute left-[0rem] top-[19.04rem] flex flex-row items-center justify-center gap-[1rem] text-[1.05rem]">
-            <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.63rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.56rem] py-[0rem] [border:none]">
-              <CalDialog />
-            </div>
-            <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.97rem] shrink-0 flex-col items-start justify-center bg-white px-[1.88rem] py-[0rem]">
-              <div className="relative font-semibold leading-[1.25rem]">
-                Más información ↓
-              </div>
-            </div>
+            <CalDialog />
+            <Button color="outline" href="#hey">
+              Más información ↓
+            </Button>
           </div>
           <div className="absolute left-[0rem] top-[26.86rem] flex h-[3rem] w-[44.72rem] flex-row items-center justify-start gap-[0.94rem] text-[0.99rem] text-primary-500">
             <div className="flex h-[3rem] w-[11rem] shrink-0 flex-row items-center justify-start">
@@ -422,7 +419,7 @@ export default function HomePage() {
                 Descubre cómo la oxigenoterapia hiperbárica puede mejorar tu
                 salud y calidad de vida
               </div>
-              <div className="flex w-[38.97rem] flex-col items-center justify-center font-inter text-[1.11rem] text-gray-200">
+              <div className="flex w-[38.97rem] flex-col items-center justify-center text-[1.11rem] text-gray-200">
                 <div className="relative flex w-[38.97rem] items-center justify-center leading-[1.64rem]">
                   En Hiperbarica del sur peru te ofrecemos la oportunidad de
                   mejorar tu salud y bienestar con nuestra técnica terapéutica
@@ -522,9 +519,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="flex w-[13.44rem] flex-col items-center justify-center overflow-hidden">
-              <CalDialog />
-            </div>
+            <CalDialog />
           </div>
           <img
             className="max-h-full max-w-full overflow-hidden rounded-3xl object-cover"
@@ -623,7 +618,7 @@ export default function HomePage() {
                 una cita gratuita hoy mismo!
               </div>
             </div>
-            <div className="flex w-[38.97rem] flex-col items-center justify-center font-inter text-[1.11rem] text-gray-200">
+            <div className="flex w-[38.97rem] flex-col items-center justify-center text-[1.11rem] text-gray-200">
               <div className="relative flex w-[38.97rem] items-center justify-center leading-[1.64rem]">
                 ¡No esperes más y comienza tu camino hacia una mejor salud con
                 Hiperbárica del Sur Perú! Nuestro equipo médico profesional
@@ -631,11 +626,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="flex w-[13.44rem] flex-col items-center justify-center overflow-hidden">
-            <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.44rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.38rem] py-[0rem] [border:none]">
-              <CalDialog />
-            </div>
-          </div>
+          <CalDialog />
         </div>
       </div>
       {/* FAQ */}

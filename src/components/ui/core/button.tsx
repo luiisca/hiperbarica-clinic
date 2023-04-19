@@ -19,18 +19,18 @@ type ButtonBaseProps = {
   };
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center px-8 py-4 rounded-[9px] text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:bg-gray-100 hover:bg-primary-400",
+  "inline-flex items-center justify-center px-8 py-4 rounded-[9px] text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:bg-gray-100",
   {
     variants: {
       variant: {
         default: "",
-        icon: "p-0 disabled:text-primary-100 flex items-center justify-center transition-all w-[50px] h-[50px] text-3xl text-primary-500 bg-white rounded-full shadow-[1px 1px 10px 0 rgb(116 192 252 / 15%)] hover:shadow-[1px 1px 15px 0 rgb(116 192 252 / 25%)]",
+        icon: "p-0 disabled:text-primary-100 flex items-center justify-center transition-all w-[50px] h-[50px] text-3xl text-primary-500 bg-white rounded-full shadow-[1px 1px 10px 0 rgb(116 192 252 / 15%)] hover:shadow-[1px_1px_15px_0_rgb(116 192 252 / 25%)]",
       },
       color: {
-        default: "bg-primary text-white hover:bg-slate-700",
+        default: "bg-primary-400 text-white hover:bg-primary-500",
         // destructive: "bg-red-500 text-white hover:bg-red-600",
         outline:
-          "bg-white text-gray-500 hover:bg-transparent hover:shadow-[inset 0 0 0 3px #fff]",
+          "bg-white text-gray-500 hover:bg-transparent hover:shadow-[inset_0_0_0_3px_#fff]",
         // subtle:
         //   "bg-slate-100 text-slate-900 hover:bg-slate-200 :text-slate-100",
         // ghost:
@@ -72,8 +72,10 @@ const Button = React.forwardRef<
     }: ButtonProps,
     ref
   ) => {
+    const isLink = typeof props.href !== "undefined";
+
     const element = React.createElement(
-      "button",
+      isLink ? "a" : "button",
       {
         ...props,
         ref,
@@ -109,7 +111,7 @@ const Button = React.forwardRef<
     );
 
     return props.href ? (
-      <Link {...props} shallow={shallow && shallow}>
+      <Link {...props} shallow={shallow && shallow} legacyBehavior passHref>
         {element}
       </Link>
     ) : (

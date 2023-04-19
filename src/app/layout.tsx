@@ -2,18 +2,9 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Lora } from "next/font/google";
 import CalDialog from "@/components/calDialog";
 import InitSuperFlow from "./init-super-flow";
-
-const InterFont = Inter({
-  subsets: ["latin"],
-  variable: "--inter-font",
-});
-const LoraFont = Lora({
-  subsets: ["latin"],
-  variable: "--lora-font",
-});
+import Fonts from "./fonts";
 
 function Nav() {
   return (
@@ -26,12 +17,12 @@ function Nav() {
         />
         <div className="flex flex-col items-start justify-center">
           <div className="relative leading-[1.75rem]">Hiperbárica del sur</div>
-          <div className="relative font-inter text-[0.75rem] font-light leading-[1rem]">
+          <div className="relative text-[0.75rem] font-light leading-[1rem]">
             El arte de oxigenarte
           </div>
         </div>
       </div>
-      <div className="box-border flex h-[2.63rem] w-[31.25rem] shrink-0 flex-row items-center justify-start gap-[1.81rem] px-[0rem] pb-[0.04rem] pt-[0.05rem] font-inter text-[0.81rem] text-gray-500">
+      <div className="box-border flex h-[2.63rem] w-[31.25rem] shrink-0 flex-row items-center justify-start gap-[1.81rem] px-[0rem] pb-[0.04rem] pt-[0.05rem] text-[0.81rem] text-gray-500">
         <a
           className="relative font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
           target="_blank"
@@ -50,9 +41,7 @@ function Nav() {
         >
           Blog
         </a>
-        <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.63rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.56rem] py-[0rem] [border:none]">
-          <CalDialog triggerMsg="Agendar cita" />
-        </div>
+        <CalDialog triggerMsg="Agendar cita" />
       </div>
     </section>
   );
@@ -155,7 +144,7 @@ function Footer() {
               <div className="relative leading-[1.75rem]">
                 Hiperbárica del sur
               </div>
-              <div className="relative font-inter text-[0.75rem] font-light leading-[1rem]">
+              <div className="relative text-[0.75rem] font-light leading-[1rem]">
                 El arte de oxigenarte
               </div>
             </div>
@@ -172,16 +161,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={cn(InterFont.className, LoraFont.className)}>
-      <body className="mx-4 flex max-w-screen-xl font-inter text-primary-500 antialiased lg:mx-auto">
+    <html lang="es">
+      <Fonts />
+      <body className="flex flex-col font-inter text-primary-500 antialiased">
         <Nav />
-        <main className="relative mt-6 flex w-full min-w-0 flex-auto flex-col items-center justify-center px-2 md:mt-0">
+        <main className="relative mx-4 mt-6 flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-2 md:mt-0 lg:mx-auto">
           {children}
+          <Footer />
+          <InitSuperFlow />
+          <Analytics />
         </main>
-        <Footer />
-
-        <InitSuperFlow />
-        <Analytics />
       </body>
     </html>
   );
