@@ -17,16 +17,18 @@ const LoraFont = Lora({
 
 function Nav() {
   return (
-    <section className="box-border flex h-[6.44rem] w-[120rem] shrink-0 flex-row items-center justify-between bg-primary-100 px-[3rem] py-[0rem] font-lora text-[1.25rem] text-black shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)]">
+    <section className="box-border flex h-[6.44rem] w-[120rem] shrink-0 flex-row items-center justify-between bg-primary-100 px-[3rem] py-[0rem] text-[1.25rem] text-black shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)]">
       <div className="flex flex-row items-center justify-center gap-[0.75rem]">
         <img
           className="relative h-[3.02rem] w-[3.01rem] shrink-0"
           alt=""
-          src="/vector.svg"
+          src="/logo.svg"
         />
         <div className="flex flex-col items-start justify-center">
-          <div className="relative leading-[1.75rem]">Hiperbárica del sur</div>
-          <div className="relative font-inter text-[0.75rem] font-light leading-[1rem]">
+          <div className="relative font-lora leading-[1.75rem] text-[#03436E]">
+            Hiperbárica Del Sur
+          </div>
+          <div className="relative text-[0.75rem] font-light leading-[1rem] text-gray-500">
             El arte de oxigenarte
           </div>
         </div>
@@ -145,7 +147,7 @@ function Footer() {
               </a>
             </div>
           </div>
-          <div className="absolute left-[1.88rem] top-[5.81rem] flex flex-row items-center justify-center gap-[0.75rem] font-lora text-[1.25rem] text-black">
+          <div className="absolute left-[1.88rem] top-[5.81rem] flex flex-row items-center justify-center gap-[0.75rem] text-[1.25rem] text-black">
             <img
               className="relative h-[3.02rem] w-[3.01rem] shrink-0"
               alt=""
@@ -172,16 +174,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={cn(InterFont.className, LoraFont.className)}>
-      <body className="mx-4 flex max-w-screen-xl font-inter text-primary-500 antialiased lg:mx-auto">
+    <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
+      <body className="flex flex-col font-inter text-primary-500 antialiased">
         <Nav />
-        <main className="relative mt-6 flex w-full min-w-0 flex-auto flex-col items-center justify-center px-2 md:mt-0">
+        <main className="relative mx-4 mt-6 flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-2 md:mt-0 lg:mx-auto">
           {children}
+          <Footer />
+          <InitSuperFlow />
+          <Analytics />
         </main>
-        <Footer />
-
-        <InitSuperFlow />
-        <Analytics />
       </body>
     </html>
   );
