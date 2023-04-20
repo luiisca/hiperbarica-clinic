@@ -11,7 +11,7 @@ import CalDialog from "@/components/calDialog";
 import { Button } from "@/components/ui/core/button";
 
 const Container = (props: { children: React.ReactNode }) => {
-  return <div className="mx-8 max-w-screen-xl py-24">{props.children}</div>;
+  return <div className="py-24">{props.children}</div>;
 };
 
 const diseasesCopy = [
