@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import CalDialog from "@/components/calDialog";
 import InitSuperFlow from "./init-super-flow";
 import { Inter, Lora } from "next/font/google";
-import { BsWhatsapp, BsFacebook } from "react-icons/bs";
+import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 import { ADDRESS, FB_PAGE, MAIL, PHONE } from "@/utils/constants";
 import WhatsApp from "./whatsapp";
@@ -18,7 +18,7 @@ const LoraFont = Lora({
   variable: "--lora-font",
 });
 
-function Logo({ className }: { className: string }) {
+function Logo({ className }: { className?: string }) {
   return (
     <div className={cn("flex items-start gap-3", className)}>
       <svg
@@ -222,7 +222,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="flex flex-col font-inter text-gray-500 antialiased">
+      <body className="flex flex-col items-center font-inter text-gray-500 antialiased">
         <Nav />
         <main className="relative mx-8 flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-2 md:px-0">
           {children}

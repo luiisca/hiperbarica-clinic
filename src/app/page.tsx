@@ -168,12 +168,28 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-3xl bg-primary-200">
+        <div className="relative px-16 py-8">
           <img
-            className="relative h-[43.06rem] w-[51.19rem] shrink-0 rounded-[101px] object-cover"
+            className="relative z-20 shrink-0 object-cover"
             alt=""
             src="/hero.png"
           />
+          <div className="absolute -top-[10%] left-[10%] z-10 m-20 h-[90%] w-[90%]">
+            <div
+              className="h-full w-full bg-primary-200"
+              style={{
+                clipPath: `url(#squircleClip)`,
+              }}
+            />
+            <svg width="10" height="10" viewBox="0 0 10 10">
+              <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
+                <path
+                  stroke="none"
+                  d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
+                />
+              </clipPath>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
