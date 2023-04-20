@@ -2,10 +2,9 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Lora } from "next/font/google";
 import CalDialog from "@/components/calDialog";
 import InitSuperFlow from "./init-super-flow";
-
+import { Inter, Lora } from "next/font/google";
 const InterFont = Inter({
   subsets: ["latin"],
   variable: "--inter-font",
@@ -33,7 +32,7 @@ function Nav() {
           </div>
         </div>
       </div>
-      <div className="box-border flex h-[2.63rem] w-[31.25rem] shrink-0 flex-row items-center justify-start gap-[1.81rem] px-[0rem] pb-[0.04rem] pt-[0.05rem] font-inter text-[0.81rem] text-gray-500">
+      <div className="box-border flex h-[2.63rem] w-[31.25rem] shrink-0 flex-row items-center justify-start gap-[1.81rem] px-[0rem] pb-[0.04rem] pt-[0.05rem] text-[0.81rem] text-gray-500">
         <a
           className="relative font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
           target="_blank"
@@ -52,9 +51,7 @@ function Nav() {
         >
           Blog
         </a>
-        <div className="rounded-4xs box-border flex h-[3.13rem] w-[13.63rem] shrink-0 cursor-pointer flex-col items-end justify-center bg-primary-400 px-[1.56rem] py-[0rem] [border:none]">
-          <CalDialog triggerMsg="Agendar cita" />
-        </div>
+        <CalDialog />
       </div>
     </section>
   );
@@ -157,7 +154,7 @@ function Footer() {
               <div className="relative leading-[1.75rem]">
                 Hiperbárica del sur
               </div>
-              <div className="relative font-inter text-[0.75rem] font-light leading-[1rem]">
+              <div className="relative text-[0.75rem] font-light leading-[1rem]">
                 El arte de oxigenarte
               </div>
             </div>
