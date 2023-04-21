@@ -16,8 +16,9 @@ export function SquircleShape({
         style={{
           clipPath: `url(#squircleClip)`,
         }}
-        children={children}
-      />
+      >
+        {children}
+      </div>
       <svg width="10" height="10" viewBox="0 0 10 10" className="absolute">
         <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
           <path

@@ -179,11 +179,11 @@ const Hero = () => {
         </div>
         <div className="relative px-16 py-8">
           <img
-            className="relative shrink-0 object-cover"
+            className="relative z-10 shrink-0 object-cover"
             alt=""
             src="/hero.png"
           />
-          <SquircleShape className="absolute -top-[10%] left-[10%] -z-10 m-20 h-[90%] w-[90%]" />
+          <SquircleShape className="absolute -top-[10%] left-[10%] -z-10 z-0 m-20 h-[90%] w-[90%]" />
         </div>
       </div>
     </div>
@@ -242,22 +242,21 @@ function Certificates() {
               <SquircleShape
                 className="h-full w-full"
                 shapeClassName="flex h-full w-full items-center justify-center"
-                children={
-                  <div className="relative h-24 w-24 md:h-32 md:w-32">
-                    <Image
-                      src={certifcate.logo}
-                      alt={`${certifcate.title} logo`}
-                      fill
-                      placeholder="blur"
-                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(700, 475)
-                      )}`}
-                      sizes="10vw"
-                      className="grayscale-100 object-contain object-center"
-                    />
-                  </div>
-                }
-              />
+              >
+                <div className="relative h-24 w-24 md:h-32 md:w-32">
+                  <Image
+                    src={certifcate.logo}
+                    alt={`${certifcate.title} logo`}
+                    fill
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                      shimmer(700, 475)
+                    )}`}
+                    sizes="10vw"
+                    className="grayscale-100 object-contain object-center"
+                  />
+                </div>
+              </SquircleShape>
             </div>
             <div className="flex flex-col items-center">
               <h3 className="mb-2 font-lora text-2xl font-medium">
@@ -358,7 +357,7 @@ const processCopy = [
     number: 1,
     title: "Evaluación inicial",
     description:
-      "Al programar una cita gratuita, ya sea virtual o presencial con un profesional, se evaluará el estado del paciente y recomendará el número de sesiones necesarias. También se informará al paciente sobre los efectos secundarios posibles durante y después de la sesión.",
+      "Al programar una cita, ya sea virtual o presencial con un profesional, se evaluará el estado del paciente y recomendará el número de sesiones necesarias. También se informará al paciente sobre los efectos secundarios posibles durante y después de la sesión.",
     image: "/frame9@2x.png",
   },
   {
@@ -455,12 +454,12 @@ const faqCopy = [
   {
     question: "¿Cuál es el costo de la terapia de oxígeno hiperbárico?",
     answer:
-      "El costo de la terapia de oxígeno hiperbárico varía según la cantidad de sesiones necesarias y el tipo de seguro médico que tenga el paciente. Ofrecemos una evaluación gratuita para determinar el costo de la terapia y podemos ayudar a los pacientes a explorar opciones de seguro médico.",
+      "El costo de la terapia de oxígeno hiperbárico varía según la cantidad de sesiones necesarias y el tipo de seguro médico que tenga el paciente. Ofrecemos una evaluación para determinar el costo de la terapia y podemos ayudar a los pacientes a explorar opciones de seguro médico.",
   },
   {
     question: "¿Cómo puedo programar una cita para una evaluación inicial?",
     answer:
-      "Puede programar una cita para una evaluación inicial gratis ya sea virtual o presencial en nuestra clínica llamando a nuestro número de teléfono o enviando un correo electrónico a nuestro equipo de atención al cliente.",
+      "Puede programar una cita para una evaluación inicial ya sea virtual o presencial en nuestra clínica llamando a nuestro número de teléfono o enviando un correo electrónico a nuestro equipo de atención al cliente.",
   },
   {
     question:
@@ -708,7 +707,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center">
               <div className="relative flex w-[44.09rem] items-center justify-center leading-[2.81rem] tracking-[-1.12px]">
                 ¿Listo para mejorar tu salud con la terapia hiperbárica? ¡Agenda
-                una cita gratuita hoy mismo!
+                una cita hoy mismo!
               </div>
             </div>
             <div className="flex w-[38.97rem] flex-col items-center justify-center text-[1.11rem] text-gray-200">

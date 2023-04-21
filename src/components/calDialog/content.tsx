@@ -22,7 +22,7 @@ export default function Content() {
   return (
     <div className="h-auto w-[40vw]">
       <Cal
-        calLink="hiperbaricadelsurperu/cita-gratuita"
+        calLink="hiperbaricadelsurperu/consulta"
         style={{
           width: "100%",
           height: "100%",
