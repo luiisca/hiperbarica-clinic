@@ -222,7 +222,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="flex flex-col items-center font-inter text-gray-500 antialiased">
+      <body className="flex flex-col items-center font-inter text-lg text-gray-500 antialiased">
         <Nav />
         <main className="relative mx-8 flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-2 md:px-0">
           {children}

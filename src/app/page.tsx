@@ -9,9 +9,18 @@ import {
 } from "@/components/ui/accordion";
 import CalDialog from "@/components/calDialog";
 import { Button } from "@/components/ui/core/button";
+import Image from "next/image";
+import { shimmer, toBase64 } from "@/utils/blur";
+import { SquircleShape } from "@/components/shapes";
+import { cn } from "@/utils/cn";
 
-const Container = (props: { children: React.ReactNode }) => {
-  return <div className="py-24">{props.children}</div>;
+const Container = (props: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <section className={cn("py-24", props.className)}>{props.children}</section>
+  );
 };
 
 const diseasesCopy = [
@@ -170,31 +179,98 @@ const Hero = () => {
         </div>
         <div className="relative px-16 py-8">
           <img
-            className="relative z-20 shrink-0 object-cover"
+            className="relative shrink-0 object-cover"
             alt=""
             src="/hero.png"
           />
-          <div className="absolute -top-[10%] left-[10%] z-10 m-20 h-[90%] w-[90%]">
-            <div
-              className="h-full w-full bg-primary-200"
-              style={{
-                clipPath: `url(#squircleClip)`,
-              }}
-            />
-            <svg width="10" height="10" viewBox="0 0 10 10">
-              <clipPath id="squircleClip" clipPathUnits="objectBoundingBox">
-                <path
-                  stroke="none"
-                  d="M 0,0.5 C 0,0 0,0 0.5,0 S 1,0 1,0.5 1,1 0.5,1 0,1 0,0.5"
-                />
-              </clipPath>
-            </svg>
-          </div>
+          <SquircleShape className="absolute -top-[10%] left-[10%] -z-10 m-20 h-[90%] w-[90%]" />
         </div>
       </div>
     </div>
   );
 };
+const certificatesCopy = [
+  {
+    title: "BPM - DIGEMID",
+    description: "Buenas Prácticas de Manofactura – Ministerio de Salud",
+    logo: "/certificates/bpm.png",
+  },
+  {
+    title: "BUREAU VERITAS",
+    description: "Inspectorate S.A.C",
+    logo: "/certificates/bureau.svg",
+  },
+  {
+    title: "ASME",
+    description: "Society of Mechanical Engineers",
+    logo: "/certificates/asme.svg",
+  },
+  {
+    title: "CCL",
+    description: "Cámara de Comercio de Lima",
+    logo: "/certificates/ccl.svg",
+  },
+  {
+    title: "UHMS MEMBER - USA",
+    description: "Undersea & Hyperbaric Medical Society",
+    logo: "/certificates/uhms.svg",
+  },
+  {
+    title: "NFPA",
+    description: "National Fire Protection Association",
+    logo: "/certificates/nfpa.svg",
+  },
+];
+function Certificates() {
+  return (
+    <Container className="text-center">
+      <div className="mb-16 flex flex-col items-center">
+        <h2 className="mb-8 font-lora text-5xl">
+          Certificaciones de seguridad y calidad
+        </h2>
+        <p className="max-w-prose text-center">
+          En Hiperbárica del sur Perú nos tomamos muy en serio la seguridad y
+          bienestar de nuestros pacientes. Es por eso que todas nuestras cámaras
+          hiperbáricas han pasado rigurosas pruebas y cuentan con
+          certificaciones de calidad que avalan su eficacia
+        </p>
+      </div>
+      <ul className="grid grid-cols-2 gap-6 md:grid-cols-3">
+        {certificatesCopy.map((certifcate, i) => (
+          <li key={i} className="flex flex-col items-center">
+            <div className="mb-6 h-32 w-32 md:h-40 md:w-40">
+              <SquircleShape
+                className="h-full w-full"
+                shapeClassName="flex h-full w-full items-center justify-center"
+                children={
+                  <div className="relative h-24 w-24 md:h-32 md:w-32">
+                    <Image
+                      src={certifcate.logo}
+                      alt={`${certifcate.title} logo`}
+                      fill
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                        shimmer(700, 475)
+                      )}`}
+                      sizes="10vw"
+                      className="grayscale-100 object-contain object-center"
+                    />
+                  </div>
+                }
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <h3 className="mb-2 font-lora text-2xl font-medium">
+                {certifcate.title}
+              </h3>
+              <p className="max-w-xs text-base">{certifcate.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Container>
+  );
+}
 
 const benefitsCopy = [
   {
@@ -419,8 +495,9 @@ const Faq = () => {
 
 export default function HomePage() {
   return (
-    <section>
+    <>
       <Hero />
+      <Certificates />
       {/* INTRO */}
       <div className="box-border flex w-[120rem] flex-row items-center justify-center bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
         <div className="flex w-[69.53rem] shrink-0 flex-row items-center justify-center gap-[2rem]">
@@ -599,7 +676,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center gap-[3.38rem]">
               <div className="relative h-[6.06rem] w-[33.56rem] shrink-0">
                 <div className="absolute left-[0rem] top-[-0.31rem] flex w-[33.56rem] items-center justify-center leading-[1.64rem]">
-                  Me siento como una persona completamente nueva después de
+                  Me siento como una persona completamente nueva despu��s de
                   recibir terapia hiperbárica en Hiperbárica del Sur Perú. Mi
                   dolor crónico ha disminuido y mi calidad de vida ha mejorado
                   significativamente.
@@ -730,6 +807,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }
