@@ -13,13 +13,16 @@ import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
+import Slider from "@/components/slider";
 
 const Container = (props: {
   children: React.ReactNode;
   className?: string;
 }) => {
   return (
-    <section className={cn("py-24", props.className)}>{props.children}</section>
+    <section className={cn("w-full py-24", props.className)}>
+      {props.children}
+    </section>
   );
 };
 
@@ -183,7 +186,7 @@ const Hero = () => {
             alt=""
             src="/hero.png"
           />
-          <SquircleShape className="absolute -top-[10%] left-[10%] -z-10 z-0 m-20 h-[90%] w-[90%]" />
+          <SquircleShape className="absolute -top-[10%] left-[10%] z-0 m-20 h-[90%] w-[90%]" />
         </div>
       </div>
     </div>
@@ -269,6 +272,20 @@ function Certificates() {
       </ul>
     </Container>
   );
+}
+
+const MainBenefitsCopy = [{}];
+function MainBenefits() {
+  return (
+    <Container>
+      <Slider />
+    </Container>
+  );
+  // <Slider copy={[]} card={<div>Card content</div>}>
+  //   {copy.map((copy, i) => (
+  //      <Card copy={copy} key={i} />
+  //    ))}
+  // </Slider>
 }
 
 const benefitsCopy = [
@@ -497,6 +514,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Certificates />
+      <MainBenefits />
       {/* INTRO */}
       <div className="box-border flex w-[120rem] flex-row items-center justify-center bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
         <div className="flex w-[69.53rem] shrink-0 flex-row items-center justify-center gap-[2rem]">

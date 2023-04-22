@@ -19,12 +19,12 @@ type ButtonBaseProps = {
   };
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center px-8 py-4 rounded-[9px] text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:bg-gray-100",
+  "!inline-flex items-center justify-center px-8 py-4 rounded-[9px] text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:bg-gray-100",
   {
     variants: {
       variant: {
         default: "",
-        icon: "p-0 disabled:text-primary-100 flex items-center justify-center transition-all w-[50px] h-[50px] text-3xl text-primary-500 bg-white rounded-full shadow-[1px 1px 10px 0 rgb(116 192 252 / 15%)] hover:shadow-[1px_1px_15px_0_rgb(116 192 252 / 25%)]",
+        icon: "p-0 disabled:text-primary-100 transition-all w-[50px] h-[50px] text-3xl text-primary-500 bg-white rounded-full shadow-[1px 1px 10px 0 rgb(116 192 252 / 15%)] hover:shadow-[1px_1px_15px_0_rgb(116 192 252 / 25%)]",
       },
       color: {
         default: "bg-primary-400 text-white hover:bg-primary-500",
