@@ -13,7 +13,7 @@ import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
-import Slider from "@/components/slider";
+import Slider, { baseSettings } from "@/components/slider";
 
 const Container = (props: {
   children: React.ReactNode;
@@ -274,18 +274,140 @@ function Certificates() {
   );
 }
 
-const MainBenefitsCopy = [{}];
+const mainBenefitsCopy = [
+  {
+    title: "Pie Diabético",
+    description:
+      "El pie diabético puede provocar lesiones graves y, en algunos casos, llevar a la amputación. La terapia de oxígeno hiperbárico puede mejorar la circulación sanguínea y de oxígeno para acelerar la curación de las úlceras y prevenir la amputación",
+    img: "/mainBenefits/frame-21@2x.png",
+  },
+  {
+    title: "Heridas y Quemaduras",
+    description:
+      "La terapia de oxígeno hiperbárico puede ayudarte a curar heridas y quemaduras crónicas de forma efectiva y reducir el riesgo de infección",
+    img: "/mainBenefits/frame-21@2x.png",
+  },
+  {
+    title: "Lesiones Deportivas",
+    description:
+      "¿Lesiones deportivas dolorosas? ¿Tiempo de recuperación prolongado? La terapia de oxígeno hiperbárico puede acelerar la recuperación y permitir el retorno a la acción más rápido. Además, también puede ser útil para las lesiones de tejidos blandos.",
+    img: "/mainBenefits/frame-21@2x.png",
+  },
+  {
+    title: "Fatiga Crónica",
+    description:
+      "¿Sufres de fatiga crónica? La terapia de oxígeno hiperbárico puede ayudarte a reducir la fatiga y aumentar tus niveles de energía",
+    img: "/mainBenefits/frame-21@2x.png",
+  },
+];
 function MainBenefits() {
   return (
-    <Container>
-      <Slider />
+    <Container className={cn("my-24 p-0", "relative w-full")}>
+      {/* overlay */}
+      <div
+        className={cn(
+          "absolute mx-auto flex h-full w-full justify-center pt-6 md:py-8 xl:hidden"
+        )}
+      >
+        <div className="h-full w-11/12 rounded-md bg-primary-200" />
+      </div>
+      <Slider
+        className={cn(
+          "relative mx-auto w-11/12 rounded-md [&>.slick-list]:overflow-hidden",
+          "[&_.slick-slide>div]:h-full",
+          "xl:[&_.slick-track]:space-x-6"
+        )}
+        dotClasses={{
+          list: "absolute -bottom-10 md:-bottom-1 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-[calc(45%+48px)] xl:-bottom-12 xl:left-1/2 xl:-translate-x-1/2",
+          dot: "h-3 w-3 xl:w-4 xl:h-4",
+        }}
+        responsive={[
+          {
+            breakpoint: 1280,
+            settings: {
+              ...baseSettings,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              className: cn(
+                "relative mx-auto w-11/12 [&>.slick-list]:overflow-hidden",
+                "[&_.slick-slide>div]:h-full",
+                "[&>.slick-list]:select-none hover:[&>.slick-list]:cursor-grab",
+                "[&_.slick-track]:flex"
+              ),
+            },
+          },
+        ]}
+        slidesToShow={2}
+        slidesToScroll={2}
+      >
+        {mainBenefitsCopy.map((copy, i) => (
+          <div
+            key={i}
+            className={cn(
+              "pt-2 md:py-2 xl:p-0",
+              "!flex h-full bg-transparent",
+              "flex-col md:flex-row",
+              "xl:rounded-md xl:bg-primary-200"
+            )}
+          >
+            {/* // img */}
+            <div
+              className={cn(
+                "min-h-40 relative overflow-hidden rounded-md shadow-sm shadow-gray-100 md:shadow-md xl:shadow-none",
+                "mx-auto h-48 w-11/12 md:ml-6 md:h-full md:w-[45%]",
+                "xl:min-h-80 xl:ml-0 xl:w-1/2"
+              )}
+            >
+              <Image
+                src={copy.img}
+                alt={`${copy.title} beneficio`}
+                fill
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(700, 475)
+                )}`}
+                sizes="50vw"
+                className="object-cover object-center "
+              />
+            </div>
+            {/* text */}
+            <div
+              className={cn(
+                "relative flex w-auto flex-1 flex-shrink-0",
+                "p-4 pb-8 md:p-10 md:pb-14 md:pl-6 md:pr-0 xl:p-6 xl:pb-12 xl:pr-0",
+                "flex flex-col items-center text-center md:block md:text-left"
+              )}
+            >
+              <h3 className="mb-1 w-full pr-4 font-lora text-2xl font-medium xl:pr-6">
+                {copy.title}
+              </h3>
+              <span className="relative mb-3 inline-block h-2 w-full">
+                <Image
+                  src="/wavy-line-2.svg"
+                  alt="wavy line svg"
+                  fill
+                  sizes="20vw"
+                  className="object-contain object-center"
+                />
+              </span>
+              <p className="mb-6 max-w-sm pr-4 text-base md:max-w-xs xl:pr-6">
+                {copy.description}
+              </p>
+              <Link
+                href="/blog"
+                className={cn(
+                  "transition-color absolute w-fit text-primary-600 underline-offset-4 hover:text-primary-700 hover:underline",
+                  "bottom-4 md:bottom-10 xl:bottom-6"
+                )}
+              >
+                Descubre cómo
+              </Link>
+            </div>
+          </div>
+        ))}
+      </Slider>
     </Container>
   );
-  // <Slider copy={[]} card={<div>Card content</div>}>
-  //   {copy.map((copy, i) => (
-  //      <Card copy={copy} key={i} />
-  //    ))}
-  // </Slider>
 }
 
 const benefitsCopy = [
