@@ -184,33 +184,33 @@ function Certificates() {
   );
 }
 
-const mainBenefitsCopy = [
+const treatmentsCopy = [
   {
     title: "Pie Diabético",
     description:
       "El pie diabético puede provocar lesiones graves y, en algunos casos, llevar a la amputación. La terapia de oxígeno hiperbárico puede mejorar la circulación sanguínea y de oxígeno para acelerar la curación de las úlceras y prevenir la amputación",
-    img: "/mainBenefits/frame-21@2x.png",
+    img: "/treatments/diabetes.jpg",
   },
   {
     title: "Heridas y Quemaduras",
     description:
       "La terapia de oxígeno hiperbárico puede ayudarte a curar heridas y quemaduras crónicas de forma efectiva y reducir el riesgo de infección",
-    img: "/mainBenefits/frame-21@2x.png",
+    img: "/treatments/herida.jpg",
   },
   {
     title: "Lesiones Deportivas",
     description:
       "¿Lesiones deportivas dolorosas? ¿Tiempo de recuperación prolongado? La terapia de oxígeno hiperbárico puede acelerar la recuperación y permitir el retorno a la acción más rápido. Además, también puede ser útil para las lesiones de tejidos blandos.",
-    img: "/mainBenefits/frame-21@2x.png",
+    img: "/treatments/deporte.jpg",
   },
   {
     title: "Fatiga Crónica",
     description:
       "¿Sufres de fatiga crónica? La terapia de oxígeno hiperbárico puede ayudarte a reducir la fatiga y aumentar tus niveles de energía",
-    img: "/mainBenefits/frame-21@2x.png",
+    img: "/treatments/fatiga.jpg",
   },
 ];
-function MainBenefits() {
+function Treatments() {
   return (
     <Container className="my-24 w-full p-0">
       <div className="mb-8 flex flex-col items-center text-center">
@@ -259,7 +259,7 @@ function MainBenefits() {
           slidesToShow={2}
           slidesToScroll={2}
         >
-          {mainBenefitsCopy.map((copy, i) => (
+          {treatmentsCopy.map((copy, i) => (
             <div
               key={i}
               className={cn(
@@ -556,7 +556,7 @@ export default function HomePage() {
     <>
       <Hero />
       <Certificates />
-      <MainBenefits />
+      <Treatments />
       <Benefits />
       <Process />
       {/* TESTIMONIALS */}
