@@ -21,6 +21,7 @@ function Arrow(props: ButtonProps & { next?: boolean; prev?: boolean }) {
     <Button
       {...props}
       variant="icon"
+      color="icon"
       className={cn(
         "absolute top-1/2 z-10 h-10 w-10 -translate-y-1/2 lg:h-[50px] lg:w-[50px]",
         props.prev ? "left-0 -translate-x-1/2" : "right-0 translate-x-1/2"
