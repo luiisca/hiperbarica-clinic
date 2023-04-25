@@ -39,11 +39,10 @@ export default function BaseSlider(
     arrowClasses?: Partial<{ left: string; right: string }>;
   }
 ) {
-  let listRef = useRef<HTMLDivElement | null>(null);
+  const listRef = useRef<HTMLDivElement | null>(null);
   const ref = useRef<Slider>(null);
 
   useEffect(() => {
-    console.log("🚀 REF", ref);
     if (ref.current) {
       const listEl = ref.current.innerSlider?.list;
 
