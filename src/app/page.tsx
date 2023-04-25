@@ -15,12 +15,12 @@ import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
 import Slider, { baseSettings } from "@/components/slider";
 
-const Container = (props: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
+const Container = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <section className={cn("w-full py-24", props.className)}>
+    <section className={cn("w-full py-24", className)}>
       {props.children}
     </section>
   );
@@ -326,6 +326,11 @@ function Treatments() {
           ))}
         </Slider>
       </div>
+      <div className="mt-16 flex w-full justify-center md:mt-8 xl:mt-20">
+        <Link href="#">
+          <Button>Ver todos</Button>
+        </Link>
+      </div>
     </Container>
   );
 }
@@ -445,7 +450,10 @@ const processCopy = [
 const Process = () => {
   return (
     <Container>
-      <div className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]">
+      <div
+        className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]"
+        id="proceso"
+      >
         <div className="relative flex h-[1rem] w-[4.28rem] shrink-0 items-center font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
           Proceso
         </div>

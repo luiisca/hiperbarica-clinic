@@ -139,6 +139,12 @@ function Nav() {
           Contáctanos
         </a>
         <a
+          className="relative font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
+          href="#proceso"
+        >
+          Proceso
+        </a>
+        <a
           className="relative text-[0.88rem] font-medium leading-[1.41rem] text-[inherit] [text-decoration:none]"
           target="_blank"
         >
