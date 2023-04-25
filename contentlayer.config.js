@@ -1,4 +1,8 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import {
+  defineDocumentType,
+  defineNestedType,
+  makeSource,
+} from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -10,21 +14,14 @@ const computedFields = {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath,
   },
-  tweetIds: {
-    type: "array",
-    resolve: (doc) => {
-      const tweetMatches = doc.body.raw.match(
-        /<StaticTweet\sid="[0-9]+"\s\/>/g
-      );
-      return tweetMatches?.map((tweet) => tweet.match(/[0-9]+/g)[0]) || [];
-    },
-  },
   structuredData: {
     type: "object",
     resolve: (doc) => ({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: doc.title,
+      category:
+        doc._raw.sourceFileDir === "." ? "general" : doc._raw.sourceFileDir,
       datePublished: doc.publishedAt,
       dateModified: doc.publishedAt,
       description: doc.summary,
@@ -34,7 +31,7 @@ const computedFields = {
       url: `https://leerob.io/blog/${doc._raw.flattenedPath}`,
       author: {
         "@type": "Person",
-        name: "Lee Robinson",
+        name: "Hiperbarica del Sur Peru",
       },
     }),
   },
