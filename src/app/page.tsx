@@ -666,14 +666,12 @@ export default function HomePage() {
                   />
                   <a
                     className="absolute left-[0rem] top-[17.81rem] flex h-[0.88rem] w-[5.51rem] items-center font-medium uppercase leading-[0.94rem] tracking-[0.75px] text-[inherit] [text-decoration:none]"
-                    href="https://osteocenter.vercel.app/blog/categorias/tratamiento"
                     target="_blank"
                   >
                     Tratamiento
                   </a>
                   <a
                     className="absolute left-[0rem] top-[19.03rem] flex h-[2.69rem] w-[22.94rem] items-center font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500 [text-decoration:none]"
-                    href="https://osteocenter.vercel.app/blog/como-tratar-la-artrosis"
                     target="_blank"
                   >
                     ¿Cómo tratar la artrosis?
@@ -687,7 +685,6 @@ export default function HomePage() {
                   />
                   <a
                     className="absolute left-[0rem] top-[17.81rem] flex h-[0.88rem] w-[4.1rem] items-center font-medium uppercase leading-[0.94rem] tracking-[0.75px] text-[inherit] [text-decoration:none]"
-                    href="https://osteocenter.vercel.app/blog/categorias/sintomas"
                     target="_blank"
                   >
                     Síntomas
@@ -695,14 +692,12 @@ export default function HomePage() {
                   <div className="absolute left-[0rem] top-[19.03rem] flex flex-col items-start justify-start px-[0rem] pb-[0.13rem] pt-[0.19rem] font-lora text-[2.11rem] text-gray-500">
                     <a
                       className="relative leading-[2.34rem] tracking-[-0.84px] text-[inherit] [text-decoration:none]"
-                      href="https://osteocenter.vercel.app/blog/conoce-los-sintomas-y-causas-de-la-artritis"
                       target="_blank"
                     >
                       Conoce los síntomas y
                     </a>
                     <a
                       className="relative mt-[-0.03rem] inline-block leading-[2.34rem] tracking-[-0.84px] text-[inherit] [text-decoration:none]"
-                      href="https://osteocenter.vercel.app/blog/conoce-los-sintomas-y-causas-de-la-artritis"
                       target="_blank"
                     >
                       causas de la Artritis
