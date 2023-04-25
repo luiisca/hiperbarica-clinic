@@ -312,15 +312,15 @@ function Treatments() {
                 <p className="mb-6 max-w-sm pr-4 text-base md:max-w-xs xl:pr-6">
                   {copy.description}
                 </p>
-                <Link
+                <Button
+                  color="link"
                   href="/blog"
                   className={cn(
-                    "transition-color absolute w-fit text-primary-600 underline-offset-4 hover:text-primary-700 hover:underline",
-                    "bottom-4 md:bottom-10 xl:bottom-6"
+                    "absolute bottom-4 w-fit md:bottom-10 xl:bottom-6"
                   )}
                 >
                   Descubre cómo
-                </Link>
+                </Button>
               </div>
             </div>
           ))}
@@ -418,31 +418,22 @@ const Benefits = () => {
 
 const processCopy = [
   {
-    number: 1,
     title: "Evaluación inicial",
     description:
-      "Al programar una cita, ya sea virtual o presencial con un profesional, se evaluará el estado del paciente y recomendará el número de sesiones necesarias. También se informará al paciente sobre los efectos secundarios posibles durante y después de la sesión.",
+      "Para comenzar con el tratamiento, necesitas programar una cita ya sea virtual o presencial. Durante la cita, se evaluará tu estado y se recomendará el número de sesiones necesarias para tu tratamiento. También recibirás información sobre los efectos secundarios posibles y las preparaciones previas al tratamiento con oxígeno hiperbárico.",
+    cta: "Conocer más",
     image: "/frame9@2x.png",
   },
   {
-    number: 2,
-    title: "Preparación",
-    description:
-      "Antes de comenzar el tratamiento, el paciente será instruido en los procedimientos de seguridad y las normas de la terapia hiperbárica",
-    image: "/frame10@2x.png",
-  },
-  {
-    number: 3,
     title: "Durante el procedimiento",
     description:
-      "La sesión de terapia hiperbárica se lleva a cabo en una cámara hiperbárica con oxígeno al 100% a presión mayor que la atmosférica. El paciente es monitoreado constantemente por el equipo médico para asegurar su seguridad y cumplir con los estándares de calidad.",
+      "Durante tu sesión de terapia hiperbárica, estarás en una cámara hiperbárica y respirarás oxígeno puro al 100% a una presión mayor que la atmosférica. Nuestro equipo médico profesional te monitoreará constantemente para garantizar tu seguridad y cumplir con los estándares de calidad.",
     image: "/frame11@2x.png",
   },
   {
-    number: 4,
     title: "Seguimiento",
     description:
-      "Después de cada sesión, nuestro equipo médico se asegurará de que el paciente esté completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar la recuperación completa del paciente. Contamos conun seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo.",
+      "Después de cada sesión, nuestro equipo médico se asegurará de que estés completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar tu completa recuperación. Contamos con un seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo para ti.",
     image: "/frame12@2x.png",
   },
 ];
@@ -468,9 +459,9 @@ const Process = () => {
             key={i}
           >
             <div className="flex w-[76.31rem] flex-row items-center justify-start gap-[5.63rem]">
-              <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
+              <div className="relative flex h-[13.76rem] w-[45.19rem] shrink-0 flex-col items-start gap-2">
                 <span className="flex items-center text-5xl font-semibold leading-[5.04rem]">
-                  0{copy.number}
+                  0{i + 1}
                 </span>
                 <p className="font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
                   {copy.title}
@@ -478,6 +469,11 @@ const Process = () => {
                 <p className="relative flex shrink-0 items-center text-base text-gray-200">
                   {copy.description}
                 </p>
+                {copy.cta && (
+                  <Button color="link" href="#">
+                    {copy.cta}
+                  </Button>
+                )}
               </div>
               <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
                 <img

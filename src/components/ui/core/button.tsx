@@ -40,7 +40,7 @@ const buttonVariants = cva(
         //   "bg-slate-100 text-slate-900 hover:bg-slate-200 :text-slate-100",
         // ghost:
         //   "bg-transparent hover:bg-slate-100 data-[state=open]:bg-transparent",
-        // link: "bg-transparent underline-offset-4 hover:underline text-slate-900 hover:bg-transparent",
+        link: "p-0 transition-color text-primary-600 underline-offset-4 hover:text-primary-700 hover:underline",
       },
     },
     defaultVariants: {
