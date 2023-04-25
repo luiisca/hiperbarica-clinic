@@ -9,98 +9,20 @@ import {
 } from "@/components/ui/accordion";
 import CalDialog from "@/components/calDialog";
 import { Button } from "@/components/ui/core/button";
+import Image from "next/image";
+import { shimmer, toBase64 } from "@/utils/blur";
+import { SquircleShape } from "@/components/shapes";
+import { cn } from "@/utils/cn";
+import Slider, { baseSettings } from "@/components/slider";
 
-const Container = (props: { children: React.ReactNode }) => {
-  return <div className="mx-8 max-w-screen-xl py-24">{props.children}</div>;
-};
-
-const diseasesCopy = [
-  {
-    title: "Endocrinologia",
-    description:
-      "Si buscas alivio para enfermedades relacionadas con la tiroides, diabetes, o cualquier otra condición endocrina, la terapia hiperbárica de Hiperbarica del Sur Perú puede ayudarte",
-  },
-  {
-    title: "Fertilidad",
-    description:
-      "Ofrecemos una variedad de tratamientos de terapia hiperbárica diseñados para mejorar la salud reproductiva y aumentar las posibilidades de fertilidad exitosa.",
-  },
-  {
-    title: "Envejecimiento",
-    description:
-      "Nuestro tratamiento de última generación está diseñado para mejorar la salud celular y puede ayudar a reducir los signos del envejecimiento",
-  },
-  {
-    title: "Lesiones",
-    description:
-      "Nuestro tratamiento de terapia hiperbárica de última generación puede ayudarte a acelerar la curación de lesiones deportivas, mejorar la fuerza y la resistencia, y reducir el dolor y la inflamación",
-  },
-  {
-    title: "Reumatologia",
-    description:
-      "Si estás buscando alivio para enfermedades reumatológicas como la fibromialgia, la terapia hiperbárica de Hiperbarica del Sur Perú puede ayudarte a mejorar tu calidad de vida y reducir los síntomas",
-  },
-  {
-    title: "Lesiones por radioterapia",
-    description:
-      "En Hiperbarica del Sur Perú, ofrecemos tratamientos de terapia hiperbárica diseñados específicamente para aliviar los efectos secundarios de la radioterapia",
-  },
-  {
-    title: "Heridas y Ulceras",
-    description:
-      "Nuestro tratamiento de terapia hiperbárica de última generación puede acelerar el proceso de cicatrización y prevenir complicaciones adicionales",
-  },
-  {
-    title: "Lesiones neurológicas",
-    description:
-      "Si buscas alivio para lesiones neurológicas como el Alzheimer, Parkinson y el Accidente Cerebrovascular, la terapia hiperbárica de Hiperbarica del Sur Perú puede ayudarte",
-  },
-  {
-    title: "Cirugías estéticas ",
-    description:
-      "Si quieres recuperarte rápido después de una cirugía estética, Hiperbarica del Sur Perú puede ayudarte.",
-  },
-];
-
-const IllnessCard = ({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) => {
+const Container = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <div className="flex h-[32.56rem] flex-col items-center justify-center gap-[2.25rem] rounded-md border-[1px] border-solid border-gray-200 p-[1rem] text-center font-lora text-[1.76rem] text-gray-500">
-      <div className="flex h-[16.88rem] w-[22.29rem] shrink-0 flex-col items-center justify-end">
-        <img
-          className="relative h-[16.88rem] w-[22.29rem] shrink-0 overflow-hidden rounded-md object-cover"
-          alt=""
-          src="/frame@2x.png"
-        />
-        <div className="mt-[-2.81rem] flex h-[5.63rem] w-[5.63rem] shrink-0 flex-col items-center justify-center bg-[url(/frame2@3x.png)] bg-cover bg-[top] bg-no-repeat">
-          <img
-            className="relative h-[2.34rem] w-[2.34rem] shrink-0 overflow-hidden object-cover"
-            alt=""
-            src="/frame1@2x.png"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-center gap-[1rem]">
-        <div className="relative flex h-[2.25rem] w-[21.38rem] shrink-0 items-center justify-center leading-[2.11rem] tracking-[-0.7px]">
-          {title}
-        </div>
-        <div className="box-border flex h-[5.06rem] w-[20.39rem] shrink-0 flex-col items-center justify-start px-[0rem] py-[1.94rem] text-[0.88rem] text-gray-200">
-          <div className="relative flex h-[1.06rem] w-[20.39rem] shrink-0 items-center justify-center leading-[1.41rem]">
-            {description}
-          </div>
-        </div>
-      </div>
-      <div className="flex w-[6rem] flex-col items-center justify-center overflow-hidden text-[0.81rem] text-primary-400">
-        <div className="relative leading-[0.88rem] tracking-[-0.7px]">
-          Ver tratamientos
-        </div>
-      </div>
-    </div>
+    <section className={cn("w-full py-24", className)}>
+      {props.children}
+    </section>
   );
 };
 
@@ -168,17 +90,250 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="rounded-3xl bg-primary-200">
+        <div className="relative px-16 py-8">
           <img
-            className="relative h-[43.06rem] w-[51.19rem] shrink-0 rounded-[101px] object-cover"
+            className="relative z-10 shrink-0 object-cover"
             alt=""
             src="/hero.png"
           />
+          <SquircleShape className="absolute -top-[10%] left-[10%] z-0 m-20 h-[90%] w-[90%]" />
         </div>
       </div>
     </div>
   );
 };
+const certificatesCopy = [
+  {
+    title: "BPM - DIGEMID",
+    description: "Buenas Prácticas de Manofactura – Ministerio de Salud",
+    logo: "/certificates/bpm.png",
+  },
+  {
+    title: "BUREAU VERITAS",
+    description: "Inspectorate S.A.C",
+    logo: "/certificates/bureau.svg",
+  },
+  {
+    title: "ASME",
+    description: "Society of Mechanical Engineers",
+    logo: "/certificates/asme.svg",
+  },
+  {
+    title: "CCL",
+    description: "Cámara de Comercio de Lima",
+    logo: "/certificates/ccl.svg",
+  },
+  {
+    title: "UHMS MEMBER - USA",
+    description: "Undersea & Hyperbaric Medical Society",
+    logo: "/certificates/uhms.svg",
+  },
+  {
+    title: "NFPA",
+    description: "National Fire Protection Association",
+    logo: "/certificates/nfpa.svg",
+  },
+];
+function Certificates() {
+  return (
+    <Container className="text-center">
+      <div className="mb-16 flex flex-col items-center">
+        <h2 className="mb-8 max-w-xl font-lora text-5xl ">
+          Certificaciones de seguridad y calidad
+        </h2>
+        <p className="max-w-prose text-center">
+          En Hiperbárica del sur Perú nos tomamos muy en serio la seguridad y
+          bienestar de nuestros pacientes. Es por eso que todas nuestras cámaras
+          hiperbáricas han pasado rigurosas pruebas y cuentan con
+          certificaciones de calidad que avalan su eficacia
+        </p>
+      </div>
+      <ul className="grid grid-cols-2 gap-6 md:grid-cols-3">
+        {certificatesCopy.map((certifcate, i) => (
+          <li key={i} className="flex flex-col items-center">
+            <div className="mb-6 h-32 w-32 md:h-40 md:w-40">
+              <SquircleShape
+                className="h-full w-full"
+                shapeClassName="flex h-full w-full items-center justify-center"
+              >
+                <div className="relative h-24 w-24 md:h-32 md:w-32">
+                  <Image
+                    src={certifcate.logo}
+                    alt={`${certifcate.title} logo`}
+                    fill
+                    placeholder="blur"
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                      shimmer(700, 475)
+                    )}`}
+                    sizes="10vw"
+                    className="grayscale-100 object-contain object-center"
+                  />
+                </div>
+              </SquircleShape>
+            </div>
+            <div className="flex flex-col items-center">
+              <h3 className="mb-2 font-lora text-2xl font-medium">
+                {certifcate.title}
+              </h3>
+              <p className="max-w-xs text-base">{certifcate.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Container>
+  );
+}
+
+const treatmentsCopy = [
+  {
+    title: "Pie Diabético",
+    description:
+      "El pie diabético puede provocar lesiones graves y, en algunos casos, llevar a la amputación. La terapia de oxígeno hiperbárico puede mejorar la circulación sanguínea y de oxígeno para acelerar la curación de las úlceras y prevenir la amputación",
+    img: "/treatments/diabetes.jpg",
+  },
+  {
+    title: "Heridas y Quemaduras",
+    description:
+      "La terapia de oxígeno hiperbárico puede ayudarte a curar heridas y quemaduras crónicas de forma efectiva y reducir el riesgo de infección",
+    img: "/treatments/herida.jpg",
+  },
+  {
+    title: "Lesiones Deportivas",
+    description:
+      "¿Lesiones deportivas dolorosas? ¿Tiempo de recuperación prolongado? La terapia de oxígeno hiperbárico puede acelerar la recuperación y permitir el retorno a la acción más rápido. Además, también puede ser útil para las lesiones de tejidos blandos.",
+    img: "/treatments/deporte.jpg",
+  },
+  {
+    title: "Fatiga Crónica",
+    description:
+      "¿Sufres de fatiga crónica? La terapia de oxígeno hiperbárico puede ayudarte a reducir la fatiga y aumentar tus niveles de energía",
+    img: "/treatments/fatiga.jpg",
+  },
+];
+function Treatments() {
+  return (
+    <Container className="my-24 w-full p-0">
+      <div className="mb-8 flex flex-col items-center text-center">
+        <p className="text-sm font-medium uppercase tracking-wide text-primary-500">
+          Tratamientos
+        </p>
+        <h2 className="mb-8 max-w-xl font-lora text-5xl">
+          Tratamos una amplia variedad de enfermedades y dolencias
+        </h2>
+      </div>
+      {/* overlay */}
+      <div className="relative">
+        <div
+          className={cn(
+            "absolute mx-auto flex h-full w-full justify-center pt-6 md:py-8 xl:hidden"
+          )}
+        >
+          <div className="h-full w-11/12 rounded-md bg-primary-200" />
+        </div>
+        <Slider
+          className={cn(
+            "relative mx-auto w-11/12 rounded-md [&>.slick-list]:overflow-hidden",
+            "[&_.slick-slide>div]:h-full",
+            "xl:[&_.slick-track]:space-x-6"
+          )}
+          dotClasses={{
+            list: "absolute -bottom-10 md:-bottom-1 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-[calc(45%+48px)] xl:-bottom-12 xl:left-1/2 xl:-translate-x-1/2",
+            dot: "h-3 w-3 xl:w-4 xl:h-4",
+          }}
+          responsive={[
+            {
+              breakpoint: 1280,
+              settings: {
+                ...baseSettings,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                className: cn(
+                  "relative mx-auto w-11/12 [&>.slick-list]:overflow-hidden",
+                  "[&_.slick-slide>div]:h-full",
+                  "[&>.slick-list]:select-none hover:[&>.slick-list]:cursor-grab",
+                  "[&_.slick-track]:flex"
+                ),
+              },
+            },
+          ]}
+          slidesToShow={2}
+          slidesToScroll={2}
+        >
+          {treatmentsCopy.map((copy, i) => (
+            <div
+              key={i}
+              className={cn(
+                "pt-2 md:py-2 xl:p-0",
+                "!flex h-full bg-transparent",
+                "flex-col md:flex-row",
+                "xl:rounded-md xl:bg-primary-200"
+              )}
+            >
+              {/* // img */}
+              <div
+                className={cn(
+                  "min-h-40 relative overflow-hidden rounded-md shadow-sm shadow-gray-100 md:shadow-md xl:shadow-none",
+                  "mx-auto h-48 w-11/12 md:ml-6 md:h-full md:w-[45%]",
+                  "xl:min-h-80 xl:ml-0 xl:w-1/2"
+                )}
+              >
+                <Image
+                  src={copy.img}
+                  alt={`${copy.title} beneficio`}
+                  fill
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                  sizes="50vw"
+                  className="object-cover object-center "
+                />
+              </div>
+              {/* text */}
+              <div
+                className={cn(
+                  "relative flex w-auto flex-1 flex-shrink-0",
+                  "p-4 pb-8 md:p-10 md:pb-14 md:pl-6 md:pr-0 xl:p-6 xl:pb-12 xl:pr-0",
+                  "flex flex-col items-center text-center md:block md:text-left"
+                )}
+              >
+                <h3 className="mb-1 w-full pr-4 font-lora text-2xl font-medium xl:pr-6">
+                  {copy.title}
+                </h3>
+                <span className="relative mb-3 inline-block h-2 w-full">
+                  <Image
+                    src="/wavy-line-2.svg"
+                    alt="wavy line svg"
+                    fill
+                    sizes="20vw"
+                    className="object-contain object-center"
+                  />
+                </span>
+                <p className="mb-6 max-w-sm pr-4 text-base md:max-w-xs xl:pr-6">
+                  {copy.description}
+                </p>
+                <Button
+                  color="link"
+                  href="/blog"
+                  className={cn(
+                    "absolute bottom-4 w-fit md:bottom-10 xl:bottom-6"
+                  )}
+                >
+                  Descubre cómo
+                </Button>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+      <div className="mt-16 flex w-full justify-center md:mt-8 xl:mt-20">
+        <Link href="#">
+          <Button>Ver todos</Button>
+        </Link>
+      </div>
+    </Container>
+  );
+}
 
 const benefitsCopy = [
   {
@@ -217,8 +372,8 @@ const Benefits = () => {
               BENEFICIOS
             </div>
             <div className="relative flex w-[44.09rem] items-center justify-center text-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-              Los beneficios de la terapia hiperbárica que debes conocer para
-              mejorar tu salud y bienestar
+              Descubre cómo el oxígeno hiperbárico puede ayudarte a sanar más
+              rápido
             </div>
           </div>
         </div>
@@ -263,31 +418,22 @@ const Benefits = () => {
 
 const processCopy = [
   {
-    number: 1,
     title: "Evaluación inicial",
     description:
-      "Al programar una cita gratuita, ya sea virtual o presencial con un profesional, se evaluará el estado del paciente y recomendará el número de sesiones necesarias. También se informará al paciente sobre los efectos secundarios posibles durante y después de la sesión.",
+      "Para comenzar con el tratamiento, necesitas programar una cita ya sea virtual o presencial. Durante la cita, se evaluará tu estado y se recomendará el número de sesiones necesarias para tu tratamiento. También recibirás información sobre los efectos secundarios posibles y las preparaciones previas al tratamiento con oxígeno hiperbárico.",
+    cta: "Conocer más",
     image: "/frame9@2x.png",
   },
   {
-    number: 2,
-    title: "Preparación",
-    description:
-      "Antes de comenzar el tratamiento, el paciente será instruido en los procedimientos de seguridad y las normas de la terapia hiperbárica",
-    image: "/frame10@2x.png",
-  },
-  {
-    number: 3,
     title: "Durante el procedimiento",
     description:
-      "La sesión de terapia hiperbárica se lleva a cabo en una cámara hiperbárica con oxígeno al 100% a presión mayor que la atmosférica. El paciente es monitoreado constantemente por el equipo médico para asegurar su seguridad y cumplir con los estándares de calidad.",
+      "Durante tu sesión de terapia hiperbárica, estarás en una cámara hiperbárica y respirarás oxígeno puro al 100% a una presión mayor que la atmosférica. Nuestro equipo médico profesional te monitoreará constantemente para garantizar tu seguridad y cumplir con los estándares de calidad.",
     image: "/frame11@2x.png",
   },
   {
-    number: 4,
     title: "Seguimiento",
     description:
-      "Después de cada sesión, nuestro equipo médico se asegurará de que el paciente esté completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar la recuperación completa del paciente. Contamos conun seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo.",
+      "Después de cada sesión, nuestro equipo médico se asegurará de que estés completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar tu completa recuperación. Contamos con un seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo para ti.",
     image: "/frame12@2x.png",
   },
 ];
@@ -295,7 +441,10 @@ const processCopy = [
 const Process = () => {
   return (
     <Container>
-      <div className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]">
+      <div
+        className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]"
+        id="proceso"
+      >
         <div className="relative flex h-[1rem] w-[4.28rem] shrink-0 items-center font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
           Proceso
         </div>
@@ -310,9 +459,9 @@ const Process = () => {
             key={i}
           >
             <div className="flex w-[76.31rem] flex-row items-center justify-start gap-[5.63rem]">
-              <div className="relative h-[13.76rem] w-[45.19rem] shrink-0">
+              <div className="relative flex h-[13.76rem] w-[45.19rem] shrink-0 flex-col items-start gap-2">
                 <span className="flex items-center text-5xl font-semibold leading-[5.04rem]">
-                  0{copy.number}
+                  0{i + 1}
                 </span>
                 <p className="font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
                   {copy.title}
@@ -320,6 +469,11 @@ const Process = () => {
                 <p className="relative flex shrink-0 items-center text-base text-gray-200">
                   {copy.description}
                 </p>
+                {copy.cta && (
+                  <Button color="link" href="#">
+                    {copy.cta}
+                  </Button>
+                )}
               </div>
               <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
                 <img
@@ -363,12 +517,12 @@ const faqCopy = [
   {
     question: "¿Cuál es el costo de la terapia de oxígeno hiperbárico?",
     answer:
-      "El costo de la terapia de oxígeno hiperbárico varía según la cantidad de sesiones necesarias y el tipo de seguro médico que tenga el paciente. Ofrecemos una evaluación gratuita para determinar el costo de la terapia y podemos ayudar a los pacientes a explorar opciones de seguro médico.",
+      "El costo de la terapia de oxígeno hiperbárico varía según la cantidad de sesiones necesarias y el tipo de seguro médico que tenga el paciente. Ofrecemos una evaluación para determinar el costo de la terapia y podemos ayudar a los pacientes a explorar opciones de seguro médico.",
   },
   {
     question: "¿Cómo puedo programar una cita para una evaluación inicial?",
     answer:
-      "Puede programar una cita para una evaluación inicial gratis ya sea virtual o presencial en nuestra clínica llamando a nuestro número de teléfono o enviando un correo electrónico a nuestro equipo de atención al cliente.",
+      "Puede programar una cita para una evaluación inicial ya sea virtual o presencial en nuestra clínica llamando a nuestro número de teléfono o enviando un correo electrónico a nuestro equipo de atención al cliente.",
   },
   {
     question:
@@ -403,164 +557,10 @@ const Faq = () => {
 
 export default function HomePage() {
   return (
-    <section>
+    <>
       <Hero />
-      {/* INTRO */}
-      <div className="box-border flex w-[120rem] flex-row items-center justify-center bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
-        <div className="flex w-[69.53rem] shrink-0 flex-row items-center justify-center gap-[2rem]">
-          <img
-            className="relative h-[34.81rem] w-[23.44rem] shrink-0 rounded-[32px] object-cover"
-            alt=""
-            src="/frame-5@2x.png"
-          />
-          <div className="flex flex-1 flex-col items-center justify-center gap-[2rem] self-stretch">
-            <div className="flex flex-col items-center justify-center gap-[1rem]">
-              <div className="relative flex w-[44.09rem] items-center justify-center leading-[2.81rem] tracking-[-1.12px]">
-                Descubre cómo la oxigenoterapia hiperbárica puede mejorar tu
-                salud y calidad de vida
-              </div>
-              <div className="flex w-[38.97rem] flex-col items-center justify-center text-[1.11rem] text-gray-200">
-                <div className="relative flex w-[38.97rem] items-center justify-center leading-[1.64rem]">
-                  En Hiperbarica del sur peru te ofrecemos la oportunidad de
-                  mejorar tu salud y bienestar con nuestra técnica terapéutica
-                  de última generación: la oxigenoterapia hiperbárica. Este
-                  tratamiento consiste en la administración de oxígeno puro al
-                  100% a una presión mayor que la atmosférica, lo que ayuda a
-                  reducir la inflamación, aliviar el dolor y acelerar la
-                  curación de heridas crónicas
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-center justify-center self-stretch text-[1.5rem] text-black">
-              <div className="flex w-[32.63rem] flex-row items-start justify-center">
-                <div className="flex flex-1 flex-col items-center justify-center gap-[1.25rem]">
-                  <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                    <img
-                      className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                      alt=""
-                      src="/vector1.svg"
-                    />
-                    <img
-                      className="relative mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                      alt=""
-                      src="/image5@2x.png"
-                    />
-                  </div>
-                  <div className="flex flex-row items-center justify-center self-stretch overflow-hidden">
-                    <div className="relative flex w-[9.63rem] shrink-0 items-center justify-center leading-[1.5rem]">
-                      Reduce la inflamación
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col items-center justify-center gap-[1.25rem]">
-                  <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                    <img
-                      className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                      alt=""
-                      src="/vector2.svg"
-                    />
-                    <img
-                      className="relative mt-[-2.75rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                      alt=""
-                      src="/image6@2x.png"
-                    />
-                  </div>
-                  <div className="flex flex-row items-center justify-center self-stretch overflow-hidden">
-                    <div className="relative flex w-[9.63rem] shrink-0 items-center justify-center leading-[1.5rem]">
-                      Alivia el dolor
-                    </div>
-                  </div>
-                </div>
-                <div className="flex flex-1 flex-col items-center justify-center gap-[1.25rem]">
-                  <div className="flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                    <img
-                      className="relative h-[4.06rem] w-[4.06rem] shrink-0"
-                      alt=""
-                      src="/vector3.svg"
-                    />
-                    <img
-                      className="relative mt-[-2.87rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                      alt=""
-                      src="/image7@2x.png"
-                    />
-                  </div>
-                  <div className="flex flex-row items-center justify-center self-stretch overflow-hidden">
-                    <div className="relative flex w-[9.63rem] shrink-0 items-center justify-center leading-[1.5rem]">
-                      Reduce la inflamación
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* TRATAMIENTO POST-COVID */}
-      <div className="flex flex-col items-center justify-center overflow-hidden bg-primary-100 px-[12rem] py-[6rem]">
-        <div className="flex w-[96rem] flex-row items-center justify-center gap-[4rem] overflow-hidden">
-          <div className="flex flex-col items-start justify-center gap-[2rem]">
-            <div className="flex flex-col items-start justify-center gap-[1rem]">
-              <div className="flex flex-col items-start justify-center gap-[0.75rem]">
-                <div className="relative font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-                  TRATAMIENTO POST-COVID
-                </div>
-                <div className="relative flex w-[44.09rem] items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-                  ¿Sigues luchando con los efectos del COVID?
-                </div>
-              </div>
-              <div className="flex h-[9.88rem] w-[38.97rem] shrink-0 flex-col items-center justify-center text-[1.11rem] text-gray-200">
-                <div className="relative flex w-[38.97rem] items-center leading-[1.64rem]">
-                  La terapia hiperbárica ha demostrado ser una solución efectiva
-                  para los efectos post-COVID, como fatiga, dificultad
-                  respiratoria y daño pulmonar. Nuestro equipo de profesionales
-                  de la salud está capacitado para ayudar a los pacientes a
-                  recuperarse y mejorar su calidad de vida mediante la
-                  oxigenoterapia hiperbárica.
-                </div>
-              </div>
-            </div>
-            <CalDialog />
-          </div>
-          <img
-            className="max-h-full max-w-full overflow-hidden rounded-3xl object-cover"
-            alt=""
-            src="/frame-21@2x.png"
-          />
-        </div>
-      </div>
-      <div className="box-border flex w-[120rem] flex-row items-center justify-center overflow-hidden bg-white px-[0.63rem] py-[6rem]">
-        <div className="box-border flex w-[96rem] shrink-0 flex-col items-center justify-center gap-[4rem] overflow-hidden px-[0.06rem] py-[0rem]">
-          <div className="flex flex-col items-center justify-center gap-[2rem]">
-            <div className="flex flex-col items-center justify-center gap-[0.75rem]">
-              <div className="relative font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-                TRATAMIENTOS
-              </div>
-              <div className="relative flex w-[44.09rem] items-center justify-center text-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-                Condiciones que podemos tratar con la terapia hiperbárica
-              </div>
-            </div>
-            <div className="flex h-[9.88rem] w-[38.97rem] shrink-0 flex-col items-center justify-center text-center text-[1.11rem] text-gray-200">
-              <div className="relative flex w-[38.97rem] items-center justify-center leading-[1.64rem]">
-                En Hiperbarica del Sur Perú, nuestro tratamiento de terapia
-                hiperbárica de última generación ofrece alivio para una amplia
-                variedad de condiciones médicas. Desde lesiones cerebrales hasta
-                heridas crónicas, nuestro equipo médico profesional está
-                capacitado para brindar un enfoque especializado que se adapta a
-                tus necesidades individuales.
-              </div>
-            </div>
-          </div>
-          <div className="relative grid h-[101.5rem] w-[77.06rem] shrink-0 grid-cols-3 gap-8">
-            {diseasesCopy.map((copy, i) => (
-              <IllnessCard
-                key={i}
-                title={copy.title}
-                description={copy.description}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
+      <Certificates />
+      <Treatments />
       <Benefits />
       <Process />
       {/* TESTIMONIALS */}
@@ -583,7 +583,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center gap-[3.38rem]">
               <div className="relative h-[6.06rem] w-[33.56rem] shrink-0">
                 <div className="absolute left-[0rem] top-[-0.31rem] flex w-[33.56rem] items-center justify-center leading-[1.64rem]">
-                  Me siento como una persona completamente nueva después de
+                  Me siento como una persona completamente nueva despu��s de
                   recibir terapia hiperbárica en Hiperbárica del Sur Perú. Mi
                   dolor crónico ha disminuido y mi calidad de vida ha mejorado
                   significativamente.
@@ -615,7 +615,7 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center">
               <div className="relative flex w-[44.09rem] items-center justify-center leading-[2.81rem] tracking-[-1.12px]">
                 ¿Listo para mejorar tu salud con la terapia hiperbárica? ¡Agenda
-                una cita gratuita hoy mismo!
+                una cita hoy mismo!
               </div>
             </div>
             <div className="flex w-[38.97rem] flex-col items-center justify-center text-[1.11rem] text-gray-200">
@@ -714,6 +714,6 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }
