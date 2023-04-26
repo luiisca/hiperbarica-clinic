@@ -1,4 +1,62 @@
+import { cn } from "@/utils/cn";
+import { VariantProps, cva } from "class-variance-authority";
+import Link, { LinkProps } from "next/link";
 import React, { HTMLAttributes } from "react";
+
+type InferredVariantProps = VariantProps<typeof headingVariants>;
+type HeadingColor = NonNullable<InferredVariantProps["color"]>;
+type HeadingBaseProps = {
+  shallow?: boolean;
+} & Omit<InferredVariantProps, "color"> & {
+    color?: HeadingColor;
+  };
+
+const headingVariants = cva("font-lora mb-8", {
+  variants: {
+    type: {
+      primary: "text-5xl xl:text-6xl leading-[1.1]",
+      secondary: "text-4xl md:text-5xl leading-[1.1]",
+      tertiary: "text-3xl md:text-4xl leading-[1.2]",
+      subHeading:
+        "font-inter block text-sm font-medium text-primary-500 uppercase mb-4 tracking-[0.75px]",
+    },
+    color: {
+      category:
+        "mb-5 text-xs leading-[1.125rem] text-primary hover:text-primary-500",
+    },
+  },
+  defaultVariants: {
+    type: "primary",
+  },
+});
+
+type HeadingProps = HeadingBaseProps &
+  (
+    | (HTMLAttributes<HTMLHeadingElement> & { href?: never })
+    | (Omit<JSX.IntrinsicElements["a"], "href" | "onClick" | "ref"> & LinkProps)
+  );
+
+const Heading = React.forwardRef<
+  HTMLHeadingElement | HTMLAnchorElement,
+  HeadingProps
+>(({ type, color, shallow, className, ...props }: HeadingProps, ref) => {
+  const isLink = typeof props.href !== "undefined";
+  const { tag } = getElTag(type || "primary");
+  const element = React.createElement(isLink ? "a" : tag, {
+    ...props,
+    ref,
+    className: cn(headingVariants({ type, color, className })),
+  });
+
+  return props.href ? (
+    <Link {...props} shallow={shallow && shallow} legacyBehavior passHref>
+      {element}
+    </Link>
+  ) : (
+    <>{element}</>
+  );
+});
+export default Heading;
 
 type HeadingType = {
   primary?: boolean;
@@ -6,52 +64,32 @@ type HeadingType = {
   tertiary?: boolean;
   subHeading?: boolean;
 };
-type HeadingProps = HTMLAttributes<HTMLHeadingElement> & {
-  type: keyof HeadingType;
-};
-
-const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ type, ...props }: HeadingProps, ref) => {
-    const { tag, className } = getElTag(type);
-    const element = React.createElement(tag, { ...props, ref, className });
-
-    return element;
-  }
-);
-export default Heading;
-
 function getElTag(type: keyof HeadingType) {
   switch (type) {
     case "primary": {
       return {
         tag: "h1",
-        className: "font-lora text-5xl xl:text-6xl leading-[1.1] my-0 mb-8",
       };
     }
     case "secondary": {
       return {
         tag: "h2",
-        className: "font-lora mb-8 text-4xl md:text-5xl leading-[1.1]",
       };
     }
     case "tertiary": {
       return {
         tag: "h3",
-        className: "font-lora text-3xl md:text-4xl leading-[1.2] mb-8",
       };
     }
     case "subHeading": {
       return {
         tag: "span",
-        className:
-          "block text-sm font-medium text-primary-shade-1 uppercase mb-4 tracking-[0.75px]",
       };
     }
 
     default: {
       return {
         tag: "h1",
-        className: "font-lora text-5xl xl:text-6xl leading-[1.1] my-0 mb-8",
       };
     }
   }
