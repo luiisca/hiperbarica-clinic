@@ -19,7 +19,7 @@ type ButtonBaseProps = {
   };
 
 const buttonVariants = cva(
-  "!inline-flex items-center justify-center px-8 py-4 rounded-[9px] text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:bg-gray-100",
+  "!inline-flex items-center justify-center px-8 py-4 rounded-[9px] text-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed data-[state=open]:bg-gray-100",
   {
     variants: {
       variant: {
@@ -54,7 +54,7 @@ const buttonVariants = cva(
 export type ButtonProps = ButtonBaseProps &
   (
     | (Omit<JSX.IntrinsicElements["a"], "href" | "onClick" | "ref"> & LinkProps)
-    | (Omit<JSX.IntrinsicElements["button"], "onClick" | "ref"> & {
+    | (Omit<JSX.IntrinsicElements["button"], "ref"> & {
         href?: never;
       })
   );

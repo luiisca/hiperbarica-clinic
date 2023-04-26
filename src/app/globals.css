@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swiper-initialized .swiper-pagination {
+  @apply flex justify-center space-x-2;
+}
+.swiper-initialized .swiper-pagination-bullet {
+  @apply inline-block h-3 w-3 rounded-full border-[1px] border-primary-500 bg-white xl:h-4 xl:w-4;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2;
+}
+.swiper-initialized .swiper-pagination-bullet-active {
+  @apply border-primary-500 bg-primary-500;
+}
+
+.home-slider .swiper-pagination {
+  @apply absolute -bottom-10 left-1/2 -translate-x-1/2 md:-bottom-1 md:left-[calc(45%+48px)] md:translate-x-0 xl:bottom-2 xl:left-1/2 xl:-translate-x-1/2;
+}

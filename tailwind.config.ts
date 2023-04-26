@@ -4,6 +4,10 @@ export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        "mob-me": "545px",
+        "blog-lg": "992px",
+      },
       colors: {
         primary: {
           100: "#f1f9ff",

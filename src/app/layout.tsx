@@ -121,7 +121,7 @@ function Logo({ className }: { className?: string }) {
 
 function Nav() {
   return (
-    <section className="box-border flex h-[6.44rem] w-[120rem] shrink-0 flex-row items-center justify-between bg-primary-100 px-[3rem] py-[0rem] text-[1.25rem] text-black shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)]">
+    <section className="box-border flex h-[6.44rem] w-[120rem] shrink-0 flex-row items-center justify-between bg-primary-100 py-[0rem] text-[1.25rem] text-black shadow-[0px_1px_2px_rgba(0,_0,_0,_0.05)]">
       <div className="flex flex-row items-center justify-center gap-[0.75rem]">
         <Logo />
       </div>
@@ -228,9 +228,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="flex flex-col items-center font-inter text-lg text-gray-500 antialiased">
+      <body className="mx-8 flex max-w-screen-xl flex-col items-center font-inter text-lg text-gray-500 antialiased 2xl:mx-auto">
         <Nav />
-        <main className="relative mx-8 flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-2 md:px-0">
+        <main className="relative flex w-full min-w-0 flex-auto flex-col items-center justify-center px-2 md:px-0">
           {children}
           <InitSuperFlow />
           <Analytics />

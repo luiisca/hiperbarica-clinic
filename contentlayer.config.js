@@ -14,14 +14,17 @@ const computedFields = {
     type: "string",
     resolve: (doc) => doc._raw.flattenedPath,
   },
+  category: {
+    type: "string",
+    resolve: (doc) =>
+      doc._raw.sourceFileDir === "." ? "general" : doc._raw.sourceFileDir,
+  },
   structuredData: {
     type: "object",
     resolve: (doc) => ({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
       headline: doc.title,
-      category:
-        doc._raw.sourceFileDir === "." ? "general" : doc._raw.sourceFileDir,
       datePublished: doc.publishedAt,
       dateModified: doc.publishedAt,
       description: doc.summary,

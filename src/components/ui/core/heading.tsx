@@ -22,7 +22,7 @@ const headingVariants = cva("font-lora mb-8", {
     },
     color: {
       category:
-        "mb-5 text-xs leading-[1.125rem] text-primary hover:text-primary-500",
+        "mb-5 text-xs leading-[1.125rem] text-primary-400 hover:text-primary-500",
     },
   },
   defaultVariants: {

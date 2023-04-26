@@ -29,7 +29,7 @@ export default function WhatsApp({ floating }: { floating?: boolean }) {
       target="_blank"
       className={cn(
         floating &&
-          "bg-primary hover:bg-primary-shade-1 fixed bottom-6 left-6 z-10 flex h-16 w-16 items-center justify-center rounded-full text-center text-[35px] leading-[63px] text-white shadow-sm transition-all hover:shadow-md md:h-[3.75rem] md:w-[3.75rem]"
+          "hover:bg-primary-shade-1 fixed bottom-6 left-6 z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary-400 text-center text-[35px] leading-[63px] text-white shadow-sm transition-all hover:shadow-md md:h-[3.75rem] md:w-[3.75rem]"
       )}
     >
       <BsWhatsapp />
