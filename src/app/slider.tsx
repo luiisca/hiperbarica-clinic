@@ -36,10 +36,9 @@ const treatmentsCopy = [
 export default function Slider() {
   return (
     <BaseSlider<(typeof treatmentsCopy)[0]>
-      pagination
+      content={treatmentsCopy}
       className="xl:overflow-hidden xl:pb-14"
       slideClassName={cn("pt-2 md:py-2 xl:p-0 bg-transparent")}
-      content={treatmentsCopy}
       arrowsClasses={{
         container: "flex",
       }}
@@ -51,6 +50,7 @@ export default function Slider() {
           slidesPerView: 2,
         },
       }}
+      pagination
     >
       {(copy) => (
         <div

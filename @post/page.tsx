@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Mdx } from "@/components/mdx";
+// import { Mdx } from "@/components/mdx";
 import { allBlogs } from "contentlayer/generated";
 import Balancer from "react-wrap-balancer";
 
@@ -77,7 +77,7 @@ export default function Blog({ params }: { params: { slug: string } }) {
         <div className="mx-2 h-[0.2em] bg-neutral-50 dark:bg-neutral-800" />
         {/* <ViewCounter slug={post.slug} trackView /> */}
       </div>
-      <Mdx code={post.body.code} />
+      {/* <Mdx code={post.body.code} /> */}
     </section>
   );
 }

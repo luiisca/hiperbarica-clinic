@@ -5,11 +5,12 @@ export default function Layout({
   category,
   post,
 }: {
-  children: React.ReactElement;
+  children: React.ReactElement<HTMLDivElement>;
   category: React.ReactNode;
   post: React.ReactNode;
 }) {
-  return categories.includes(children.props.segmentPath[3][1])
+  const props = children.props as HTMLDivElement & { segmentPath: string[][] };
+  return categories.includes((props.segmentPath[3]?.[1] as string) || "")
     ? category
     : post;
 }

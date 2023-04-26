@@ -56,6 +56,7 @@ const Heading = React.forwardRef<
     <>{element}</>
   );
 });
+Heading.displayName = "Heading";
 export default Heading;
 
 type HeadingType = {
