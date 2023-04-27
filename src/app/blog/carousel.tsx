@@ -7,21 +7,29 @@ import Link from "next/link";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
 import { Blog } from "contentlayer/generated";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Carousel({ content }: { content: Array<Blog> }) {
   return (
     <BaseCarousel
+      Skeleton={() => (
+        <Skeleton className="h-[clamp(450px,_25vh,_600px)] w-full " />
+      )}
       slidesCopy={content}
-      className={cn("pb-10 blog-lg:pb-0")}
+      className={cn("relative blog-lg:pb-0")}
       arrowsClasses={{
-        prev: cn(
-          "top-full left-0 translate-x-0 translate-y-0",
-          "blog-lg:translate-x-full blog-lg:top-auto blog-lg:left-auto blog-lg:bottom-0 blog-lg:right-[calc(45%-96px)] blog-lg:mb-4 blog-lg:z-10"
-        ),
-        next: cn(
-          "top-full left-0 ml-3 translate-x-full translate-y-0",
-          "blog-lg:translate-x-full blog-lg:top-auto blog-lg:left-auto blog-lg:bottom-0 blog-lg:right-[calc(45%-158px)] blog-lg:mb-4 blog-lg:z-10"
-        ),
+        container:
+          "flex relative blog-lg:absolute blog-lg:left-[calc(55%+96px)] blog-lg:bottom-0 blog-lg:mb-5 space-x-3",
+        prev: "static translate-x-0 translate-y-0",
+        next: "static translate-x-0 translate-y-0",
+        // prev: cn(
+        //   "top-full left-0 translate-x-0 translate-y-0",
+        //   "blog-lg:translate-x-full blog-lg:top-auto blog-lg:left-auto blog-lg:bottom-0 blog-lg:right-[calc(45%-96px)] blog-lg:mb-4 blog-lg:z-10"
+        // ),
+        // next: cn(
+        //   "top-full left-0 ml-3 translate-x-full translate-y-0",
+        //   "blog-lg:translate-x-full blog-lg:top-auto blog-lg:left-auto blog-lg:bottom-0 blog-lg:right-[calc(45%-158px)] blog-lg:mb-4 blog-lg:z-10"
+        // ),
       }}
     >
       {(post) => (
