@@ -1,6 +1,6 @@
 "use client";
 
-import BaseSlider from "@/components/slider";
+import BaseCarousel from "@/components/carousel";
 import Heading from "@/components/ui/core/heading";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,10 +8,10 @@ import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
 import { Blog } from "contentlayer/generated";
 
-export default function Slider({ content }: { content: Array<Blog> }) {
+export default function Carousel({ content }: { content: Array<Blog> }) {
   return (
-    <BaseSlider
-      content={content}
+    <BaseCarousel
+      slidesCopy={content}
       className={cn("pb-10 blog-lg:pb-0")}
       arrowsClasses={{
         prev: cn(
@@ -77,6 +77,6 @@ export default function Slider({ content }: { content: Array<Blog> }) {
           </div>
         </Link>
       )}
-    </BaseSlider>
+    </BaseCarousel>
   );
 }

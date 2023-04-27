@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { allBlogs } from "contentlayer/generated";
 import Heading from "@/components/ui/core/heading";
-import Slider from "./slider";
+import Carousel from "./carousel";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -21,7 +21,7 @@ export default function BlogPage() {
       {/* carousel  */}
       <div className="mb-32 mt-12 blog-lg:mb-24">
         <Heading type="subHeading">Lo ultimo</Heading>
-        <Slider content={latestPosts} />
+        <Carousel content={latestPosts} />
       </div>
       <hr className="w-full border-[#c7c7c7]/30" />
     </section>

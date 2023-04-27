@@ -1,23 +1,16 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { cn } from "@/utils/cn";
 import { Button, ButtonProps } from "./ui/core/button";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { Swiper, SwiperSlide } from "swiper/react";
-import {
-  Navigation,
-  Pagination,
-  SwiperOptions,
-  A11y,
-  Swiper as SwiperType,
-} from "swiper";
+import { Swiper, SwiperProps, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation, Pagination, A11y, Swiper as SwiperType } from "swiper";
 import "swiper/css/a11y";
 
-function Arrow({
-  swiper,
-  ...props
-}: ButtonProps & { next?: boolean; prev?: boolean; swiper: SwiperType }) {
+function Arrow({ ...props }: ButtonProps & { next?: boolean; prev?: boolean }) {
+  const swiper = useSwiper();
+
   return (
     <Button
       {...props}
@@ -37,15 +30,17 @@ function Arrow({
   );
 }
 
-export default function BaseSider<T>({
+export default function BaseCarousel<T>({
+  Skeleton,
   className,
   slideClassName,
   arrowsClasses,
   dotClasses,
   children,
-  content,
+  slidesCopy,
   ...props
-}: SwiperOptions & {
+}: Omit<SwiperProps, "children"> & {
+  Skeleton?: React.ElementType;
   className?: string;
   slideClassName?: string;
   arrowsClasses?: Partial<{
@@ -55,18 +50,24 @@ export default function BaseSider<T>({
   }>;
   dotClasses?: Partial<{ list: string; dot: string }>;
   children: (copy: T) => React.ReactNode;
-  content: Array<T>;
+  slidesCopy: Array<T>;
+  onSwiperFn?: (swiper: SwiperType) => void;
 }) {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [swiperReady, setSwiperReady] = useState(false);
 
   return (
     <>
       <Swiper
         {...props}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          console.log("💪 swier read");
+          setSwiperReady(true);
+          props.onSwiperFn?.(swiper);
+        }}
         className={cn(
-          "relative",
-          "[&_.swiper-wrapper]:flex [&_.swiper-wrapper]:select-none",
+          "static [&_.swiper-wrapper]:flex [&_.swiper-wrapper]:select-none",
           className,
           dotClasses?.list,
           dotClasses?.dot
@@ -82,24 +83,24 @@ export default function BaseSider<T>({
         grabCursor
         loop
       >
-        {content?.map((copy, i) => (
-          <SwiperSlide className={cn("shrink-0", slideClassName)} key={i}>
+        {!swiperReady && Skeleton && <Skeleton />}
+        {slidesCopy?.map((copy, i) => (
+          <SwiperSlide
+            className={cn(
+              "shrink-0",
+              swiperReady ? "" : "hidden",
+              slideClassName
+            )}
+            key={i}
+          >
             {children(copy)}
           </SwiperSlide>
         ))}
+        <div className={cn("", arrowsClasses?.container)}>
+          <Arrow prev className={arrowsClasses?.prev} disabled={!swiperReady} />
+          <Arrow next className={arrowsClasses?.next} disabled={!swiperReady} />
+        </div>
       </Swiper>
-      <div className={cn("", arrowsClasses?.container)}>
-        <Arrow
-          prev
-          swiper={swiperRef.current as SwiperType}
-          className={arrowsClasses?.prev}
-        />
-        <Arrow
-          next
-          swiper={swiperRef.current as SwiperType}
-          className={arrowsClasses?.next}
-        />
-      </div>
     </>
   );
 }

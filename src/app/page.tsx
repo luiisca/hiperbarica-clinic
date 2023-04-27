@@ -13,7 +13,7 @@ import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
-import Slider from "./slider";
+import Carousel from "./carousel";
 
 const Container = ({
   className,
@@ -197,14 +197,7 @@ function Treatments() {
       </div>
       {/* overlay */}
       <div className="relative">
-        <div
-          className={cn(
-            "absolute mx-auto flex h-full w-full justify-center pt-6 md:py-8 xl:hidden"
-          )}
-        >
-          <div className="h-full w-full rounded-md bg-primary-200" />
-        </div>
-        <Slider />
+        <Carousel />
       </div>
       <div className="mt-12 flex w-full justify-center md:mt-12">
         <Link href="#">
