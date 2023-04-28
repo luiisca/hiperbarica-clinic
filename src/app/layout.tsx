@@ -228,9 +228,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="mx-8 flex max-w-screen-xl flex-col items-center font-inter text-lg text-gray-500 antialiased 2xl:mx-auto">
+      <body className="flex flex-col items-center overflow-x-hidden font-inter text-lg text-gray-500 antialiased">
         <Nav />
-        <main className="relative flex w-full min-w-0 flex-auto flex-col items-center justify-center px-2 md:px-0">
+        <main className="relative mx-auto flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-8">
           {children}
           <InitSuperFlow />
           <Analytics />

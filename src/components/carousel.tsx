@@ -62,7 +62,6 @@ export default function BaseCarousel<T>({
         {...props}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
-          console.log("💪 swier read");
           setSwiperReady(true);
           props.onSwiperFn?.(swiper);
         }}

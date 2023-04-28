@@ -30,7 +30,7 @@ const headingVariants = cva("font-lora mb-8", {
   },
 });
 
-type HeadingProps = HeadingBaseProps &
+export type HeadingProps = HeadingBaseProps &
   (
     | (HTMLAttributes<HTMLHeadingElement> & { href?: never })
     | (Omit<JSX.IntrinsicElements["a"], "href" | "onClick" | "ref"> & LinkProps)

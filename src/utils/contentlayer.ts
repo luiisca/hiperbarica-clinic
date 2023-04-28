@@ -1,1 +1,1 @@
-export const categories = ["tratamiento", "efectividad", "general"];
+export const categories = ["tratamientos", "efectividad", "general"] as const;

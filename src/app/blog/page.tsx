@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { allBlogs } from "contentlayer/generated";
 import Heading from "@/components/ui/core/heading";
 import Carousel from "./carousel";
+import Filter from "./filter";
+import { cn } from "@/utils/cn";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -19,11 +21,22 @@ export default function BlogPage() {
   return (
     <section className="w-full">
       {/* carousel  */}
-      <div className="mb-24 mt-12">
+      <div className="mb-20 mt-12">
         <Heading type="subHeading">Lo ultimo</Heading>
         <Carousel content={latestPosts} />
       </div>
-      <hr className="w-full border-[#c7c7c7]/30" />
+      <hr className="mb-20 w-full border-[#c7c7c7]/30" />
+
+      <div
+        className={cn(
+          "md:grid-cols-[60% 40%] blog-lg:grid-cols-[70% 30%] md:grid",
+          "mb-24 blog-lg:mb-[7.5rem]"
+        )}
+      >
+        {/* filter */}
+        <Filter />
+        {/* aside */}
+      </div>
     </section>
   );
 }

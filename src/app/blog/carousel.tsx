@@ -16,24 +16,18 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
         <Skeleton className="h-[clamp(450px,_25vh,_600px)] w-full " />
       )}
       slidesCopy={content}
-      className={cn("relative blog-lg:pb-0")}
+      className={cn(
+        "relative -mx-8 overflow-x-hidden px-8 pb-4 blog-lg:pb-0 [&_.swiper-pagination]:invisible"
+      )}
       arrowsClasses={{
         container:
           "flex relative blog-lg:absolute blog-lg:left-[calc(55%+96px)] blog-lg:bottom-0 blog-lg:mb-5 space-x-3",
         prev: "static translate-x-0 translate-y-0",
         next: "static translate-x-0 translate-y-0",
-        // prev: cn(
-        //   "top-full left-0 translate-x-0 translate-y-0",
-        //   "blog-lg:translate-x-full blog-lg:top-auto blog-lg:left-auto blog-lg:bottom-0 blog-lg:right-[calc(45%-96px)] blog-lg:mb-4 blog-lg:z-10"
-        // ),
-        // next: cn(
-        //   "top-full left-0 ml-3 translate-x-full translate-y-0",
-        //   "blog-lg:translate-x-full blog-lg:top-auto blog-lg:left-auto blog-lg:bottom-0 blog-lg:right-[calc(45%-158px)] blog-lg:mb-4 blog-lg:z-10"
-        // ),
       }}
     >
       {(post) => (
-        <Link href={`/blog/${post.slug}`}>
+        <Link href={`/blog/${post.slug}`} className="block">
           <div
             className={cn(
               "z-100",
@@ -44,7 +38,7 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
             {/* image */}
             <div
               className={cn(
-                "w-full blog-lg:h-full blog-lg:w-[55%]",
+                "w-full overflow-hidden rounded-md blog-lg:h-full blog-lg:w-[55%]",
                 "relative h-[clamp(250px,_25vh,_600px)] max-h-[400px]",
                 "sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-full blog-lg:max-h-full"
               )}
