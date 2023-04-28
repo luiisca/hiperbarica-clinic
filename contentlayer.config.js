@@ -1,8 +1,4 @@
-import {
-  defineDocumentType,
-  defineNestedType,
-  makeSource,
-} from "contentlayer/source-files";
+import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
@@ -56,6 +52,9 @@ export const Blog = defineDocumentType(() => ({
     summary: {
       type: "string",
       required: true,
+    },
+    featured: {
+      type: "boolean",
     },
     image: {
       type: "string",

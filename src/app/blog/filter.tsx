@@ -3,7 +3,7 @@
 import { Blog, allBlogs } from "contentlayer/generated";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsProps } from "@radix-ui/react-tabs";
-import { categories } from "@/utils/contentlayer";
+import { categories, formatSlug } from "@/utils/contentlayer";
 import Heading from "@/components/ui/core/heading";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,9 +18,6 @@ import { useState } from "react";
 import { cn } from "@/utils/cn";
 import { shimmer, toBase64 } from "@/utils/blur";
 
-function formatSlug(slug: string) {
-  return slug.split("/").pop();
-}
 function Post({ post }: { post: Blog }) {
   return (
     <Link
@@ -70,6 +67,10 @@ function Post({ post }: { post: Blog }) {
   );
 }
 
+function capitalize(str: string) {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
 export default function Filter({
   ...props
 }: TabsProps & {
@@ -90,7 +91,7 @@ export default function Filter({
         {/* desktop */}
         {categories.map((category) => (
           <TabsTrigger value={category} className="max-blog-lg:hidden">
-            {category.charAt(0).toUpperCase() + category.slice(1).toLowerCase()}
+            {capitalize(category)}
           </TabsTrigger>
         ))}
 
@@ -103,7 +104,7 @@ export default function Filter({
             <SelectContent>
               <SelectItem value="all">Todos</SelectItem>
               {categories.map((category) => (
-                <SelectItem value={category}>{category}</SelectItem>
+                <SelectItem value={category}>{capitalize(category)}</SelectItem>
               ))}
             </SelectContent>
           </Select>

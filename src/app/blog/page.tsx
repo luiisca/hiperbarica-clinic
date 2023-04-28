@@ -4,6 +4,7 @@ import Heading from "@/components/ui/core/heading";
 import Carousel from "./carousel";
 import Filter from "./filter";
 import { cn } from "@/utils/cn";
+import { formatSlug } from "@/utils/contentlayer";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -29,13 +30,34 @@ export default function BlogPage() {
 
       <div
         className={cn(
-          "md:grid-cols-[60% 40%] blog-lg:grid-cols-[70% 30%] md:grid",
+          "md:grid md:grid-cols-[60%_40%] blog-lg:grid-cols-[70%_30%]",
           "mb-24 blog-lg:mb-[7.5rem]"
         )}
       >
-        {/* filter */}
         <Filter />
         {/* aside */}
+        <div className="self-start md:sticky md:top-24 md:ml-[60px]">
+          <Heading type="subHeading">Recomendados</Heading>
+          <div className="flex flex-col first:pt-0">
+            {allBlogs.map((post, i) => {
+              if (post.featured && formatSlug(post.slug)) {
+                return (
+                  <>
+                    <Heading
+                      key={i}
+                      type="tertiary"
+                      href={`/blog/${formatSlug(post.slug) as string}`}
+                      className="m-0 py-6 text-xl text-primary-700 hover:text-primary-400 md:text-xl"
+                    >
+                      {post.title}
+                    </Heading>
+                    <hr className="w-full border-[#c7c7c7]/30" />
+                  </>
+                );
+              }
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
