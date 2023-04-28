@@ -3,7 +3,7 @@
 import { Blog, allBlogs } from "contentlayer/generated";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsProps } from "@radix-ui/react-tabs";
-import { categories, formatSlug } from "@/utils/contentlayer";
+import { capitalize, categories, formatSlug } from "@/utils/contentlayer";
 import Heading from "@/components/ui/core/heading";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,7 +18,7 @@ import { useState } from "react";
 import { cn } from "@/utils/cn";
 import { shimmer, toBase64 } from "@/utils/blur";
 
-function Post({ post }: { post: Blog }) {
+export function Post({ post }: { post: Blog }) {
   return (
     <Link
       href={`/blog/${formatSlug(post.slug) as string}`}
@@ -67,8 +67,31 @@ function Post({ post }: { post: Blog }) {
   );
 }
 
-function capitalize(str: string) {
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+export function Content() {
+  return (
+    <>
+      <TabsContent
+        value="all"
+        className="grid gap-[3.75rem] blog-lg:grid-cols-2"
+      >
+        {allBlogs.map((post) => (
+          <Post post={post} />
+        ))}
+      </TabsContent>
+      {categories.map((category) => (
+        <TabsContent
+          value={category}
+          className="grid gap-[3.75rem] blog-lg:grid-cols-2"
+        >
+          {allBlogs.map((post) => {
+            if (post.category === category && formatSlug(post.slug)) {
+              return <Post post={post} />;
+            }
+          })}
+        </TabsContent>
+      ))}
+    </>
+  );
 }
 
 export default function Filter({
@@ -110,29 +133,7 @@ export default function Filter({
           </Select>
         </div>
       </TabsList>
-      <TabsContent
-        value="all"
-        className="grid gap-[3.75rem] blog-lg:grid-cols-2"
-      >
-        {allBlogs.map((post) => (
-          <Post post={post} />
-        ))}
-      </TabsContent>
-      {categories.map((category) => (
-        <TabsContent
-          value={category}
-          className="grid gap-[3.75rem] blog-lg:grid-cols-2"
-        >
-          {allBlogs.map((post) => {
-            if (post.category === category && formatSlug(post.slug)) {
-              return <Post post={post} />;
-            }
-          })}
-        </TabsContent>
-      ))}
+      <Content />
     </Tabs>
   );
 }
-
-const test = "efectividad/efe1";
-test.split("/").pop();

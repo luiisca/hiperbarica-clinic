@@ -27,7 +27,26 @@ export default {
         inter: ["var(--inter-font)", "sans-serif"],
         lora: ["var(--lora-font)", "serif"],
       },
+      keyframes: {
+        "fade-in-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(60px)",
+          },
+          "50%": {
+            opacity: "0",
+            transform: "translateY(30px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+      },
+      animation: {
+        "fade-in-up": "fade-in-up 0.5s cubic-bezier(.21,1.02,.73,1)",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
