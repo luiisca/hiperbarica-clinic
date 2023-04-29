@@ -74,18 +74,19 @@ export function Content() {
         value="all"
         className="grid gap-[3.75rem] blog-lg:grid-cols-2"
       >
-        {allBlogs.map((post) => (
-          <Post post={post} />
+        {allBlogs.map((post, i) => (
+          <Post post={post} key={i} />
         ))}
       </TabsContent>
-      {categories.map((category) => (
+      {categories.map((category, i) => (
         <TabsContent
+          key={i}
           value={category}
           className="grid gap-[3.75rem] blog-lg:grid-cols-2"
         >
-          {allBlogs.map((post) => {
+          {allBlogs.map((post, i) => {
             if (post.category === category && formatSlug(post.slug)) {
-              return <Post post={post} />;
+              return <Post key={i} post={post} />;
             }
           })}
         </TabsContent>
@@ -112,8 +113,8 @@ export default function Filter({
         </TabsTrigger>
 
         {/* desktop */}
-        {categories.map((category) => (
-          <TabsTrigger value={category} className="max-blog-lg:hidden">
+        {categories.map((category, i) => (
+          <TabsTrigger value={category} key={i} className="max-blog-lg:hidden">
             {capitalize(category)}
           </TabsTrigger>
         ))}
@@ -126,8 +127,10 @@ export default function Filter({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="all">Todos</SelectItem>
-              {categories.map((category) => (
-                <SelectItem value={category}>{capitalize(category)}</SelectItem>
+              {categories.map((category, i) => (
+                <SelectItem value={category} key={i}>
+                  {capitalize(category)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>

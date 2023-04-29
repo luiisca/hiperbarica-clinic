@@ -25,9 +25,9 @@ export default function Filter({ ...props }: TabsProps) {
         </div>
 
         {/* desktop */}
-        {categories.map((category) => (
-          <TabsTrigger value={category} className="max-blog-lg:hidden">
-            <Link href={`/blog/${formatSlug(category)}`}>
+        {categories.map((category, i) => (
+          <TabsTrigger value={category} className="max-blog-lg:hidden" key={i}>
+            <Link href={`/blog/${formatSlug(category) as string}`}>
               {capitalize(category)}
             </Link>
           </TabsTrigger>
@@ -43,8 +43,10 @@ export default function Filter({ ...props }: TabsProps) {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              {categories.map((category) => (
-                <SelectItem value={category}>{capitalize(category)}</SelectItem>
+              {categories.map((category, i) => (
+                <SelectItem value={category} key={i}>
+                  {capitalize(category)}
+                </SelectItem>
               ))}
             </SelectContent>
           </Select>
