@@ -5,10 +5,12 @@ import Heading from "@/components/ui/core/heading";
 import Carousel from "./carousel";
 import Filter from "./filter";
 import Aside from "./aside";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Read my thoughts on software development, design, and more.",
+  description:
+    "Lee cómo la terapia de oxígeno hiperbárico puede mejorar tu salud y calidad de vida. Conoce todo sobre la terapia, desde sus múltiples beneficios hasta sus efectos secundarios y cómo funciona",
 };
 
 export default function BlogPage() {
@@ -26,7 +28,7 @@ export default function BlogPage() {
         <Heading type="subHeading">Lo ultimo</Heading>
         <Carousel content={latestPosts} />
       </div>
-      <hr className="mb-20 w-full border-[#c7c7c7]/30" />
+      <Separator className="mb-20" />
 
       <div
         className={cn(
@@ -40,22 +42,3 @@ export default function BlogPage() {
     </section>
   );
 }
-
-// {allBlogs
-//   .sort((a, b) => {
-//     if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-//       return -1;
-//     }
-//     return 1;
-//   })
-//   .map((post) => (
-//     <Link
-//       key={post.slug}
-//       className="mb-4 flex flex-col space-y-1"
-//       href={`/blog/${post.slug}`}
-//     >
-//       <div className="flex w-full flex-col">
-//         <p>{post.title}</p>
-//       </div>
-//     </Link>
-//   ))}

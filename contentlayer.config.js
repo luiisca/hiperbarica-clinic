@@ -1,19 +1,25 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import readingTime from "reading-time";
+import { organization } from "./src/app/shared-metadata";
+import { formatSlug } from "./src/utils/contentlayer";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
     type: "string",
-    resolve: (doc) => doc._raw.flattenedPath,
+    resolve: (doc) => formatSlug(doc._raw.flattenedPath),
   },
   category: {
     type: "string",
     resolve: (doc) =>
       doc._raw.sourceFileDir === "." ? "general" : doc._raw.sourceFileDir,
+  },
+  readingTime: {
+    type: "number",
+    resolve: (doc) => Math.floor(readingTime(doc.body.raw).minutes),
   },
   structuredData: {
     type: "object",
@@ -25,12 +31,14 @@ const computedFields = {
       dateModified: doc.publishedAt,
       description: doc.summary,
       image: doc.image
-        ? `https://leerob.io${doc.image}`
-        : `https://leerob.io/api/og?title=${doc.title}`,
-      url: `https://leerob.io/blog/${doc._raw.flattenedPath}`,
+        ? `https://hiperbaricadelsurperu.com${doc.image}`
+        : `https://hiperbaricadelsurperu.com/api/og?title=${doc.title}`,
+      url: `https://hiperbaricadelsurperu.com/blog/${formatSlug(
+        doc._raw.flattenedPath
+      )}`,
       author: {
-        "@type": "Person",
-        name: "Hiperbarica del Sur Peru",
+        "@tye": "Organization",
+        ...organization,
       },
     }),
   },
@@ -59,6 +67,9 @@ export const Blog = defineDocumentType(() => ({
     image: {
       type: "string",
     },
+    readingTime: {
+      type: "number",
+    },
   },
   computedFields,
 }));
@@ -70,25 +81,6 @@ export default makeSource({
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
       rehypeSlug,
-      [
-        rehypePrettyCode,
-        {
-          theme: "one-dark-pro",
-          onVisitLine(node) {
-            // Prevent lines from collapsing in `display: grid` mode, and allow empty
-            // lines to be copy/pasted
-            if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }];
-            }
-          },
-          onVisitHighlightedLine(node) {
-            node.properties.className.push("line--highlighted");
-          },
-          onVisitHighlightedWord(node) {
-            node.properties.className = ["word--highlighted"];
-          },
-        },
-      ],
       [
         rehypeAutolinkHeadings,
         {

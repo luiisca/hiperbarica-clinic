@@ -63,12 +63,6 @@ Neon's solution is [particularly interesting](https://neon.tech/blog/serverless-
   height={840}
 />
 
-<Callout emoji="💡">
-
-Using WebSockets, instead of HTTP, does have tradeoffs. There might be additional latency on the first request setup, but subsequent requests are faster. There's an [RFC](https://www.rfc-editor.org/rfc/rfc9220.pdf) for WebSockets with `HTTP/3` which would remove that extra network roundtrip.
-
-</Callout>
-
 The connection management isn't going away – it's just being handled by the vendor now.
 
 There's even solutions like PlanetScale which can handle up to [a million connections](https://planetscale.com/blog/one-million-connections), which also allows you to effectively never think about managing connections.
