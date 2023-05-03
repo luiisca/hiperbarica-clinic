@@ -59,7 +59,8 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
             <Heading
               type="subHeading"
               color="category"
-              href={`/blog/${post.category}`}
+              href={`/blog/categorias/${post.category}`}
+              className="z-20"
             >
               {post.category}
             </Heading>

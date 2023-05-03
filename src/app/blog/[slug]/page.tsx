@@ -13,8 +13,8 @@ import { Separator } from "@/components/ui/separator";
 import { format, parse, setGlobalDateI18n } from "fecha";
 import { Mdx } from "@/components/mdx";
 import { FacebookShare, WhatsappShare } from "./share-bttns";
-import Aside from "../../aside";
-import Post from "../../post";
+import Aside from "../aside";
+import Post from "../post";
 import { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -141,7 +141,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
             </Link>
             <IoIosArrowForward className="text-sm leading-6 text-[#757575]" />
             <Link
-              href={`/blog/${post.category}`}
+              href={`/blog/categorias/${post.category}`}
               className="text-primary-500 hover:text-primary-600"
             >
               {capitalize(post.category)}

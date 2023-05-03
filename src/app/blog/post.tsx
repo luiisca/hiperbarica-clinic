@@ -38,7 +38,8 @@ export default function Post({ post }: { post: Blog }) {
         <Heading
           type="subHeading"
           color="category"
-          href={`/blog/${post.category}`}
+          href={`/blog/categorias/${post.category}`}
+          className="relative z-20"
         >
           {post.category}
         </Heading>
