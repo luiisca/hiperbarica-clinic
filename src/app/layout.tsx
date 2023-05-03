@@ -7,8 +7,11 @@ import InitSuperFlow from "./init-super-flow";
 import { Inter, Lora } from "next/font/google";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
-import { ADDRESS, FB_PAGE, MAIL, PHONE } from "@/utils/constants";
+import { ADDRESS, FB_PAGE, KEYWORDS, MAIL, PHONE } from "@/utils/constants";
 import WhatsApp from "./whatsapp";
+import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
+
 const InterFont = Inter({
   subsets: ["latin"],
   variable: "--inter-font",
@@ -17,6 +20,80 @@ const LoraFont = Lora({
   subsets: ["latin"],
   variable: "--lora-font",
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "Hiperbárica del sur Perú",
+    template: "%s | Hiperbárica del sur Perú",
+  },
+  description:
+    "En Hiperbárica del Sur Perú ofrecemos terapia de oxígeno hiperbárico, una opción segura y efectiva para tratar diversas condiciones médicas. Contáctanos para programar una cita con nuestro equipo altamente capacitado.",
+  keywords: KEYWORDS,
+  openGraph: {
+    title: "Hiperbárica del sur Perú",
+    description:
+      "En Hiperbárica del Sur Perú ofrecemos terapia de oxígeno hiperbárico, una opción segura y efectiva para tratar diversas condiciones médicas. Contáctanos para programar una cita con nuestro equipo altamente capacitado.",
+    emails: MAIL,
+    phoneNumbers: PHONE,
+    siteName: "Hiperbárica del sur Perú",
+    locale: "es_PE",
+    images: [
+      {
+        url: "https://hiperbaricadelsurperu.com/og.png",
+        width: 1920,
+        height: 1080,
+        alt: "Logo de Hiperbárica del sur Perú",
+      },
+    ],
+    url: "https://hiperbaricadelsurperu.com",
+    countryName: "Perú",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  twitter: {
+    title: "Hiperbárica del sur Perú",
+    card: "summary_large_image",
+  },
+  icons: {
+    apple: {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/apple-touch-icon.png",
+    },
+    icon: [
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        url: "/favicon-32x32.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        url: "/favicon-16x16.png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
+  themeColor: "#f1f9ff",
+  verification: {
+    google: "RpT2m0PjXYI4Kx2BusqtbFGo6pi75r_EAFQReR5UOmM",
+  },
+  other: {
+    "msapplication-TileColor": "#f1f9ff",
+  },
+};
 
 function Logo({ className }: { className?: string }) {
   return (
@@ -158,7 +235,7 @@ function Nav() {
 
 function Footer() {
   return (
-    <section className="mx-8 max-w-screen-xl py-24 lg:mx-auto">
+    <section className="max-w-screen-xl px-8 py-24 lg:mx-auto">
       {/* need 3 columns: logo, contact, clinic */}
       <div className="flex w-full flex-col gap-12 md:flex-row">
         <div className="flex w-1/4 shrink-0 flex-col justify-start gap-8">
@@ -235,7 +312,7 @@ export default function RootLayout({
           <InitSuperFlow />
           <Analytics />
         </main>
-        <hr className="w-full border-[#c7c7c7]/30" />
+        <Separator />
         <Footer />
       </body>
     </html>

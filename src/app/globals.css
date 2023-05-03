@@ -21,3 +21,103 @@
 .home-carousel .swiper-pagination {
   @apply absolute -bottom-10 left-1/2 -translate-x-1/2 md:-bottom-1 md:left-[calc(45%+48px)] md:translate-x-0 xl:bottom-2 xl:left-1/2 xl:-translate-x-1/2;
 }
+
+::selection {
+  background-color: #47a3f3;
+  color: #fefefe;
+}
+
+html {
+  min-width: 360px;
+}
+
+.prose .anchor {
+  @apply invisible absolute no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose a {
+  @apply decoration-neutral-400 decoration-[0.1em] underline-offset-2 transition-all dark:decoration-neutral-600;
+}
+
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: "#";
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose pre {
+  @apply border border-neutral-800 bg-neutral-900;
+}
+
+.prose code {
+  @apply rounded-lg border border-neutral-100 bg-neutral-100 px-1 py-0.5 text-neutral-800 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200;
+}
+
+.prose pre code {
+  @apply p-0 text-neutral-800 dark:text-neutral-200;
+  border: initial;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply font-lora font-normal text-primary-700;
+}
+.prose h2 {
+  @apply text-[1.8rem] md:text-[2rem];
+}
+.prose h3 {
+  @apply text-[1.6rem] md:text-[1.8rem];
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  @apply text-neutral-50;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}

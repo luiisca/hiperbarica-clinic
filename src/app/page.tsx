@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { MedicalClinic, WithContext } from "schema-dts";
 
 import {
   Accordion,
@@ -14,6 +15,7 @@ import { shimmer, toBase64 } from "@/utils/blur";
 import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
 import Carousel from "./carousel";
+import { organization } from "./shared-metadata";
 
 const Container = ({
   className,
@@ -429,8 +431,34 @@ const Faq = () => {
 };
 
 export default function HomePage() {
+  const jsonLd: WithContext<MedicalClinic> = {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    ...organization,
+    medicalSpecialty: [
+      "Cardiovascular",
+      "Geriatric",
+      "Midwifery",
+      "Musculoskeletal",
+      "Pulmonary",
+      "RespiratoryTherapy",
+      "Rheumatologic",
+    ],
+    isAcceptingNewPatients: true,
+    // tourBookingPage: ''
+    smokingAllowed: false,
+    // photo:
+    latitude: -12.1665053,
+    longitude: -76.9609184,
+    // LocalBusiness
+    paymentAccepted: ["Efectivo", "Tarjeta de crédito", "Yape"],
+    openingHours: "Mo-Su 8:00:20:00",
+    currenciesAccepted: "PEN,USD",
+  };
+
   return (
-    <>
+    <section>
+      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       <Hero />
       <Certificates />
       <Treatments />
@@ -504,6 +532,6 @@ export default function HomePage() {
       </div>
       {/* FAQ */}
       <Faq />
-    </>
+    </section>
   );
 }

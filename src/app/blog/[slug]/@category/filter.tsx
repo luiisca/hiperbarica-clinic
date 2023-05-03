@@ -2,7 +2,7 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TabsProps } from "@radix-ui/react-tabs";
-import { capitalize, categories, formatSlug } from "@/utils/contentlayer";
+import { capitalize, categories } from "@/utils/contentlayer";
 import Link from "next/link";
 import {
   Select,
@@ -20,16 +20,19 @@ export default function Filter({ ...props }: TabsProps) {
   return (
     <Tabs {...props}>
       <TabsList>
-        <div className="shrink-0 text-base uppercase text-primary-600 hover:text-primary-700 data-[state=active]:text-primary-700 data-[state=active]:decoration-transparent focus-visible:data-[state=active]:decoration-primary-700">
+        <div className="shrink-0 text-base uppercase text-primary-600">
           FILTRAR POR
         </div>
 
         {/* desktop */}
         {categories.map((category, i) => (
-          <TabsTrigger value={category} className="max-blog-lg:hidden" key={i}>
-            <Link href={`/blog/${formatSlug(category) as string}`}>
-              {capitalize(category)}
-            </Link>
+          <TabsTrigger
+            value={category}
+            className="max-blog-lg:hidden"
+            tabIndex={-1}
+            key={i}
+          >
+            <Link href={`/blog/${category}`}>{capitalize(category)}</Link>
           </TabsTrigger>
         ))}
 

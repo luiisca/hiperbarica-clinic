@@ -20,12 +20,21 @@ export default {
         gray: {
           100: "#767676",
           200: "#555",
+          300: "#333",
           500: "#333",
         },
       },
       fontFamily: {
         inter: ["var(--inter-font)", "sans-serif"],
         lora: ["var(--lora-font)", "serif"],
+      },
+      typography: {
+        quoteless: {
+          css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+            "blockquote p:first-of-type::after": { content: "none" },
+          },
+        },
       },
       keyframes: {
         "fade-in-up": {
@@ -48,5 +57,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
