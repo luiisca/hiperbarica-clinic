@@ -16,7 +16,6 @@ import { FacebookShare, WhatsappShare } from "./share-bttns";
 import Aside from "../../aside";
 import Post from "../../post";
 import { Metadata } from "next";
-import { WEB_URL } from "@/utils/constants";
 
 export function generateStaticParams() {
   return allBlogs.map((post) => ({
@@ -121,7 +120,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           )}
         >
           <Image
-            src={post.image || `${WEB_URL}/api/og?title=${post.title}`}
+            src={post.image || ""}
             fill
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(

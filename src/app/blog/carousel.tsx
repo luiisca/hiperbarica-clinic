@@ -8,7 +8,6 @@ import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
 import { Blog } from "contentlayer/generated";
 import { Skeleton } from "@/components/ui/skeleton";
-import { WEB_URL } from "@/utils/constants";
 
 export default function Carousel({ content }: { content: Array<Blog> }) {
   return (
@@ -18,7 +17,7 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
       )}
       slidesCopy={content}
       className={cn(
-        "relative -mx-8 overflow-x-hidden px-8 pb-4 blog-lg:pb-0 [&_.swiper-pagination]:invisible"
+        "relative -mx-8 overflow-x-hidden px-8 pb-4 blog-lg:pb-0 [&_.swiper-pagination]:invisible [&_.swiper-slide]:w-full"
       )}
       arrowsClasses={{
         container:
@@ -28,7 +27,7 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
       }}
     >
       {(post) => (
-        <div className="relative flex flex-col space-y-5 md:space-y-14 blog-lg:flex-row">
+        <div className="relative flex h-full flex-col space-y-5 md:space-y-14 blog-lg:flex-row">
           <Link
             href={`/blog/${post.slug}`}
             className="absolute left-0 top-0 z-10 h-full w-full"
@@ -36,13 +35,13 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
           {/* image */}
           <div
             className={cn(
-              "w-full overflow-hidden rounded-md blog-lg:h-full blog-lg:w-[55%]",
+              "!mt-0 w-full overflow-hidden rounded-md blog-lg:h-full blog-lg:w-[55%]",
               "relative h-[clamp(250px,_25vh,_600px)] max-h-[400px]",
-              "sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-full blog-lg:max-h-full"
+              "sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-auto"
             )}
           >
             <Image
-              src={post.image || `${WEB_URL}/api/og?title=${post.title}`}
+              src={post.image || ""}
               fill
               placeholder="blur"
               blurDataURL={`data:image/svg+xml;base64,${toBase64(
@@ -55,7 +54,7 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
           </div>
 
           {/* text */}
-          <div className="flex-col justify-center pb-[50px] blog-lg:flex blog-lg:w-[45%] blog-lg:pl-24">
+          <div className="flex-col justify-center pb-[50px] blog-lg:flex blog-lg:w-[45%] blog-lg:pb-20 blog-lg:pl-24">
             {/* category */}
             <Heading
               type="subHeading"

@@ -4,7 +4,6 @@ import Heading from "@/components/ui/core/heading";
 import Link from "next/link";
 import Image from "next/image";
 import { Blog } from "contentlayer/generated";
-import { WEB_URL } from "@/utils/constants";
 
 export default function Post({ post }: { post: Blog }) {
   return (
@@ -21,7 +20,7 @@ export default function Post({ post }: { post: Blog }) {
         )}
       >
         <Image
-          src={post.image || `${WEB_URL}/api/og?title=${post.title}`}
+          src={post.image || ""}
           fill
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
