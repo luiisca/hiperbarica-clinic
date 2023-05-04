@@ -16,92 +16,49 @@ import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
 import Carousel from "./carousel";
 import { organization } from "./shared-metadata";
+import Heading from "@/components/ui/core/heading";
 
 const Container = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <section className={cn("w-full py-24", className)}>
+    <div className={cn("mx-auto max-w-screen-xl px-8 py-24", className)}>
       {props.children}
-    </section>
+    </div>
   );
 };
 
 const Hero = () => {
   return (
-    <div className="box-border flex h-[51.48rem] w-[120rem] shrink-0 flex-col items-center justify-end bg-primary-100 px-[0rem] py-[4.19rem] text-[3.52rem] text-gray-200">
-      <div className="flex h-[43.04rem] w-[96rem] shrink-0 flex-row items-center justify-start">
-        <div className="relative h-[29.86rem] w-[44.72rem] shrink-0">
-          <div className="absolute left-[0rem] top-[0rem] box-border flex h-[16.23rem] w-[44.72rem] flex-col items-center justify-start gap-[1.81rem] px-[0rem] pb-[0rem] pt-[0rem] font-lora text-gray-500">
-            <div className="flex h-[10.55rem] w-[44.72rem] shrink-0 flex-col items-center justify-start">
-              <div className="relative flex h-[9.44rem] w-[44.69rem] shrink-0 items-center leading-[3.52rem] tracking-[-1.41px]">
-                Experimenta la tecnología de última generación en terapias
-                hiperbáricas
-              </div>
-            </div>
-            <div className="flex h-[3.81rem] w-[44.72rem] shrink-0 flex-col items-start justify-center text-[1.05rem] text-gray-200">
-              <div className="relative flex h-[2.56rem] w-[42.63rem] shrink-0 items-center leading-[1.9rem]">
-                Obtén un diagnóstico personalizado y un tratamiento eficaz con
-                Hiperbarica del sur peru.
-              </div>
-            </div>
-          </div>
-          <div className="absolute left-[0rem] top-[19.04rem] flex flex-row items-center justify-center gap-[1rem] text-[1.05rem]">
+    <section className="w-full">
+      <Container className="flex flex-col-reverse items-center justify-items-end text-center max-xl:pt-0 xl:flex-row xl:space-x-12 xl:text-left 2xl:max-w-screen-2xl">
+        <div className="xl:w-2/5 2xl:w-1/2">
+          <Heading className="text-4xl mob-me:text-5xl xl:text-5xl">
+            Experimenta la tecnología de última generación en terapias
+            hiperbáricas
+          </Heading>
+          <p className="text-accent-555 mb-12 text-xl leading-relaxed">
+            Obtén un diagnóstico personalizado y un tratamiento eficaz con
+            Hiperbárica del sur Perú.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
             <CalDialog />
             <Button color="outline" href="#hey">
               Más información ↓
             </Button>
           </div>
-          <div className="absolute left-[0rem] top-[26.86rem] flex h-[3rem] w-[44.72rem] flex-row items-center justify-start gap-[0.94rem] text-[0.99rem] text-primary-500">
-            <div className="flex h-[3rem] w-[11rem] shrink-0 flex-row items-center justify-start">
-              <img
-                className="rounded-9980xl relative h-[3rem] w-[3rem] shrink-0 object-cover"
-                alt=""
-                src="/image@2x.png"
-              />
-              <img
-                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                alt=""
-                src="/image1@2x.png"
-              />
-              <img
-                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                alt=""
-                src="/image2@2x.png"
-              />
-              <img
-                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                alt=""
-                src="/image3@2x.png"
-              />
-              <img
-                className="rounded-9980xl relative ml-[-1rem] h-[3rem] w-[3rem] shrink-0 object-cover"
-                alt=""
-                src="/image4@2x.png"
-              />
-            </div>
-            <div className="flex flex-row items-start justify-start pb-[0.05rem] pl-[0rem] pr-[0.87rem] pt-[0rem]">
-              <div className="relative leading-[1.06rem]">
-                <b>250+</b>
-                <span className="font-semibold text-gray-200">
-                  {" "}
-                  pacientes satisfechos con nuestros servicios.
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
-        <div className="relative px-16 py-8">
+        <div className="relative max-w-2xl py-8 max-xl:mb-16 max-xl:pr-12 xl:w-3/5 2xl:w-1/2">
           <img
             className="relative z-10 shrink-0 object-cover"
             alt=""
             src="/hero.png"
           />
-          <SquircleShape className="absolute -top-[10%] left-[10%] z-0 m-20 h-[90%] w-[90%]" />
+          <SquircleShape className="absolute left-[10%] top-[5%] z-0 h-[90%] w-4/5 md:left-[15%] xl:w-[90%]" />
         </div>
-      </div>
-    </div>
+      </Container>
+    </section>
   );
 };
 const certificatesCopy = [
@@ -457,7 +414,7 @@ export default function HomePage() {
   };
 
   return (
-    <section>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -537,6 +494,6 @@ export default function HomePage() {
       </div>
       {/* FAQ */}
       <Faq />
-    </section>
+    </>
   );
 }

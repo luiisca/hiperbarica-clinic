@@ -10,7 +10,7 @@ import Link, { LinkProps } from "next/link";
 
 type InferredVariantProps = VariantProps<typeof buttonVariants>;
 type ButtonColor = NonNullable<InferredVariantProps["color"]>;
-type ButtonBaseProps = {
+export type ButtonBaseProps = {
   StartIcon?: SVGComponent | React.ElementType;
   EndIcon?: SVGComponent | React.ElementType;
   shallow?: boolean;

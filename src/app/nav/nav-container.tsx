@@ -36,7 +36,7 @@ function HamburgerMenu({
   return (
     <div className="absolute right-0 top-0 z-10 px-6 py-4 ">
       <Overlay hamburgerOpen={isOpen} setHamburgerOpen={setOpen} />
-      <div className="flex h-24 items-center justify-between rounded-lg bg-primary-100 px-8 lg:hidden">
+      <div className="flex h-24 items-center justify-between rounded-lg bg-primary-300 px-8 lg:hidden">
         <CrossHamburger
           toggled={isOpen}
           toggle={setOpen}
@@ -138,16 +138,18 @@ export default function NavContainer(
           className="h-screen"
         />
         {/* mobile nav */}
-        <nav
-          className={cn(
-            "absolute left-0 top-0 mx-auto ml-6 w-[calc(100%-3rem)] transition-all duration-700 ease-in-out"
-          )}
-        >
-          <ul className="flex flex-col rounded-lg bg-primary-100 pb-8">
+        <nav className="absolute left-0 top-0 mx-auto ml-6 w-[calc(100%-3rem)] transition-all duration-700 ease-in-out">
+          <ul
+            className={cn(
+              "flex flex-col rounded-lg bg-primary-300 pb-8",
+              "ring-1 ring-gray-100 ring-offset-0"
+            )}
+          >
             {navItems.map((item, i) => (
               <li key={i} onClick={() => setHamburgerOpen(false)}>
                 <Button
                   href={item.href}
+                  tabIndex={!hamburgerOpen ? -1 : 0}
                   className={cn(
                     "relative w-full justify-start bg-transparent px-12 py-8 text-base text-gray-500 transition-all hover:bg-transparent hover:text-primary-600",
                     "focus-visible:text-primary-600",
@@ -160,7 +162,7 @@ export default function NavContainer(
             ))}
             <Separator className="mx-auto mb-8 w-[calc(100%-4rem)]" />
             <li className="ml-12">
-              <CalDialog />
+              <CalDialog tabIndex={!hamburgerOpen ? -1 : 0} />
             </li>
           </ul>
         </nav>

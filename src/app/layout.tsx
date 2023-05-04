@@ -223,7 +223,12 @@ const navItems = [
 function Nav() {
   return (
     <div className="px-6 py-4">
-      <nav className="flex h-24 w-full items-center justify-between rounded-lg bg-primary-100 px-8 ">
+      <nav
+        className={cn(
+          "flex h-24 w-full items-center justify-between rounded-lg bg-primary-300 px-8 ",
+          "ring-1 ring-gray-100 ring-offset-0"
+        )}
+      >
         <div className="flex h-full items-center justify-between max-lg:w-full">
           <Logo />
         </div>
@@ -320,11 +325,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="flex flex-col items-center overflow-x-visible font-inter text-lg text-gray-500 antialiased">
+      <body className="flex flex-col items-center overflow-x-visible bg-primary-100 font-inter text-lg text-gray-500 antialiased">
         <NavContainer>
           <Nav />
         </NavContainer>
-        <main className="relative z-0 mx-auto flex w-full min-w-0 max-w-screen-xl flex-auto flex-col items-center justify-center px-8">
+        <main className="relative z-0 flex w-full min-w-0 flex-auto flex-col items-center justify-center">
           {children}
           <InitSuperFlow />
           <Analytics />
