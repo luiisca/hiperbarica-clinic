@@ -173,24 +173,28 @@ function Treatments() {
 
 const benefitsCopy = [
   {
-    percentage: 30,
+    link: "/blog/pie-diabetico",
+    percentage: 40,
     description:
-      "Reduce la inflamación en un promedio del 30% en pacientes con enfermedades crónicas.",
+      "Reduce el riesgo de amputaciones mayores hasta en un 40% en pacientes con pie diabético.",
     logo: "/hospital.svg",
   },
   {
+    link: "#",
     percentage: 92,
     description:
       "Tasa de éxito del 92% en la cicatrización de úlceras diabéticas.",
     logo: "/patches.svg",
   },
   {
+    link: "#",
     percentage: 27,
     description:
       "Aumento del 27% en la producción de células blancas en pacientes con enfermedades autoinmunes.",
     logo: "/dna.svg",
   },
   {
+    link: "#",
     percentage: 70,
     description:
       "Tasa de éxito del 70% en la reducción del dolor de espalda crónico.",
@@ -200,55 +204,60 @@ const benefitsCopy = [
 
 const Benefits = () => {
   return (
-    <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-white px-[0rem] py-[6rem]">
-      <div className="box-border flex w-[96rem] flex-col items-center justify-center gap-[4rem] overflow-hidden bg-white px-[12.25rem] py-[0rem]">
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex flex-col items-center justify-center gap-[0.75rem]">
-            <div className="relative font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-              BENEFICIOS
-            </div>
-            <div className="relative flex w-[44.09rem] items-center justify-center text-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-              Descubre cómo el oxígeno hiperbárico puede ayudarte a sanar más
-              rápido
-            </div>
-          </div>
+    <section className="w-full bg-white">
+      <Container className="max-w-screen-2xl">
+        <div className="mb-8 flex flex-col items-center text-center">
+          <Heading type="subHeading">BENEFICIOS</Heading>
+          <Heading type="secondary" className="max-w-xl">
+            Descubre cómo el oxígeno hiperbárico puede ayudarte a sanar más
+            rápido
+          </Heading>
         </div>
-        <div className="flex flex-row items-end justify-start gap-[2rem] px-[0.06rem] py-[0rem] text-[4.16rem]">
+        <div className="flex flex-wrap items-stretch justify-center gap-8">
           {benefitsCopy.map((copy, i) => (
-            <Link className="group relative" href="#" key={i}>
-              <div className="relative flex flex-col items-start justify-start gap-[2rem] overflow-hidden rounded-md bg-primary-100 p-[1.25rem]">
-                <div className="flex flex-col items-start justify-start">
-                  <div className="relative font-semibold leading-[5.04rem]">
-                    <p>{copy.percentage}</p>
-                    <span className="absolute left-full top-0 inline-block text-2xl">
-                      %
-                    </span>
-                  </div>
-                  <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
-                    {copy.description}
-                  </div>
+            <div
+              className="group relative flex flex-col rounded-md bg-primary-100 p-6"
+              key={i}
+            >
+              <Link
+                className="absolute left-0 top-0 z-10 h-full w-full"
+                href={copy.link}
+                key={i}
+              />
+              <div className="h-full space-y-4">
+                {/* percentage */}
+                <div className="relative w-fit font-semibold">
+                  <p className="text-6xl">{copy.percentage}</p>
+                  <span className="absolute left-full top-0 inline-block text-2xl">
+                    %
+                  </span>
                 </div>
-                <div className="relative flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
-                  <img
-                    className="relative z-20 h-[4.06rem] w-[4.06rem] shrink-0"
-                    alt=""
-                    src={copy.logo}
-                  />
-                  <img
-                    className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                    alt=""
-                    src="/image8@2x.png"
-                  />
+                {/* text */}
+                <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
+                  {copy.description}
                 </div>
+              </div>
+              {/* icon */}
+              <div className="relative mt-8 flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
+                <img
+                  className="relative z-20 h-[4.06rem] w-[4.06rem] shrink-0"
+                  alt=""
+                  src={copy.logo}
+                />
+                <img
+                  className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
+                  alt=""
+                  src="/image8@2x.png"
+                />
               </div>
               <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 p-2.5 text-sm opacity-0 transition-all group-hover:opacity-100">
                 <ExternalLink />
               </div>
-            </Link>
+            </div>
           ))}
         </div>
-      </div>
-    </div>
+      </Container>
+    </section>
   );
 };
 
