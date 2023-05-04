@@ -106,9 +106,12 @@ export default function PostPage({ params }: { params: { slug: string } }) {
 
   return (
     <section className="mt-12 w-full md:mt-20">
-      <script type="application/ld+json">
-        {JSON.stringify(post.structuredData)}
-      </script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(post.structuredData),
+        }}
+      />
       {/* intro */}
       <div className="flex flex-col items-start blog-lg:h-[350px] blog-lg:flex-row-reverse blog-lg:items-center lg:!h-[410px]">
         {/* image */}
