@@ -34,7 +34,7 @@ const Hero = () => {
     <section className="w-full">
       <Container className="flex flex-col-reverse items-center justify-items-end text-center max-xl:pt-0 xl:flex-row xl:space-x-12 xl:text-left 2xl:max-w-screen-2xl">
         <div className="xl:w-2/5 2xl:w-1/2">
-          <Heading className="text-4xl mob-me:text-5xl xl:text-5xl">
+          <Heading>
             Experimenta la tecnología de última generación en terapias
             hiperbáricas
           </Heading>
@@ -61,6 +61,7 @@ const Hero = () => {
     </section>
   );
 };
+
 const certificatesCopy = [
   {
     title: "BPM - DIGEMID",
@@ -95,75 +96,78 @@ const certificatesCopy = [
 ];
 function Certificates() {
   return (
-    <Container className="text-center">
-      <div className="mb-16 flex flex-col items-center">
-        <h2 className="mb-8 max-w-xl font-lora text-5xl ">
-          Certificaciones de seguridad y calidad
-        </h2>
-        <p className="max-w-prose text-center">
-          En Hiperbárica del sur Perú nos tomamos muy en serio la seguridad y
-          bienestar de nuestros pacientes. Es por eso que todas nuestras cámaras
-          hiperbáricas han pasado rigurosas pruebas y cuentan con
-          certificaciones de calidad que avalan su eficacia
-        </p>
-      </div>
-      <ul className="grid grid-cols-2 gap-6 md:grid-cols-3">
-        {certificatesCopy.map((certifcate, i) => (
-          <li key={i} className="flex flex-col items-center">
-            <div className="mb-6 h-32 w-32 md:h-40 md:w-40">
-              <SquircleShape
-                className="h-full w-full"
-                shapeClassName="flex h-full w-full items-center justify-center"
-              >
-                <div className="relative h-24 w-24 md:h-32 md:w-32">
-                  <Image
-                    src={certifcate.logo}
-                    alt={`${certifcate.title} logo`}
-                    fill
-                    placeholder="blur"
-                    blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                      shimmer(700, 475)
-                    )}`}
-                    sizes="10vw"
-                    className="grayscale-100 object-contain object-center"
-                  />
-                </div>
-              </SquircleShape>
-            </div>
-            <div className="flex flex-col items-center">
-              <h3 className="mb-2 font-lora text-2xl font-medium">
-                {certifcate.title}
-              </h3>
-              <p className="max-w-xs text-base">{certifcate.description}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </Container>
+    <section className="w-full bg-white">
+      <Container className="text-center">
+        <div className="mb-16 flex flex-col items-center">
+          <Heading type="subHeading">Certificaciones</Heading>
+          <Heading type="secondary" className="mb-8 max-w-xl">
+            Certificaciones de seguridad y calidad
+          </Heading>
+          <p className="max-w-prose text-center">
+            En Hiperbárica del sur Perú nos tomamos muy en serio la seguridad y
+            bienestar de nuestros pacientes. Es por eso que todas nuestras
+            cámaras hiperbáricas han pasado rigurosas pruebas y cuentan con
+            certificaciones de calidad que avalan su eficacia
+          </p>
+        </div>
+        <ul className="grid grid-cols-2 gap-6 md:grid-cols-3">
+          {certificatesCopy.map((certifcate, i) => (
+            <li key={i} className="flex flex-col items-center">
+              <div className="mb-6 h-32 w-32 md:h-40 md:w-40">
+                <SquircleShape
+                  className="h-full w-full"
+                  shapeClassName="flex h-full w-full items-center justify-center"
+                >
+                  <div className="relative h-24 w-24 md:h-32 md:w-32">
+                    <Image
+                      src={certifcate.logo}
+                      alt={`${certifcate.title} logo`}
+                      fill
+                      placeholder="blur"
+                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                        shimmer(700, 475)
+                      )}`}
+                      sizes="10vw"
+                      className="grayscale-100 object-contain object-center"
+                    />
+                  </div>
+                </SquircleShape>
+              </div>
+              <div className="flex flex-col items-center">
+                <h3 className="mb-2 font-lora text-2xl font-medium">
+                  {certifcate.title}
+                </h3>
+                <p className="max-w-xs text-base">{certifcate.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
   );
 }
 
 function Treatments() {
   return (
-    <Container className="my-24 w-full p-0">
-      <div className="mb-8 flex flex-col items-center text-center">
-        <p className="text-sm font-medium uppercase tracking-wide text-primary-500">
-          Tratamientos
-        </p>
-        <h2 className="mb-8 max-w-xl font-lora text-5xl">
-          Tratamos una amplia variedad de enfermedades y dolencias
-        </h2>
-      </div>
-      {/* overlay */}
-      <div className="relative">
-        <Carousel />
-      </div>
-      <div className="mt-12 flex w-full justify-center md:mt-12">
-        <Link href="#">
-          <Button>Ver todos</Button>
-        </Link>
-      </div>
-    </Container>
+    <section className="w-full bg-white">
+      <Container>
+        <div className="mb-8 flex flex-col items-center text-center">
+          <Heading type="subHeading">Tratamientos</Heading>
+          <Heading type="secondary" className="mb-8 max-w-xl">
+            Tratamos una amplia variedad de enfermedades y dolencias
+          </Heading>
+        </div>
+        {/* overlay */}
+        <div className="relative">
+          <Carousel />
+        </div>
+        <div className="mt-16 flex w-full justify-center md:mt-12">
+          <Link href="#">
+            <Button>Ver todos</Button>
+          </Link>
+        </div>
+      </Container>
+    </section>
   );
 }
 

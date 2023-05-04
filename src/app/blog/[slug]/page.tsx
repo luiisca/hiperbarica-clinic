@@ -152,10 +152,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
           </div>
 
           {/* title */}
-          <Heading
-            type="primary"
-            className="mb-5 text-2xl md:mb-7 md:text-4xl xl:text-5xl"
-          >
+          <Heading className="mb-5 text-2xl md:mb-7 md:text-4xl">
             {post.title}
           </Heading>
 

@@ -56,7 +56,6 @@ export default function Carousel() {
           </div>
         )}
         onSwiperFn={() => {
-          console.log("💥 swier read");
           setSwiperReady(true);
         }}
         slidesCopy={treatmentsCopy}
@@ -74,6 +73,7 @@ export default function Carousel() {
           },
         }}
         pagination
+        spaceBetween={60}
       >
         {(copy) => (
           <div
@@ -110,18 +110,22 @@ export default function Carousel() {
                 "flex flex-col items-center text-center md:block md:text-left"
               )}
             >
-              <h3 className="mb-1 w-full pr-4 font-lora text-2xl font-medium xl:pr-6">
-                {copy.title}
-              </h3>
-              <span className="relative mb-3 inline-block h-2 w-full">
-                <Image
-                  src="/wavy-line-2.svg"
-                  alt="wavy line svg"
-                  fill
-                  sizes="20vw"
-                  className="object-contain object-center"
-                />
-              </span>
+              <div className="relative mb-5 w-full">
+                <h3 className="mb-1 w-full px-4 font-lora text-2xl font-medium md:pl-0 xl:pr-6">
+                  {copy.title}
+                </h3>
+                <div className="absolute top-full h-2 w-[calc(100%+0.5rem)]">
+                  <span className="relative mb-3 inline-block h-full w-full">
+                    <Image
+                      src="/wavy-line-2.svg"
+                      alt="wavy line svg"
+                      fill
+                      sizes="20vw"
+                      className="object-contain object-center"
+                    />
+                  </span>
+                </div>
+              </div>
               <p className="mb-6 max-w-sm pr-4 text-base md:max-w-xs xl:pr-6">
                 {copy.description}
               </p>

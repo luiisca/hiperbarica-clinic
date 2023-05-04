@@ -14,9 +14,9 @@ type HeadingBaseProps = {
 const headingVariants = cva("font-lora mb-8", {
   variants: {
     type: {
-      primary: "text-5xl xl:text-6xl",
-      secondary: "text-4xl md:text-5xl",
-      tertiary: "text-3xl md:text-4xl",
+      primary: "text-4xl md:text-5xl",
+      secondary: "text-3xl md:text-4xl",
+      tertiary: "text-2xl md:text-3xl",
       subHeading:
         "font-inter block text-sm font-medium text-primary-500 uppercase mb-4 tracking-[0.75px]",
     },

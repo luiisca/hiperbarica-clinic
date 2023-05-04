@@ -59,7 +59,6 @@ export default function BaseCarousel<T>({
   return (
     <>
       <Swiper
-        {...props}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
           setSwiperReady(true);
@@ -81,6 +80,7 @@ export default function BaseCarousel<T>({
         speed={400}
         grabCursor
         loop
+        {...props}
       >
         {!swiperReady && Skeleton && <Skeleton />}
         {slidesCopy?.map((copy, i) => (

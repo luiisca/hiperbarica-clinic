@@ -66,10 +66,7 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
             </Heading>
 
             {/* title */}
-            <Heading
-              type="primary"
-              className="mb-3 text-2xl md:text-4xl xl:text-5xl"
-            >
+            <Heading className="mb-3 text-2xl md:text-4xl">
               {post.title}
             </Heading>
             <p className="text-sm leading-6">{post.summary}</p>

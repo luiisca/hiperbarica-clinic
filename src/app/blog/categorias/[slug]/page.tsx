@@ -31,9 +31,8 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   return (
     <div>
       <Heading
-        type="primary"
         className={cn(
-          "my-12 w-full text-center text-[1.625rem] leading-[2.125rem] text-primary-700 opacity-0 md:my-20 md:text-4xl md:leading-[2.875rem]",
+          "my-12 w-full text-center text-[1.625rem] leading-[2.125rem] text-primary-700 opacity-0 md:my-20 md:text-4xl md:leading-[2.875rem] xl:text-6xl",
           "animate-fade-in-up duration-1000 delay-150 ease-in-out fill-mode-forwards"
         )}
       >
