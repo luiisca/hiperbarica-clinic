@@ -2,6 +2,7 @@
 
 import BaseCarousel from "@/components/carousel";
 import { Button } from "@/components/ui/core/button";
+import Heading from "@/components/ui/core/heading";
 import { Skeleton } from "@/components/ui/skeleton";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
@@ -111,9 +112,12 @@ export default function Carousel() {
               )}
             >
               <div className="relative mb-5 w-full">
-                <h3 className="mb-1 w-full px-4 font-lora text-2xl font-medium md:pl-0 xl:pr-6">
+                <Heading
+                  type="tertiary"
+                  className="mb-1 w-full px-4 md:pl-0 md:text-2xl xl:pr-6"
+                >
                   {copy.title}
-                </h3>
+                </Heading>
                 <div className="absolute top-full h-2 w-[calc(100%+0.5rem)]">
                   <span className="relative mb-3 inline-block h-full w-full">
                     <Image
@@ -126,7 +130,7 @@ export default function Carousel() {
                   </span>
                 </div>
               </div>
-              <p className="mb-6 max-w-sm pr-4 text-base md:max-w-xs xl:pr-6">
+              <p className="mb-8 max-w-sm text-sm md:pr-8 lg:max-w-prose">
                 {copy.description}
               </p>
               <Button

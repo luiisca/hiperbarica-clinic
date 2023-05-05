@@ -38,7 +38,7 @@ const Hero = () => {
             Experimenta la tecnología de última generación en terapias
             hiperbáricas
           </Heading>
-          <p className="text-accent-555 mb-12 text-xl leading-relaxed">
+          <p className="mb-12">
             Obtén un diagnóstico personalizado y un tratamiento eficaz con
             Hiperbárica del sur Perú.
           </p>
@@ -134,10 +134,10 @@ function Certificates() {
                 </SquircleShape>
               </div>
               <div className="flex flex-col items-center">
-                <h3 className="mb-2 font-lora text-2xl font-medium">
+                <Heading type="tertiary" className="mb-2 md:text-2xl">
                   {certifcate.title}
-                </h3>
-                <p className="max-w-xs text-base">{certifcate.description}</p>
+                </Heading>
+                <p className="max-w-xs text-sm">{certifcate.description}</p>
               </div>
             </li>
           ))}
@@ -216,7 +216,7 @@ const Benefits = () => {
         <div className="flex flex-wrap items-stretch justify-center gap-8">
           {benefitsCopy.map((copy, i) => (
             <div
-              className="group relative flex flex-col rounded-md bg-primary-100 p-6"
+              className="group relative flex max-w-xs flex-col rounded-md bg-primary-100 p-6"
               key={i}
             >
               <Link
@@ -227,18 +227,17 @@ const Benefits = () => {
               <div className="h-full space-y-4">
                 {/* percentage */}
                 <div className="relative w-fit font-semibold">
-                  <p className="text-6xl">{copy.percentage}</p>
+                  <p className="text-6xl text-gray-500">{copy.percentage}</p>
                   <span className="absolute left-full top-0 inline-block text-2xl">
                     %
                   </span>
                 </div>
                 {/* text */}
-                <div className="relative flex w-[15.69rem] items-center text-[1.11rem] leading-[1.64rem] text-gray-200">
-                  {copy.description}
-                </div>
+                <p className="text-sm">{copy.description}</p>
               </div>
               {/* icon */}
-              <div className="relative mt-8 flex h-[4rem] w-[4rem] shrink-0 flex-col items-center justify-start">
+              {/* @TODO: refactor */}
+              <div className="relative mt-8 flex h-16 w-16 shrink-0 flex-col items-center justify-start">
                 <img
                   className="relative z-20 h-[4.06rem] w-[4.06rem] shrink-0"
                   alt=""
@@ -267,71 +266,76 @@ const processCopy = [
     description:
       "Para comenzar con el tratamiento, necesitas programar una cita ya sea virtual o presencial. Durante la cita, se evaluará tu estado y se recomendará el número de sesiones necesarias para tu tratamiento. También recibirás información sobre los efectos secundarios posibles y las preparaciones previas al tratamiento con oxígeno hiperbárico.",
     cta: "Conocer más",
-    image: "/frame9@2x.png",
+    image: "/process/1.svg",
   },
   {
     title: "Durante el procedimiento",
     description:
       "Durante tu sesión de terapia hiperbárica, estarás en una cámara hiperbárica y respirarás oxígeno puro al 100% a una presión mayor que la atmosférica. Nuestro equipo médico profesional te monitoreará constantemente para garantizar tu seguridad y cumplir con los estándares de calidad.",
-    image: "/frame11@2x.png",
+    image: "/process/2.svg",
   },
   {
     title: "Seguimiento",
     description:
       "Después de cada sesión, nuestro equipo médico se asegurará de que estés completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar tu completa recuperación. Contamos con un seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo para ti.",
-    image: "/frame12@2x.png",
+    image: "/process/3.svg",
   },
 ];
 
 const Process = () => {
   return (
-    <Container>
-      <div
-        className="box-border flex h-[4.92rem] w-[76.25rem] shrink-0 flex-col items-start justify-start gap-[0.63rem] px-[0rem] pb-[0rem] pt-[0.06rem]"
-        id="proceso"
-      >
-        <div className="relative flex h-[1rem] w-[4.28rem] shrink-0 items-center font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-          Proceso
+    <section className="w-full bg-white">
+      <Container>
+        <div
+          className="mb-8 flex flex-col items-center text-center"
+          id="proceso"
+        >
+          <Heading type="subHeading">Proceso</Heading>
+          <Heading type="secondary">La atención que mereces</Heading>
         </div>
-        <div className="relative flex h-[3.56rem] w-[31.09rem] shrink-0 items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-          La atención que mereces
-        </div>
-      </div>
-      <div className="flex flex-col gap-4">
-        {processCopy.map((copy, i) => (
-          <div
-            className="flex w-full flex-col items-start justify-end "
-            key={i}
-          >
-            <div className="flex w-[76.31rem] flex-row items-center justify-start gap-[5.63rem]">
-              <div className="relative flex h-[13.76rem] w-[45.19rem] shrink-0 flex-col items-start gap-2">
-                <span className="flex items-center text-5xl font-semibold leading-[5.04rem]">
+        <ul className="flex flex-col items-center space-y-24">
+          {processCopy.map((copy, i) => (
+            <li
+              className="flex w-full items-center justify-end max-md:flex-col max-md:space-y-12 odd:md:flex-row-reverse md:[&:not(:nth-child(odd))]:space-x-12 md:[&:nth-child(odd)>:first-child]:ml-12"
+              key={i}
+            >
+              <div className="relative flex w-full justify-center justify-self-center overflow-hidden rounded-[9px] sm:w-4/5 md:w-1/2">
+                <Image
+                  src={copy.image}
+                  alt={`${copy.title} step image`}
+                  width={1}
+                  height={1}
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                  sizes="50vw"
+                  className="object-contain object-center"
+                  style={{
+                    height: "auto",
+                    width: "100%",
+                  }}
+                />
+              </div>
+              <div className="md:w-1/2">
+                <span className="mb-3 inline-block text-7xl font-semibold text-[#ddd] md:text-[4.75rem] blog-lg:text-[5.375rem]">
                   0{i + 1}
                 </span>
-                <p className="font-lora text-[2.11rem] leading-[2.34rem] tracking-[-0.84px] text-gray-500">
+                <p className="mb-8 font-lora text-2xl text-gray-500 md:text-3xl">
                   {copy.title}
                 </p>
-                <p className="relative flex shrink-0 items-center text-base text-gray-200">
-                  {copy.description}
-                </p>
+                <p className="">{copy.description}</p>
                 {copy.cta && (
-                  <Button color="link" href="#">
+                  <Button color="link" href="#" className="mt-4">
                     {copy.cta}
                   </Button>
                 )}
               </div>
-              <div className="rounded-4xs flex w-[22.6rem] shrink-0 flex-col items-center justify-center overflow-hidden">
-                <img
-                  className="relative h-[22.6rem] w-[22.6rem] shrink-0 overflow-hidden object-cover"
-                  alt=""
-                  src="/frame9@2x.png"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Container>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
   );
 };
 
@@ -439,51 +443,6 @@ export default function HomePage() {
       <Treatments />
       <Benefits />
       <Process />
-      {/* TESTIMONIALS */}
-      <div className="box-border flex w-[120rem] flex-col items-center justify-center bg-primary-100 px-[0rem] py-[6rem] text-center">
-        <div className="flex flex-col items-center justify-center gap-[1.56rem] px-[16.75rem] py-[0rem]">
-          <div className="flex flex-col items-center justify-center gap-[1.5rem]">
-            <div className="relative flex h-[1rem] w-[6.19rem] shrink-0 items-center justify-center font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-              Testimonios
-            </div>
-            <div className="relative flex h-[3.56rem] w-[40.74rem] shrink-0 items-center justify-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-              Lo que dicen nuestros pacientes.
-            </div>
-          </div>
-          <div className="flex flex-row items-center justify-center overflow-hidden text-[1.05rem] text-gray-200">
-            <img
-              className="rounded-9980xl relative h-[4.38rem] w-[3.81rem] shrink-0"
-              alt=""
-              src="/frame14.svg"
-            />
-            <div className="flex flex-col items-center justify-center gap-[3.38rem]">
-              <div className="relative h-[6.06rem] w-[33.56rem] shrink-0">
-                <div className="absolute left-[0rem] top-[-0.31rem] flex w-[33.56rem] items-center justify-center leading-[1.64rem]">
-                  Me siento como una persona completamente nueva despu��s de
-                  recibir terapia hiperbárica en Hiperbárica del Sur Perú. Mi
-                  dolor crónico ha disminuido y mi calidad de vida ha mejorado
-                  significativamente.
-                </div>
-              </div>
-              <div className="box-border flex h-[2.34rem] w-[62.5rem] shrink-0 flex-row items-center justify-start gap-[0.69rem] px-[26.11rem] py-[0rem] text-[0.99rem] text-gray-100">
-                <img
-                  className="relative h-[2.34rem] w-[2.34rem] shrink-0 overflow-hidden object-cover"
-                  alt=""
-                  src="/frame15@2x.png"
-                />
-                <div className="relative flex h-[1.19rem] w-[7.22rem] shrink-0 items-center justify-center leading-[1.64rem]">
-                  Leticia Nogales
-                </div>
-              </div>
-            </div>
-            <img
-              className="rounded-9980xl relative h-[4.38rem] w-[3.69rem] shrink-0"
-              alt=""
-              src="/frame16.svg"
-            />
-          </div>
-        </div>
-      </div>
       {/* CTA */}
       <div className="box-border flex w-[120rem] flex-col items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
         <div className="flex flex-col items-center justify-center gap-[2rem] overflow-hidden rounded-3xl bg-primary-200 px-[25.94rem] py-[6.5rem]">
