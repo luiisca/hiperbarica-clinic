@@ -17,6 +17,7 @@ import { cn } from "@/utils/cn";
 import Carousel from "./carousel";
 import { organization } from "./shared-metadata";
 import Heading from "@/components/ui/core/heading";
+import ProcessList from "./process-list";
 
 const Container = ({
   className,
@@ -262,28 +263,6 @@ const Benefits = () => {
   );
 };
 
-const processCopy = [
-  {
-    title: "Evaluación inicial",
-    description:
-      "Para comenzar con el tratamiento, necesitas programar una cita ya sea virtual o presencial. Durante la cita, se evaluará tu estado y se recomendará el número de sesiones necesarias para tu tratamiento. También recibirás información sobre los efectos secundarios posibles y las preparaciones previas al tratamiento con oxígeno hiperbárico.",
-    cta: "Conocer más",
-    image: "/process/1.svg",
-  },
-  {
-    title: "Durante el procedimiento",
-    description:
-      "Durante tu sesión de terapia hiperbárica, estarás en una cámara hiperbárica y respirarás oxígeno puro al 100% a una presión mayor que la atmosférica. Nuestro equipo médico profesional te monitoreará constantemente para garantizar tu seguridad y cumplir con los estándares de calidad.",
-    image: "/process/2.svg",
-  },
-  {
-    title: "Seguimiento",
-    description:
-      "Después de cada sesión, nuestro equipo médico se asegurará de que estés completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar tu completa recuperación. Contamos con un seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo para ti.",
-    image: "/process/3.svg",
-  },
-];
-
 const Process = () => {
   return (
     <section className="w-full bg-white">
@@ -295,47 +274,7 @@ const Process = () => {
           <Heading type="subHeading">Proceso</Heading>
           <Heading type="secondary">La atención que mereces</Heading>
         </div>
-        <ul className="flex flex-col items-center space-y-24">
-          {processCopy.map((copy, i) => (
-            <li
-              className="flex w-full items-center justify-end max-md:flex-col max-md:space-y-12 odd:md:flex-row-reverse md:[&:not(:nth-child(odd))]:space-x-12 md:[&:nth-child(odd)>:first-child]:ml-12"
-              key={i}
-            >
-              <div className="relative flex w-full justify-center justify-self-center overflow-hidden rounded-[9px] sm:w-4/5 md:w-1/2">
-                <Image
-                  src={copy.image}
-                  alt={`${copy.title} step image`}
-                  width={1}
-                  height={1}
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(700, 475)
-                  )}`}
-                  sizes="50vw"
-                  className="object-contain object-center"
-                  style={{
-                    height: "auto",
-                    width: "100%",
-                  }}
-                />
-              </div>
-              <div className="md:w-1/2">
-                <span className="mb-3 inline-block text-7xl font-semibold text-[#ddd] md:text-[4.75rem] blog-lg:text-[5.375rem]">
-                  0{i + 1}
-                </span>
-                <p className="mb-8 font-lora text-2xl text-gray-500 md:text-3xl">
-                  {copy.title}
-                </p>
-                <p className="text-base">{copy.description}</p>
-                {copy.cta && (
-                  <Button color="link" href="#" className="mt-4">
-                    {copy.cta}
-                  </Button>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
+        <ProcessList />
       </Container>
     </section>
   );
