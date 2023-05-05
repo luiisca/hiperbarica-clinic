@@ -137,7 +137,9 @@ function Certificates() {
                 <Heading type="tertiary" className="mb-2 md:text-2xl">
                   {certifcate.title}
                 </Heading>
-                <p className="max-w-xs text-sm">{certifcate.description}</p>
+                <p className="max-w-xs text-sm md:text-base">
+                  {certifcate.description}
+                </p>
               </div>
             </li>
           ))}
@@ -233,7 +235,7 @@ const Benefits = () => {
                   </span>
                 </div>
                 {/* text */}
-                <p className="text-sm">{copy.description}</p>
+                <p className="text-sm md:text-base">{copy.description}</p>
               </div>
               {/* icon */}
               {/* @TODO: refactor */}
@@ -324,7 +326,7 @@ const Process = () => {
                 <p className="mb-8 font-lora text-2xl text-gray-500 md:text-3xl">
                   {copy.title}
                 </p>
-                <p className="">{copy.description}</p>
+                <p className="text-base">{copy.description}</p>
                 {copy.cta && (
                   <Button color="link" href="#" className="mt-4">
                     {copy.cta}
@@ -405,25 +407,25 @@ const faqCopy = [
 ];
 const Faq = () => {
   return (
-    <Container>
-      <div className="flex flex-col items-start justify-center gap-[0.75rem]">
-        <p className="relative max-w-prose font-medium uppercase leading-[1.17rem] tracking-[0.75px]">
-          PREGUNTAS FREQUENTES
-        </p>
-        <p className="relative flex items-center font-lora text-[2.81rem] leading-[2.81rem] tracking-[-1.12px] text-gray-500">
-          Descubre todo lo que necesitas saber sobre la terapia hiperbárica
-        </p>
-      </div>
+    <section className="w-full bg-white">
+      <Container>
+        <div className="mb-8 flex flex-col">
+          <Heading type="subHeading">PREGUNTAS FREQUENTES</Heading>
+          <Heading type="secondary" className="max-w-xl">
+            Descubre todo lo que necesitas saber sobre la terapia hiperbárica
+          </Heading>
+        </div>
 
-      <Accordion type="single" collapsible>
-        {faqCopy.map((copy, i) => (
-          <AccordionItem value={`question-${i}`} key={i}>
-            <AccordionTrigger>{copy.question}</AccordionTrigger>
-            <AccordionContent>{copy.answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </Container>
+        <Accordion type="single" collapsible>
+          {faqCopy.map((copy, i) => (
+            <AccordionItem value={`question-${i}`} key={i}>
+              <AccordionTrigger>{copy.question}</AccordionTrigger>
+              <AccordionContent>{copy.answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Container>
+    </section>
   );
 };
 

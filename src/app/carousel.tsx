@@ -130,7 +130,7 @@ export default function Carousel() {
                   </span>
                 </div>
               </div>
-              <p className="mb-8 max-w-sm text-sm md:pr-8 lg:max-w-prose">
+              <p className="mb-8 max-w-sm text-sm md:pr-8 md:text-base lg:max-w-prose">
                 {copy.description}
               </p>
               <Button
