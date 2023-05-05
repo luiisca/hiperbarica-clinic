@@ -22,7 +22,7 @@ export default function BlogPage() {
   });
 
   return (
-    <section className="w-full">
+    <div className="w-full">
       {/* carousel  */}
       <div className="mb-20 mt-12">
         <Heading type="subHeading">Lo ultimo</Heading>
@@ -39,6 +39,6 @@ export default function BlogPage() {
         <Filter />
         <Aside />
       </div>
-    </section>
+    </div>
   );
 }
