@@ -100,7 +100,7 @@ function Certificates() {
       <Container className="text-center">
         <div className="mb-16 flex flex-col items-center">
           <Heading type="subHeading">Certificaciones</Heading>
-          <Heading type="secondary" className="mb-8 max-w-xl">
+          <Heading type="secondary" className="max-w-xl">
             Certificaciones de seguridad y calidad
           </Heading>
           <p className="max-w-prose text-center">
@@ -339,6 +339,29 @@ const Process = () => {
   );
 };
 
+function Cta() {
+  return (
+    <section className="w-full bg-white">
+      <Container className="p-0">
+        <div className="mx-auto flex w-11/12 flex-col items-center justify-center space-y-12 rounded-3xl bg-primary-200 px-8 py-24 text-center xl:w-full">
+          <div className="flex max-w-prose flex-col items-center">
+            <Heading type="secondary">
+              ¿Listo para mejorar tu salud con la terapia hiperbárica? ¡Agenda
+              una cita hoy mismo!
+            </Heading>
+            <p className="max-w-lg">
+              ¡No esperes más y comienza tu camino hacia una mejor salud con
+              Hiperbárica del Sur Perú! Nuestro equipo médico profesional estará
+              encantado de atenderte y responder a todas tus preguntas
+            </p>
+          </div>
+          <CalDialog />
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 const faqCopy = [
   {
     question: "¿Qué es la terapia de oxígeno hiperbárico?",
@@ -444,26 +467,7 @@ export default function HomePage() {
       <Benefits />
       <Process />
       {/* CTA */}
-      <div className="box-border flex w-[120rem] flex-col items-center justify-center overflow-hidden bg-white px-[0rem] py-[6rem] text-center font-lora text-[2.81rem] text-gray-500">
-        <div className="flex flex-col items-center justify-center gap-[2rem] overflow-hidden rounded-3xl bg-primary-200 px-[25.94rem] py-[6.5rem]">
-          <div className="flex flex-col items-center justify-center gap-[1rem]">
-            <div className="flex flex-col items-center justify-center">
-              <div className="relative flex w-[44.09rem] items-center justify-center leading-[2.81rem] tracking-[-1.12px]">
-                ¿Listo para mejorar tu salud con la terapia hiperbárica? ¡Agenda
-                una cita hoy mismo!
-              </div>
-            </div>
-            <div className="flex w-[38.97rem] flex-col items-center justify-center text-[1.11rem] text-gray-200">
-              <div className="relative flex w-[38.97rem] items-center justify-center leading-[1.64rem]">
-                ¡No esperes más y comienza tu camino hacia una mejor salud con
-                Hiperbárica del Sur Perú! Nuestro equipo médico profesional
-                estará encantado de atenderte y responder a todas tus preguntas
-              </div>
-            </div>
-          </div>
-          <CalDialog />
-        </div>
-      </div>
+      <Cta />
       {/* FAQ */}
       <Faq />
     </>
