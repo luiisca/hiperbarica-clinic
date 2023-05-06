@@ -17,7 +17,7 @@ import { cn } from "@/utils/cn";
 import Carousel from "./carousel";
 import { organization } from "./shared-metadata";
 import Heading from "@/components/ui/core/heading";
-import ProcessList from "./process-list";
+import CountUp from "./countup";
 
 const Container = ({
   className,
@@ -111,7 +111,7 @@ function Certificates() {
     <section className="w-full bg-white">
       <Container className="text-center">
         <div
-          id="certificates-title"
+          id="certificates"
           data-intersect="false"
           className={cn(
             "mb-16 flex flex-col items-center",
@@ -172,7 +172,14 @@ function Treatments() {
   return (
     <section className="w-full bg-white">
       <Container>
-        <div className="mb-8 flex flex-col items-center text-center">
+        <div
+          id="treatments"
+          data-intersect="false"
+          className={cn(
+            "mb-8 flex flex-col items-center text-center",
+            "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+          )}
+        >
           <Heading type="subHeading">Tratamientos</Heading>
           <Heading type="secondary" className="mb-8 max-w-xl">
             Tratamos una amplia variedad de enfermedades y dolencias
@@ -227,7 +234,14 @@ const Benefits = () => {
   return (
     <section className="w-full bg-white">
       <Container className="max-w-screen-2xl">
-        <div className="mb-8 flex flex-col items-center text-center">
+        <div
+          id="benefits"
+          data-intersect="false"
+          className={cn(
+            "mb-8 flex flex-col items-center text-center",
+            "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+          )}
+        >
           <Heading type="subHeading">BENEFICIOS</Heading>
           <Heading type="secondary" className="max-w-xl">
             Descubre cómo el oxígeno hiperbárico puede ayudarte a sanar más
@@ -248,7 +262,9 @@ const Benefits = () => {
               <div className="h-full space-y-4">
                 {/* percentage */}
                 <div className="relative w-fit font-semibold">
-                  <p className="text-6xl text-gray-500">{copy.percentage}</p>
+                  <p className="relative h-[72px] text-6xl text-gray-500">
+                    <CountUp end={copy.percentage} className="z-10" />
+                  </p>
                   <span className="absolute left-full top-0 inline-block text-2xl">
                     %
                   </span>
@@ -281,18 +297,102 @@ const Benefits = () => {
   );
 };
 
+const processCopy = [
+  {
+    title: "Evaluación inicial",
+    description:
+      "Para comenzar con el tratamiento, necesitas programar una cita ya sea virtual o presencial. Durante la cita, se evaluará tu estado y se recomendará el número de sesiones necesarias para tu tratamiento. También recibirás información sobre los efectos secundarios posibles y las preparaciones previas al tratamiento con oxígeno hiperbárico.",
+    cta: "Conocer más",
+    image: "/process/1.svg",
+  },
+  {
+    title: "Durante el procedimiento",
+    description:
+      "Durante tu sesión de terapia hiperbárica, estarás en una cámara hiperbárica y respirarás oxígeno puro al 100% a una presión mayor que la atmosférica. Nuestro equipo médico profesional te monitoreará constantemente para garantizar tu seguridad y cumplir con los estándares de calidad.",
+    image: "/process/2.svg",
+  },
+  {
+    title: "Seguimiento",
+    description:
+      "Después de cada sesión, nuestro equipo médico se asegurará de que estés completamente recuperado antes de dar fin al tratamiento. En caso de ser necesario, se pueden programar múltiples sesiones para asegurar tu completa recuperación. Contamos con un seguimiento personalizado para cada paciente y nos aseguramos de que todo el proceso sea seguro y efectivo para ti.",
+    image: "/process/3.svg",
+  },
+];
+
 const Process = () => {
   return (
     <section className="w-full bg-white">
       <Container>
         <div
-          className="mb-8 flex flex-col items-center text-center"
           id="proceso"
+          data-intersect="false"
+          className={cn(
+            "mb-8 flex flex-col items-center text-center",
+            "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+          )}
         >
           <Heading type="subHeading">Proceso</Heading>
           <Heading type="secondary">La atención que mereces</Heading>
         </div>
-        <ProcessList />
+
+        <ul className="flex flex-col items-center space-y-24">
+          {processCopy.map((copy, i) => (
+            <li
+              className="flex w-full items-center justify-end max-md:flex-col max-md:space-y-12 odd:md:flex-row-reverse md:[&:not(:nth-child(odd))]:space-x-12 md:[&:nth-child(odd)>:first-child]:ml-12"
+              key={i}
+            >
+              <div
+                id={`process-step-image-${i}`}
+                data-intersect="false"
+                className={cn(
+                  "relative flex w-full justify-center justify-self-center overflow-hidden rounded-[9px] sm:w-4/5 md:w-1/2",
+                  "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:duration-1000",
+                  i % 2 === 0
+                    ? "data-[intersect=true]:slide-in-from-right-16"
+                    : "data-[intersect=true]:slide-in-from-left-16"
+                )}
+              >
+                <Image
+                  src={copy.image}
+                  alt={`${copy.title} step image`}
+                  width={1}
+                  height={1}
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                  sizes="50vw"
+                  className="object-contain object-center"
+                  style={{
+                    height: "auto",
+                    width: "100%",
+                  }}
+                />
+              </div>
+              <div
+                id={`process-step-text-${i}`}
+                data-intersect="false"
+                className={cn(
+                  "md:w-1/2",
+                  "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+                )}
+              >
+                <span className="mb-3 inline-block text-7xl font-semibold text-[#ddd] md:text-[4.75rem] blog-lg:text-[5.375rem]">
+                  0{i + 1}
+                </span>
+                <p className="mb-8 font-lora text-2xl text-gray-500 md:text-3xl">
+                  {copy.title}
+                </p>
+                <p className="text-base">{copy.description}</p>
+                {copy.cta && (
+                  <Button color="link" href="#" className="mt-4">
+                    {copy.cta}
+                  </Button>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );
@@ -302,19 +402,28 @@ function Cta() {
   return (
     <section className="w-full bg-white">
       <Container className="p-0">
-        <div className="mx-auto flex w-11/12 flex-col items-center justify-center space-y-12 rounded-3xl bg-primary-200 px-8 py-24 text-center xl:w-full">
-          <div className="flex max-w-prose flex-col items-center">
-            <Heading type="secondary">
-              ¿Listo para mejorar tu salud con la terapia hiperbárica? ¡Agenda
-              una cita hoy mismo!
-            </Heading>
-            <p className="max-w-lg">
-              ¡No esperes más y comienza tu camino hacia una mejor salud con
-              Hiperbárica del Sur Perú! Nuestro equipo médico profesional estará
-              encantado de atenderte y responder a todas tus preguntas
-            </p>
+        <div className="mx-auto w-11/12 rounded-3xl bg-primary-200 px-8 py-24 xl:w-full">
+          <div
+            id="cta"
+            data-intersect="false"
+            className={cn(
+              "flex flex-col items-center justify-center space-y-10 text-center md:space-y-12",
+              "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+            )}
+          >
+            <div className="flex max-w-prose flex-col items-center">
+              <Heading type="secondary" className="mb-4 md:mb-8">
+                ¿Listo para mejorar tu salud con la terapia hiperbárica? ¡Agenda
+                una cita hoy mismo!
+              </Heading>
+              <p className="max-w-lg">
+                ¡No esperes más y comienza tu camino hacia una mejor salud con
+                Hiperbárica del Sur Perú! Nuestro equipo médico profesional
+                estará encantado de atenderte y responder a todas tus preguntas
+              </p>
+            </div>
+            <CalDialog />
           </div>
-          <CalDialog />
         </div>
       </Container>
     </section>
@@ -366,7 +475,14 @@ const Faq = () => {
   return (
     <section className="w-full bg-white">
       <Container>
-        <div className="mb-8 flex flex-col">
+        <div
+          id="faq"
+          data-intersect="false"
+          className={cn(
+            "mb-8 flex flex-col",
+            "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+          )}
+        >
           <Heading type="subHeading">PREGUNTAS FREQUENTES</Heading>
           <Heading type="secondary" className="max-w-xl">
             Descubre todo lo que necesitas saber sobre la terapia hiperbárica
@@ -425,9 +541,7 @@ export default function HomePage() {
       <Treatments />
       <Benefits />
       <Process />
-      {/* CTA */}
       <Cta />
-      {/* FAQ */}
       <Faq />
     </>
   );

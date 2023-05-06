@@ -1,8 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-const targetElementIds = ["certificates-title"];
+const targetElementIds = [
+  "certificates",
+  "treatments",
+  "benefits",
+  "proceso",
+  ...Array.from({ length: 3 }).map((_, i) => `process-step-image-${i}`),
+  ...Array.from({ length: 3 }).map((_, i) => `process-step-text-${i}`),
+  "cta",
+  "faq",
+];
 
 export default function Observer() {
   useEffect(() => {

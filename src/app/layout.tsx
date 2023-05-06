@@ -3,13 +3,11 @@ import React from "react";
 import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
 import CalDialog from "@/components/calDialog";
-import InitSuperFlow from "./init-super-flow";
 import { Inter, Lora } from "next/font/google";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 import { ADDRESS, FB_PAGE, KEYWORDS, MAIL, PHONE } from "@/utils/constants";
 import WhatsApp from "./whatsapp";
-import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
@@ -333,7 +331,6 @@ export default function RootLayout({
         </NavContainer>
         <main className="relative z-0 flex w-full min-w-0 flex-auto flex-col items-center justify-center">
           {children}
-          <InitSuperFlow />
           <Analytics />
         </main>
         <Footer />
