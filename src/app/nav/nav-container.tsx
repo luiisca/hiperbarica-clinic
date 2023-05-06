@@ -30,8 +30,8 @@ function HamburgerMenu({
   isOpen,
   setOpen,
 }: {
-  isOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isOpen: boolean | undefined;
+  setOpen: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }) {
   return (
     <div className="absolute right-0 top-0 z-10 px-6 py-4 ">
@@ -39,7 +39,7 @@ function HamburgerMenu({
       <div className="flex h-24 items-center justify-between rounded-lg bg-primary-300 px-8 lg:hidden">
         <CrossHamburger
           toggled={isOpen}
-          toggle={setOpen}
+          toggle={setOpen as React.Dispatch<React.SetStateAction<boolean>>}
           color="#555"
           direction="right"
           distance="sm"
@@ -60,8 +60,8 @@ function Overlay({
   setHamburgerOpen,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & {
-  hamburgerOpen: boolean;
-  setHamburgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  hamburgerOpen: boolean | undefined;
+  setHamburgerOpen: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }) {
   return (
     <div
@@ -80,8 +80,10 @@ export default function NavContainer(
   props: React.HTMLAttributes<HTMLDivElement>
 ) {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
-  const [hamburgerOpen, setHamburgerOpen] = useState(false);
+  const [visible, setVisible] = useState<boolean | null>(null);
+  const [hamburgerOpen, setHamburgerOpen] = useState<boolean | undefined>(
+    undefined
+  );
 
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
@@ -110,7 +112,9 @@ export default function NavContainer(
           "top-0 fill-mode-forwards",
           visible
             ? "animate-nav-fade-in-down"
-            : "animate-nav-fade-out-up ease-out"
+            : visible === false
+            ? "animate-nav-fade-out-up ease-out"
+            : ""
         )}
         {...props}
       >
@@ -125,11 +129,12 @@ export default function NavContainer(
       <div
         className={cn(
           "sticky top-0 mx-auto w-full transition-all",
-          "fill-mode-forwards",
+          "top-32 fill-mode-forwards",
           hamburgerOpen
             ? "animate-opacity-100 duration-200"
-            : "animate-opacity-0 duration-200",
-          visible ? "top-32 z-20" : "z-0 opacity-0"
+            : hamburgerOpen === false
+            ? "animate-opacity-0 duration-200"
+            : "-z-10 opacity-0"
         )}
       >
         <Overlay
