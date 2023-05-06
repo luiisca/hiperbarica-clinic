@@ -248,7 +248,7 @@ const Benefits = () => {
             rápido
           </Heading>
         </div>
-        <div className="flex flex-wrap items-stretch justify-center gap-8">
+        <div className="mx-auto grid w-fit justify-center gap-8 sm:grid-cols-2 2xl:flex">
           {benefitsCopy.map((copy, i) => (
             <div
               className="group relative flex max-w-xs flex-col rounded-md bg-primary-100 p-6"

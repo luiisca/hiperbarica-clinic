@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const targetElementIds = [
@@ -14,6 +15,8 @@ const targetElementIds = [
 ];
 
 export default function Observer() {
+  const pathName = usePathname();
+
   useEffect(() => {
     const targetElements = targetElementIds.map((id) =>
       document.getElementById(id)
@@ -22,12 +25,10 @@ export default function Observer() {
 
     const handleIntersection = (entry: IntersectionObserverEntry) => {
       visibleElements.push(entry.target);
-      console.log("👁‍🗨entry", entry.target);
       const element = entry.target as Element & {
         dataset: { intersect: string };
       };
       element.dataset.intersect = "true";
-      console.log("👁‍🗨entry after dataset", entry.target);
 
       observer.unobserve(entry.target);
     };
@@ -57,7 +58,7 @@ export default function Observer() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathName === "/"]);
 
   return <></>;
 }
