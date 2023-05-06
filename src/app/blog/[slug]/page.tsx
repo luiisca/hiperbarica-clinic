@@ -105,7 +105,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <section className="mt-12 w-full md:mt-20">
+    <section className="mt-8 w-full md:mt-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

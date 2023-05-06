@@ -334,7 +334,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="flex flex-col items-center overflow-x-visible font-inter text-gray-200 antialiased md:text-lg">
+      <body className="flex flex-col items-center overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
         <Observer />
         <NavContainer>
           <Nav />

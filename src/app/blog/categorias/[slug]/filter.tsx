@@ -32,7 +32,9 @@ export default function Filter({ ...props }: TabsProps) {
             tabIndex={-1}
             key={i}
           >
-            <Link href={`/blog/${category}`}>{capitalize(category)}</Link>
+            <Link href={`/blog/categorias/${category}`}>
+              {capitalize(category)}
+            </Link>
           </TabsTrigger>
         ))}
 

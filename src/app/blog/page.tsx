@@ -24,7 +24,7 @@ export default function BlogPage() {
   return (
     <div className="w-full">
       {/* carousel  */}
-      <div className="mb-20 mt-12">
+      <div className="mb-20 mt-8 md:mt-14">
         <Heading type="subHeading">Lo ultimo</Heading>
         <Carousel content={latestPosts} />
       </div>
