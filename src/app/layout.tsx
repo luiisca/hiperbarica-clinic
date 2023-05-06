@@ -96,6 +96,17 @@ export const metadata: Metadata = {
   },
 };
 
+const Container = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div className={cn("mx-auto max-w-screen-xl px-8 py-24", className)}>
+      {props.children}
+    </div>
+  );
+};
+
 function Logo({ className }: { className?: string }) {
   return (
     <div className="relative">
@@ -256,9 +267,8 @@ function Nav() {
 
 function Footer() {
   return (
-    <section className="max-w-screen-xl px-8 py-24 lg:mx-auto">
-      {/* need 3 columns: logo, contact, clinic */}
-      <div className="flex w-full flex-col gap-12 md:flex-row">
+    <section className="w-full bg-primary-100">
+      <Container className="flex flex-col gap-12 md:flex-row">
         <div className="flex w-1/4 shrink-0 flex-col justify-start gap-8">
           <Logo className="flex-col lg:flex-row " />
           <div className="flex gap-6 text-2xl text-[#AFAFAE] hover:text-[#9e9e9d] md:text-[1.35rem]">
@@ -312,7 +322,7 @@ function Footer() {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
@@ -324,7 +334,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
-      <body className="flex flex-col items-center overflow-x-visible bg-primary-100 font-inter text-gray-200 antialiased md:text-lg">
+      <body className="flex flex-col items-center overflow-x-visible font-inter text-gray-200 antialiased md:text-lg">
         <Observer />
         <NavContainer>
           <Nav />

@@ -33,7 +33,7 @@ const Container = ({
 
 const Hero = () => {
   return (
-    <section className="w-full">
+    <section className="-mt-32 w-full bg-primary-100 pt-32">
       <Container className="flex flex-col-reverse items-center justify-items-end text-center max-xl:pt-0 xl:flex-row xl:space-x-12 xl:text-left 2xl:max-w-screen-2xl">
         <div
           className={cn(
@@ -45,7 +45,7 @@ const Hero = () => {
             Experimenta la tecnología de última generación en terapias
             hiperbáricas
           </Heading>
-          <p className="mx-auto mb-12 max-w-[50ch] xl:mr-6">
+          <p className="mb-12 max-w-[50ch] max-xl:mx-auto xl:mr-6">
             Obtén un diagnóstico personalizado y un tratamiento eficaz con
             Hiperbárica del sur Perú.
           </p>
@@ -110,7 +110,7 @@ const certificatesCopy = [
 ];
 function Certificates() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container className="text-center">
         <div
           id="certificates"
@@ -168,7 +168,7 @@ function Certificates() {
 
 function Treatments() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container>
         <div
           id="treatments"
@@ -234,7 +234,7 @@ const benefitsCopy = [
 
 const Benefits = () => {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container className="max-w-screen-2xl">
         <div
           id="benefits"
@@ -328,7 +328,7 @@ const processCopy = [
 
 const Process = () => {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container>
         <div
           id="proceso"
@@ -407,7 +407,7 @@ const Process = () => {
 
 function Cta() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container className="p-0">
         <div className="mx-auto w-11/12 rounded-3xl bg-primary-200 px-8 py-24 xl:w-full">
           <div
@@ -439,7 +439,7 @@ function Cta() {
 
 function Articles() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container className="relative flex flex-col space-y-10 md:grid md:grid-cols-[37.5%_62.5%] md:items-end md:gap-4 blog-lg:grid-cols-[35%_65%]">
         <div className="md:mb-0 md:h-[max-content] md:pb-24 md:pr-5 blog-lg:pr-14">
           <Heading type="subHeading">Articulos</Heading>
@@ -503,7 +503,7 @@ const faqCopy = [
 ];
 const Faq = () => {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full">
       <Container>
         <div
           id="faq"
