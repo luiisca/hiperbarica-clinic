@@ -34,7 +34,12 @@ const Hero = () => {
   return (
     <section className="w-full">
       <Container className="flex flex-col-reverse items-center justify-items-end text-center max-xl:pt-0 xl:flex-row xl:space-x-12 xl:text-left 2xl:max-w-screen-2xl">
-        <div className="xl:w-2/5 2xl:w-1/2">
+        <div
+          className={cn(
+            "xl:w-2/5 2xl:w-1/2",
+            "animate-in fade-in slide-in-from-bottom-16 duration-1000"
+          )}
+        >
           <Heading>
             Experimenta la tecnología de última generación en terapias
             hiperbáricas
@@ -50,7 +55,13 @@ const Hero = () => {
             </Button>
           </div>
         </div>
-        <div className="relative max-w-2xl py-8 max-xl:mb-16 max-xl:pr-12 xl:w-3/5 2xl:w-1/2">
+        <div
+          className={cn(
+            "relative max-w-2xl py-8 max-xl:mb-16 max-xl:pr-12 xl:w-3/5 2xl:w-1/2",
+            "animate-in fade-in slide-in-from-right-32 duration-1000"
+          )}
+        >
+          {/* @TODO: change to Image */}
           <img
             className="relative z-10 shrink-0 object-cover"
             alt=""
@@ -99,7 +110,14 @@ function Certificates() {
   return (
     <section className="w-full bg-white">
       <Container className="text-center">
-        <div className="mb-16 flex flex-col items-center">
+        <div
+          id="certificates-title"
+          data-intersect="false"
+          className={cn(
+            "mb-16 flex flex-col items-center",
+            "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+          )}
+        >
           <Heading type="subHeading">Certificaciones</Heading>
           <Heading type="secondary" className="max-w-xl">
             Certificaciones de seguridad y calidad
@@ -129,7 +147,7 @@ function Certificates() {
                         shimmer(700, 475)
                       )}`}
                       sizes="10vw"
-                      className="grayscale-100 object-contain object-center"
+                      className="object-contain object-center grayscale"
                     />
                   </div>
                 </SquircleShape>

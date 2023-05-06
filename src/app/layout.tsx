@@ -13,6 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
+import Observer from "./intersection-observer";
 
 const InterFont = Inter({
   subsets: ["latin"],
@@ -326,6 +327,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
       <body className="flex flex-col items-center overflow-x-visible bg-primary-100 font-inter text-gray-200 antialiased md:text-lg">
+        <Observer />
         <NavContainer>
           <Nav />
         </NavContainer>

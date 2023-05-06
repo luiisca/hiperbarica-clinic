@@ -45,6 +45,14 @@ export default function ProcessList() {
             observer.unobserve(entry.target);
           }
         });
+
+        // Disconnect when all elements are visible
+        if (
+          visibleElements.length ===
+          [...textElementsRef.current, ...imageElementsRef.current].length
+        ) {
+          observer.disconnect();
+        }
       },
       { threshold: 0.5 }
     );
@@ -74,7 +82,7 @@ export default function ProcessList() {
               imageElementsRef.current[i] &&
                 visibleElements.includes(imageElementsRef.current[i] as Element)
                 ? cn(
-                    "animate-in fade-in duration-700",
+                    "animate-in fade-in duration-1000",
                     i % 2 === 0
                       ? "slide-in-from-right-16"
                       : "slide-in-from-left-16"
@@ -106,7 +114,7 @@ export default function ProcessList() {
 
               textElementsRef.current[i] &&
                 visibleElements.includes(textElementsRef.current[i] as Element)
-                ? "animate-in fade-in slide-in-from-bottom-16 duration-700"
+                ? "animate-in fade-in slide-in-from-bottom-16 duration-1000"
                 : "opacity-0"
             )}
           >

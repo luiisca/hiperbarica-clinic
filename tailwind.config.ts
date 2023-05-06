@@ -87,6 +87,7 @@ export default {
         "opacity-0": {
           "0%": {
             opacity: "1",
+            zIndex: "2",
           },
           "20%": {
             opacity: "0.4",
