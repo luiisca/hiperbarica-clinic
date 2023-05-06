@@ -44,7 +44,7 @@ const Hero = () => {
             Experimenta la tecnología de última generación en terapias
             hiperbáricas
           </Heading>
-          <p className="mb-12">
+          <p className="mx-auto mb-12 max-w-[50ch] xl:mr-6">
             Obtén un diagnóstico personalizado y un tratamiento eficaz con
             Hiperbárica del sur Perú.
           </p>
@@ -57,15 +57,16 @@ const Hero = () => {
         </div>
         <div
           className={cn(
-            "relative max-w-2xl py-8 max-xl:mb-16 max-xl:pr-12 xl:w-3/5 2xl:w-1/2",
+            "relative h-80 w-full max-w-2xl py-8 max-xl:mb-16 max-xl:pr-12 sm:h-[28rem] xl:h-[40rem] xl:w-3/5 2xl:w-1/2",
             "animate-in fade-in slide-in-from-right-32 duration-1000"
           )}
         >
-          {/* @TODO: change to Image */}
-          <img
-            className="relative z-10 shrink-0 object-cover"
-            alt=""
+          <Image
             src="/hero.png"
+            alt="mujer acostada dentro de una cámara hiperbárica"
+            fill
+            sizes="100vw"
+            className="relative z-10 object-contain"
           />
           <SquircleShape className="absolute left-[10%] top-[5%] z-0 h-[90%] w-4/5 md:left-[15%] xl:w-[90%]" />
         </div>
@@ -146,7 +147,7 @@ function Certificates() {
                       blurDataURL={`data:image/svg+xml;base64,${toBase64(
                         shimmer(700, 475)
                       )}`}
-                      sizes="10vw"
+                      sizes="30vw"
                       className="object-contain object-center grayscale"
                     />
                   </div>
@@ -275,16 +276,26 @@ const Benefits = () => {
               {/* icon */}
               {/* @TODO: refactor */}
               <div className="relative mt-8 flex h-16 w-16 shrink-0 flex-col items-center justify-start">
-                <img
-                  className="relative z-20 h-[4.06rem] w-[4.06rem] shrink-0"
-                  alt=""
+                <Image
                   src={copy.logo}
+                  alt="benefit image"
+                  fill
+                  placeholder="blur"
+                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                    shimmer(700, 475)
+                  )}`}
+                  sizes="20vw"
+                  className="relative z-20 object-contain"
                 />
-                <img
-                  className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem] shrink-0 object-cover"
-                  alt=""
-                  src="/image8@2x.png"
-                />
+                <div className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem] ">
+                  <Image
+                    src="/image8@2x.png"
+                    alt=""
+                    fill
+                    sizes="20vw"
+                    className="object-contain"
+                  />
+                </div>
               </div>
               <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 p-2.5 text-sm opacity-0 transition-all group-hover:opacity-100">
                 <ExternalLink />
