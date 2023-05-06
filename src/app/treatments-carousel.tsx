@@ -36,7 +36,7 @@ const treatmentsCopy = [
   },
 ];
 
-export default function Carousel() {
+export default function TreatmentsCarousel() {
   const [swiperReady, setSwiperReady] = useState(false);
 
   return (
@@ -66,7 +66,7 @@ export default function Carousel() {
           container: "flex",
         }}
         dotClasses={{
-          list: "home-carousel",
+          list: "treatments-carousel",
         }}
         breakpoints={{
           1280: {
@@ -93,7 +93,7 @@ export default function Carousel() {
             >
               <Image
                 src={copy.img}
-                alt={`${copy.title} beneficio`}
+                alt={`${copy.title} tratamiento`}
                 fill
                 placeholder="blur"
                 blurDataURL={`data:image/svg+xml;base64,${toBase64(

@@ -18,7 +18,7 @@
   @apply border-primary-500 bg-primary-500;
 }
 
-.home-carousel .swiper-pagination {
+.treatments-carousel .swiper-pagination {
   @apply absolute -bottom-10 left-1/2 -translate-x-1/2 md:-bottom-1 md:left-[calc(45%+48px)] md:translate-x-0 xl:bottom-2 xl:left-1/2 xl:-translate-x-1/2;
 }
 

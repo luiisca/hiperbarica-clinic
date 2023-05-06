@@ -14,10 +14,11 @@ import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { SquircleShape } from "@/components/shapes";
 import { cn } from "@/utils/cn";
-import Carousel from "./carousel";
 import { organization } from "./shared-metadata";
 import Heading from "@/components/ui/core/heading";
 import CountUp from "./countup";
+import TreatmentsCarousel from "./treatments-carousel";
+import ArticlesCarousel from "./articles-carousel";
 
 const Container = ({
   className,
@@ -184,7 +185,7 @@ function Treatments() {
         </div>
         {/* overlay */}
         <div className="relative">
-          <Carousel />
+          <TreatmentsCarousel />
         </div>
         <div className="mt-16 flex w-full justify-center md:mt-12">
           <Link href="#">
@@ -436,6 +437,29 @@ function Cta() {
   );
 }
 
+function Articles() {
+  return (
+    <section className="w-full bg-white">
+      <Container className="relative flex flex-col space-y-10 md:grid md:grid-cols-[37.5%_62.5%] md:items-end md:gap-4 blog-lg:grid-cols-[35%_65%]">
+        <div className="md:mb-0 md:h-[max-content] md:pb-24 md:pr-5 blog-lg:pr-14">
+          <Heading type="subHeading">Articulos</Heading>
+          <Heading type="secondary" className="mb-6">
+            Lo último de Hiperbárica del Sur Perú
+          </Heading>
+          <Button
+            color="link"
+            href="/blog"
+            className="text-sm underline decoration-2 underline-offset-[10px] md:text-lg"
+          >
+            Ver todos
+          </Button>
+        </div>
+        <ArticlesCarousel />
+      </Container>
+    </section>
+  );
+}
+
 const faqCopy = [
   {
     question: "¿Qué es la terapia de oxígeno hiperbárico?",
@@ -548,6 +572,7 @@ export default function HomePage() {
       <Benefits />
       <Process />
       <Cta />
+      <Articles />
       <Faq />
     </>
   );

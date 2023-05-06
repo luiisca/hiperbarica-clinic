@@ -189,7 +189,7 @@ function Logo({ className }: { className?: string }) {
 
         <div className="flex flex-col items-start justify-center">
           <p className="relative w-max font-lora leading-[1.75rem] text-[#03436E]">
-            Hiperbárica Del Sur
+            Hiperbárica del Sur Perú
           </p>
           <p className="relative w-max text-center text-[0.75rem] font-light leading-[1rem] text-gray-500">
             El arte de oxigenarte
