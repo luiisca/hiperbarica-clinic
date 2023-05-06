@@ -143,10 +143,6 @@ function Certificates() {
                       src={certifcate.logo}
                       alt={`${certifcate.title} logo`}
                       fill
-                      placeholder="blur"
-                      blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                        shimmer(700, 475)
-                      )}`}
                       sizes="30vw"
                       className="object-contain object-center grayscale"
                     />
@@ -207,6 +203,7 @@ const benefitsCopy = [
     description:
       "Reduce el riesgo de amputaciones mayores hasta en un 40% en pacientes con pie diabético.",
     logo: "/hospital.svg",
+    blob: "/left-blob.png",
   },
   {
     link: "#",
@@ -214,6 +211,7 @@ const benefitsCopy = [
     description:
       "Tasa de éxito del 92% en la cicatrización de úlceras diabéticas.",
     logo: "/patches.svg",
+    blob: "/center-blob.png",
   },
   {
     link: "#",
@@ -221,6 +219,7 @@ const benefitsCopy = [
     description:
       "Aumento del 27% en la producción de células blancas en pacientes con enfermedades autoinmunes.",
     logo: "/dna.svg",
+    blob: "/right-blob.png",
   },
   {
     link: "#",
@@ -228,6 +227,7 @@ const benefitsCopy = [
     description:
       "Tasa de éxito del 70% en la reducción del dolor de espalda crónico.",
     logo: "/heart.svg",
+    blob: "/center-blob.png",
   },
 ];
 
@@ -274,22 +274,17 @@ const Benefits = () => {
                 <p className="text-sm md:text-base">{copy.description}</p>
               </div>
               {/* icon */}
-              {/* @TODO: refactor */}
               <div className="relative mt-8 flex h-16 w-16 shrink-0 flex-col items-center justify-start">
                 <Image
                   src={copy.logo}
                   alt="benefit image"
                   fill
-                  placeholder="blur"
-                  blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    shimmer(700, 475)
-                  )}`}
                   sizes="20vw"
                   className="relative z-20 object-contain"
                 />
-                <div className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem] ">
+                <div className="absolute bottom-0 left-0 mt-[-3.06rem] h-[3.75rem] w-[3.75rem]">
                   <Image
-                    src="/image8@2x.png"
+                    src={copy.blob}
                     alt=""
                     fill
                     sizes="20vw"
