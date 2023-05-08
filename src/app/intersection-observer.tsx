@@ -13,6 +13,7 @@ const targetElementIds = [
   "cta",
   "faq",
 ];
+const keepListeningElemntIds = ["cta"];
 
 export default function Observer() {
   const pathName = usePathname();
@@ -30,7 +31,7 @@ export default function Observer() {
       };
       element.dataset.intersect = "true";
 
-      if (element && element.dataset.intersect === "true") {
+      if (!keepListeningElemntIds.includes(entry.target.id)) {
         observer.unobserve(entry.target);
       }
     };

@@ -1,5 +1,5 @@
 export const WEB_URL =
-  process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
+  "https://hiperbaricadelsurperu.com/" || "http://localhost:3000";
 export const FB_PAGE =
   "https://www.facebook.com/profile.php?id=100091562515698";
 export const PHONE = "+51992569407";

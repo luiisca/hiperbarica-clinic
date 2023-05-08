@@ -52,7 +52,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
             <CalDialog />
-            <Button color="outline" href="#certificaciones">
+            <Button color="outline" href="/#certificaciones">
               Más información ↓
             </Button>
           </div>
