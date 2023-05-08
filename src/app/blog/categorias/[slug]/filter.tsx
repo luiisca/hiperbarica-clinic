@@ -42,7 +42,7 @@ export default function Filter({ ...props }: TabsProps) {
         <div className="blog-lg:hidden">
           <Select
             value={props.value}
-            onValueChange={(value) => router.push(`/blog/${value}`)}
+            onValueChange={(value) => router.push(`/blog/categorias/${value}`)}
           >
             <SelectTrigger>
               <SelectValue />
