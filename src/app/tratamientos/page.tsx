@@ -13,7 +13,7 @@ export default function CategoryPage() {
     <div>
       <div
         className={cn(
-          "animate-fade-in-up duration-1000 delay-150 ease-in-out fill-mode-forwards",
+          "animate-fade-in-up opacity-0 duration-1000 delay-150 ease-in-out fill-mode-forwards",
           "my-12 w-full text-center md:my-20 "
         )}
       >

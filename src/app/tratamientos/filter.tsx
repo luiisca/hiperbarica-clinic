@@ -50,7 +50,7 @@ function Post({
       <div className="relative !mt-0 h-[clamp(250px,_25vh,_400px)] w-full">
         <div className="relative h-full w-full overflow-hidden rounded-md">
           <Image
-            src={post.image || ""}
+            src={(post.url !== "#" ? post.image : "/blog/default.jpg") || ""}
             fill
             placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(
