@@ -271,18 +271,18 @@ function Footer() {
       <Container className="flex flex-col gap-12 md:flex-row">
         <div className="flex w-1/4 shrink-0 flex-col justify-start gap-8">
           <Logo className="flex-col lg:flex-row " />
-          <div className="flex gap-6 text-2xl text-[#AFAFAE] hover:text-[#9e9e9d] md:text-[1.35rem]">
-            <a href={FB_PAGE} target="_blank">
+          <div className="flex gap-6 text-2xl text-[#AFAFAE] md:text-[1.35rem]">
+            <a href={FB_PAGE} target="_blank" className="hover:text-[#9e9e9d] ">
               <BsFacebook />
             </a>
-            <WhatsApp />
+            <WhatsApp className="hover:text-[#9e9e9d]" />
           </div>
         </div>
         <div className="flex w-full flex-col gap-12 sm:flex-row">
           <div className="w-1/2 shrink-0">
             <p className="mb-8 text-lg font-medium sm:mb-10">Contacto</p>
             <address className="text-base not-italic leading-[1.6]">
-              {/* TODO: add link to map */}
+              {/* @TODO: add link to map */}
               <p className="mb-4 text-sm sm:mb-6">{ADDRESS}</p>
               <div className="flex flex-col text-sm text-[#767676]">
                 <a
@@ -292,7 +292,7 @@ function Footer() {
                 >
                   992-569-407
                 </a>
-                {/* TODO: add subject and body */}
+                {/* @TODO: add subject and body */}
                 <a
                   href={`mailto:${MAIL}?subject=Test&body=Test`}
                   target="_blank"
@@ -306,7 +306,7 @@ function Footer() {
           <div className="w-1/2 shrink-0">
             <p className="mb-8 text-lg font-medium sm:mb-10">Clínica</p>
             <div className="flex flex-col gap-4 text-sm text-[#767676] sm:gap-6">
-              {/* TODO: change copy */}
+              {/* @TODO: change copy */}
               <Link
                 href="#"
                 className="transition-all duration-300 hover:text-gray-500"
