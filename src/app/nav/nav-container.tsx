@@ -14,7 +14,7 @@ const navItems = [
   },
   {
     name: "Contáctanos",
-    href: "",
+    href: "#footer",
   },
   {
     name: "Proceso",

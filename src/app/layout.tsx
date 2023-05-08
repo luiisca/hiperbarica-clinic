@@ -218,7 +218,7 @@ const navItems = [
   },
   {
     name: "Contáctanos",
-    href: "",
+    href: "#footer",
   },
   {
     name: "Proceso",
@@ -267,7 +267,7 @@ function Nav() {
 
 function Footer() {
   return (
-    <section className="w-full bg-primary-100">
+    <section className="w-full bg-primary-100" id="footer">
       <Container className="flex flex-col gap-12 md:flex-row">
         <div className="flex w-1/4 shrink-0 flex-col justify-start gap-8">
           <Logo className="flex-col lg:flex-row " />
@@ -308,10 +308,16 @@ function Footer() {
             <div className="flex flex-col gap-4 text-sm text-[#767676] sm:gap-6">
               {/* @TODO: change copy */}
               <Link
-                href="#"
+                href="/tratamientos"
                 className="transition-all duration-300 hover:text-gray-500"
               >
-                Nuestro equipo
+                Tratamientos
+              </Link>
+              <Link
+                href="/#proceso"
+                className="transition-all duration-300 hover:text-gray-500"
+              >
+                Proceso
               </Link>
               <Link
                 href="/blog"
