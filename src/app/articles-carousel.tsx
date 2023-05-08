@@ -25,7 +25,7 @@ export default function ArticlesCarousel() {
           }
           return 1;
         })}
-        className="xl:overflow-hidden xl:pb-14"
+        className="overflow-hidden xl:pb-14"
         slideClassName={cn("pt-2 md:py-2 xl:p-0 bg-transparent")}
         arrowsClasses={{
           container: "flex absolute left-8 bottom-0 md:bottom-24 space-x-3",
