@@ -15,7 +15,7 @@ const Container = ({
 
 export default function Cta(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <section className="w-full" {...props}>
+    <section {...props} className={cn("w-full", props.className)}>
       <Container className="p-0">
         <div className="mx-auto w-11/12 rounded-3xl bg-primary-200 px-8 py-24 xl:w-full">
           <div
