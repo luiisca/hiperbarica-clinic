@@ -65,7 +65,7 @@ function Post({
           <div className="relative h-11 w-11">
             <Image
               src={`/treatments/icons/${icon}`}
-              alt={`${icon.split(".")[0]} icon`}
+              alt={`${icon.split(".")[0] || ""} icon`}
               fill
               sizes="10vw"
               className="object-cover object-center"
