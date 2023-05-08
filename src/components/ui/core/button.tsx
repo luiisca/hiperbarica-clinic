@@ -14,6 +14,7 @@ export type ButtonBaseProps = {
   StartIcon?: SVGComponent | React.ElementType;
   EndIcon?: SVGComponent | React.ElementType;
   shallow?: boolean;
+  nativeAnchor?: boolean;
 } & Omit<InferredVariantProps, "color"> & {
     color?: ButtonColor;
   };
@@ -73,6 +74,7 @@ const Button = React.forwardRef<
       shallow,
       StartIcon,
       EndIcon,
+      nativeAnchor,
       ...props
     }: ButtonProps,
     ref
@@ -115,8 +117,8 @@ const Button = React.forwardRef<
       </>
     );
 
-    return props.href ? (
-      <Link {...props} shallow={shallow && shallow} legacyBehavior passHref>
+    return props.href && !nativeAnchor ? (
+      <Link shallow={shallow && shallow} legacyBehavior passHref {...props}>
         {element}
       </Link>
     ) : (

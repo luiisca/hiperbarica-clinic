@@ -4,10 +4,10 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const targetElementIds = [
-  "certificaciones",
+  "certificates",
   "treatments",
   "benefits",
-  "proceso",
+  "process",
   ...Array.from({ length: 3 }).map((_, i) => `process-step-image-${i}`),
   ...Array.from({ length: 3 }).map((_, i) => `process-step-text-${i}`),
   "cta",

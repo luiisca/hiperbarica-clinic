@@ -161,6 +161,7 @@ export default function NavContainer(
                     "focus-visible:text-primary-600",
                     i === 0 ? "pt-8" : "pt-0"
                   )}
+                  nativeAnchor={item.href.includes("#")}
                 >
                   {item.name}
                 </Button>

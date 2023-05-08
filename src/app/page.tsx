@@ -52,7 +52,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
             <CalDialog />
-            <Button color="outline" href="/#certificaciones">
+            <Button color="outline" href="/#certificaciones" nativeAnchor>
               Más información ↓
             </Button>
           </div>
@@ -111,10 +111,10 @@ const certificatesCopy = [
 ];
 function Certificates() {
   return (
-    <section className="w-full">
+    <section className="w-full" id="certificaciones">
       <Container className="text-center">
         <div
-          id="certificaciones"
+          id="certificates"
           data-intersect="false"
           className={cn(
             "mb-16 flex flex-col items-center",
@@ -337,10 +337,10 @@ const processCopy = [
 
 const Process = () => {
   return (
-    <section className="w-full">
+    <section className="w-full" id="proceso">
       <Container>
         <div
-          id="proceso"
+          id="process"
           data-intersect="false"
           className={cn(
             "mb-8 flex flex-col items-center text-center",

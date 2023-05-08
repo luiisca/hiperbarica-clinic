@@ -258,6 +258,7 @@ function Nav() {
                   "bg-transparent text-base text-gray-500 hover:bg-transparent hover:text-primary-600 max-xl:px-4",
                   "focus-visible:text-primary-600"
                 )}
+                nativeAnchor={item.href.includes("#")}
               >
                 {item.name}
               </Button>
@@ -320,12 +321,12 @@ function Footer() {
               >
                 Tratamientos
               </Link>
-              <Link
+              <a
                 href={`${WEB_URL}#proceso`}
                 className="transition-all duration-300 hover:text-gray-500"
               >
                 Proceso
-              </Link>
+              </a>
               <Link
                 href="/blog"
                 className="transition-all duration-300 hover:text-gray-500"

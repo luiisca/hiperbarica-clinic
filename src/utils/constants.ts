@@ -1,5 +1,7 @@
 export const WEB_URL =
-  "https://hiperbaricadelsurperu.com/" || "http://localhost:3000";
+  process.env.NODE_ENV === "production"
+    ? "https://hiperbaricadelsurperu.com"
+    : "http://localhost:3000";
 export const FB_PAGE =
   "https://www.facebook.com/profile.php?id=100091562515698";
 export const PHONE = "+51992569407";
