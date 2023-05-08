@@ -30,7 +30,9 @@ export default function Observer() {
       };
       element.dataset.intersect = "true";
 
-      observer.unobserve(entry.target);
+      if (element && element.dataset.intersect === "true") {
+        observer.unobserve(entry.target);
+      }
     };
 
     // create observer

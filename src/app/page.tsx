@@ -170,7 +170,7 @@ function Certificates() {
 function Treatments() {
   return (
     <section className="w-full">
-      <Container>
+      <Container className="overflow-x-hidden">
         <div
           id="treatments"
           data-intersect="false"
