@@ -11,7 +11,7 @@ type HeadingBaseProps = {
     color?: HeadingColor;
   };
 
-const headingVariants = cva("font-lora mb-8 text-gray-500", {
+const headingVariants = cva("!font-lora mb-8 text-gray-500", {
   variants: {
     type: {
       primary: "text-4xl md:text-5xl",

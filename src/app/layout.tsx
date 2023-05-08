@@ -13,11 +13,11 @@ import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
 import Observer from "./intersection-observer";
 
-const InterFont = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--inter-font",
 });
-const LoraFont = Lora({
+const lora = Lora({
   subsets: ["latin"],
   variable: "--lora-font",
 });
@@ -333,7 +333,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={cn(LoraFont.variable, InterFont.variable)}>
+    <html lang="es" className={cn(lora.variable, inter.variable)}>
       <body className="flex flex-col items-center overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
         <Observer />
         <NavContainer>
