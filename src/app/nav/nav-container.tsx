@@ -6,6 +6,7 @@ import CalDialog from "@/components/calDialog";
 import { Button } from "@/components/ui/core/button";
 import { Separator } from "@/components/ui/separator";
 import { Cross as CrossHamburger } from "hamburger-react";
+import { WEB_URL } from "@/utils/constants";
 
 const navItems = [
   {
@@ -18,7 +19,7 @@ const navItems = [
   },
   {
     name: "Proceso",
-    href: "#proceso",
+    href: `${WEB_URL}#proceso`,
   },
   {
     name: "Blog",

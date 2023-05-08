@@ -6,7 +6,14 @@ import CalDialog from "@/components/calDialog";
 import { Inter, Lora } from "next/font/google";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
-import { ADDRESS, FB_PAGE, KEYWORDS, MAIL, PHONE } from "@/utils/constants";
+import {
+  ADDRESS,
+  FB_PAGE,
+  KEYWORDS,
+  MAIL,
+  PHONE,
+  WEB_URL,
+} from "@/utils/constants";
 import WhatsApp from "./whatsapp";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
@@ -222,7 +229,7 @@ const navItems = [
   },
   {
     name: "Proceso",
-    href: "#proceso",
+    href: `${WEB_URL}#proceso`,
   },
   {
     name: "Blog",
@@ -314,7 +321,7 @@ function Footer() {
                 Tratamientos
               </Link>
               <Link
-                href="/#proceso"
+                href={`${WEB_URL}#proceso`}
                 className="transition-all duration-300 hover:text-gray-500"
               >
                 Proceso
