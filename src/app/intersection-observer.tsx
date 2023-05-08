@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const targetElementIds = [
-  "certificates",
+  "certificaciones",
   "treatments",
   "benefits",
   "proceso",

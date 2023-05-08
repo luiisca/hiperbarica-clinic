@@ -52,7 +52,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
             <CalDialog />
-            <Button color="outline" href="#hey">
+            <Button color="outline" href="#certificaciones">
               Más información ↓
             </Button>
           </div>
@@ -114,7 +114,7 @@ function Certificates() {
     <section className="w-full">
       <Container className="text-center">
         <div
-          id="certificates"
+          id="certificaciones"
           data-intersect="false"
           className={cn(
             "mb-16 flex flex-col items-center",
@@ -189,7 +189,7 @@ function Treatments() {
           <TreatmentsCarousel />
         </div>
         <div className="mt-16 flex w-full justify-center md:mt-12">
-          <Link href="#">
+          <Link href="/tratamientos">
             <Button>Ver todos</Button>
           </Link>
         </div>
@@ -200,7 +200,7 @@ function Treatments() {
 
 const benefitsCopy = [
   {
-    link: "/blog/pie-diabetico",
+    url: "/blog/pie-diabetico",
     percentage: 40,
     description:
       "Reduce el riesgo de amputaciones mayores hasta en un 40% en pacientes con pie diabético.",
@@ -208,7 +208,7 @@ const benefitsCopy = [
     blob: "/left-blob.png",
   },
   {
-    link: "#",
+    url: "",
     percentage: 92,
     description:
       "Tasa de éxito del 92% en la cicatrización de úlceras diabéticas.",
@@ -216,7 +216,7 @@ const benefitsCopy = [
     blob: "/center-blob.png",
   },
   {
-    link: "#",
+    url: "",
     percentage: 27,
     description:
       "Aumento del 27% en la producción de células blancas en pacientes con enfermedades autoinmunes.",
@@ -224,7 +224,7 @@ const benefitsCopy = [
     blob: "/right-blob.png",
   },
   {
-    link: "#",
+    url: "",
     percentage: 70,
     description:
       "Tasa de éxito del 70% en la reducción del dolor de espalda crónico.",
@@ -257,11 +257,13 @@ const Benefits = () => {
               className="group relative flex max-w-xs flex-col rounded-md bg-primary-100 p-6"
               key={i}
             >
-              <Link
-                className="absolute left-0 top-0 z-10 h-full w-full"
-                href={copy.link}
-                key={i}
-              />
+              {copy.url && (
+                <Link
+                  className="absolute left-0 top-0 z-10 h-full w-full"
+                  href={copy.url}
+                  key={i}
+                />
+              )}
               <div className="h-full space-y-4">
                 {/* percentage */}
                 <div className="relative w-fit font-semibold">
@@ -294,9 +296,11 @@ const Benefits = () => {
                   />
                 </div>
               </div>
-              <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 p-2.5 text-sm opacity-0 transition-all group-hover:opacity-100">
-                <ExternalLink />
-              </div>
+              {copy.url && (
+                <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 p-2.5 text-sm opacity-0 transition-all group-hover:opacity-100">
+                  <ExternalLink />
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -310,7 +314,11 @@ const processCopy = [
     title: "Evaluación inicial",
     description:
       "Para comenzar con el tratamiento, necesitas programar una cita ya sea virtual o presencial. Durante la cita, se evaluará tu estado y se recomendará el número de sesiones necesarias para tu tratamiento. También recibirás información sobre los efectos secundarios posibles y las preparaciones previas al tratamiento con oxígeno hiperbárico.",
-    cta: "Conocer más",
+    cta: () => (
+      <Button color="link" href="/blog/recomendaciones" className="mt-4">
+        Conocer más
+      </Button>
+    ),
     image: "/process/1.svg",
   },
   {
@@ -392,11 +400,7 @@ const Process = () => {
                   {copy.title}
                 </p>
                 <p className="text-base">{copy.description}</p>
-                {copy.cta && (
-                  <Button color="link" href="#" className="mt-4">
-                    {copy.cta}
-                  </Button>
-                )}
+                {copy.cta && <copy.cta />}
               </div>
             </li>
           ))}
