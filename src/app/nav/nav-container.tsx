@@ -9,8 +9,8 @@ import { Cross as CrossHamburger } from "hamburger-react";
 
 const navItems = [
   {
-    name: "Servicios",
-    href: "",
+    name: "Tratamientos",
+    href: "/tratamientos",
   },
   {
     name: "Contáctanos",

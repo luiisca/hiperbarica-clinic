@@ -213,8 +213,8 @@ function Logo({ className }: { className?: string }) {
 
 const navItems = [
   {
-    name: "Servicios",
-    href: "",
+    name: "Tratamientos",
+    href: "/tratamientos",
   },
   {
     name: "Contáctanos",
