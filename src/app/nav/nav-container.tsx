@@ -167,7 +167,7 @@ export default function NavContainer(
               </li>
             ))}
             <Separator className="mx-auto mb-8 w-[calc(100%-4rem)]" />
-            <li className="ml-12">
+            <li className="ml-12" onClick={() => setHamburgerOpen(false)}>
               <Button href="/citas" tabIndex={!hamburgerOpen ? -1 : 0}>
                 Agendar cita
               </Button>
