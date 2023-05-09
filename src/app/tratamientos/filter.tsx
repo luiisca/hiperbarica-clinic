@@ -16,6 +16,7 @@ import Image from "next/image";
 import Heading from "@/components/ui/core/heading";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
+import { useState } from "react";
 
 function Post({
   post,
@@ -89,6 +90,7 @@ function Post({
 
 export default function Filter({ ...props }: TabsProps) {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   return (
     <Tabs {...props}>
@@ -119,11 +121,13 @@ export default function Filter({ ...props }: TabsProps) {
           <Select
             value={props.value}
             onValueChange={(value) => router.push(`/tratamientos/${value}`)}
+            open={open}
+            onOpenChange={setOpen}
           >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent open={open} setOpen={setOpen}>
               {Object.keys(treatments).map((treatment, i) => (
                 <SelectItem value={treatment} key={i}>
                   {capitalize(treatment)}

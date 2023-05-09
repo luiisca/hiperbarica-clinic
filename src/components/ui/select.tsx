@@ -4,6 +4,31 @@ import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { useEffect, useState } from "react";
+
+export default function SelectOverlay({ open }: { open: boolean }) {
+  const [visible, setVisible] = useState(open);
+
+  useEffect(() => {
+    if (!open) {
+      const timer = setTimeout(() => {
+        setVisible(false);
+      }, 200);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+    setVisible(true);
+  }, [open]);
+
+  return visible ? (
+    <div
+      id="select-overlay"
+      className="fixed inset-0"
+      onClick={(e) => e.stopPropagation()}
+    ></div>
+  ) : null;
+}
 
 const Select = SelectPrimitive.Root;
 
@@ -18,7 +43,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "font-medium tracking-[.02px] text-primary-400 underline decoration-primary-500 decoration-2 underline-offset-8 hover:text-primary-500",
+      "isolate z-20 font-medium tracking-[.02px] text-primary-400 underline decoration-primary-500 decoration-2 underline-offset-8 hover:text-primary-500",
       "inline-flex items-center justify-center space-x-4 whitespace-nowrap py-1.5 text-sm transition-all focus-visible:text-primary-700 focus-visible:decoration-primary-700 focus-visible:outline-none focus-visible:outline-0 disabled:pointer-events-none disabled:opacity-50 ",
       className
     )}
@@ -34,31 +59,44 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...props }, ref) => (
-  <SelectPrimitive.Portal>
-    <SelectPrimitive.Content
-      ref={ref}
-      className={cn(
-        "animate-in fade-in-80 relative z-50 min-w-[8rem] overflow-hidden rounded-md border border-primary-500 bg-white px-5",
-        position === "popper" && "translate-y-1",
-        className
-      )}
-      position={position}
-      {...props}
-    >
-      <SelectPrimitive.Viewport
-        className={cn(
-          "p-1",
-          position === "popper" &&
-            "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
-        )}
-      >
-        {children}
-      </SelectPrimitive.Viewport>
-    </SelectPrimitive.Content>
-  </SelectPrimitive.Portal>
-));
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+  }
+>(
+  (
+    { className, children, position = "popper", open, setOpen, ...props },
+    ref
+  ) => (
+    <SelectPrimitive.Portal>
+      <>
+        {/* Workaround for https://github.com/radix-ui/primitives/issues/1658 */}
+        <SelectOverlay open={open} />
+        <SelectPrimitive.Content
+          ref={ref}
+          className={cn(
+            "relative isolate z-20 min-w-[8rem] select-text overflow-hidden rounded-md border border-primary-500 bg-white px-5 animate-in fade-in-80",
+            position === "popper" && "translate-y-1",
+            className
+          )}
+          position={position}
+          onEscapeKeyDown={() => setOpen(false)}
+          {...props}
+        >
+          <SelectPrimitive.Viewport
+            className={cn(
+              "p-1",
+              position === "popper" &&
+                "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+            )}
+          >
+            {children}
+          </SelectPrimitive.Viewport>
+        </SelectPrimitive.Content>
+      </>
+    </SelectPrimitive.Portal>
+  )
+);
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef<

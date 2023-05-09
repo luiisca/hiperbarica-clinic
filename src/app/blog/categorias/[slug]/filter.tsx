@@ -13,9 +13,11 @@ import {
 } from "@/components/ui/select";
 import { Content } from "../../filter";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Filter({ ...props }: TabsProps) {
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   return (
     <Tabs {...props}>
@@ -43,11 +45,13 @@ export default function Filter({ ...props }: TabsProps) {
           <Select
             value={props.value}
             onValueChange={(value) => router.push(`/blog/categorias/${value}`)}
+            open={open}
+            onOpenChange={setOpen}
           >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent open={open} setOpen={setOpen}>
               {categories.map((category, i) => (
                 <SelectItem value={category} key={i}>
                   {capitalize(category)}

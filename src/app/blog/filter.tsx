@@ -48,9 +48,10 @@ export default function Filter({
   panel?: React.ReactNode;
 }) {
   const [active, setActive] = useState("all");
+  const [open, setOpen] = useState(false);
 
   return (
-    <Tabs {...props} value={active} onValueChange={setActive}>
+    <Tabs {...props} value={active} onValueChange={setActive} className="z-10">
       <TabsList>
         <TabsTrigger
           value="all"
@@ -68,11 +69,16 @@ export default function Filter({
 
         {/* mobile */}
         <div className="blog-lg:hidden">
-          <Select value={active} onValueChange={setActive}>
+          <Select
+            value={active}
+            onValueChange={setActive}
+            open={open}
+            onOpenChange={setOpen}
+          >
             <SelectTrigger>
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent open={open} setOpen={setOpen}>
               <SelectItem value="all">Todos</SelectItem>
               {categories.map((category, i) => (
                 <SelectItem value={category} key={i}>
