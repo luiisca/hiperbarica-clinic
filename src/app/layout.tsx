@@ -2,7 +2,6 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
-import CalDialog from "@/components/calDialog";
 import { Inter, Lora } from "next/font/google";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
@@ -265,7 +264,7 @@ function Nav() {
             </li>
           ))}
           <li className="ml-4">
-            <CalDialog />
+            <Button href="/citas">Agendar cita</Button>
           </li>
         </ul>
       </nav>

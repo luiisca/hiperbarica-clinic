@@ -1,4 +1,4 @@
-import CalDialog from "@/components/calDialog";
+import { Button } from "@/components/ui/core/button";
 import Heading from "@/components/ui/core/heading";
 import { cn } from "@/utils/cn";
 
@@ -37,7 +37,7 @@ export default function Cta(props: React.HTMLAttributes<HTMLDivElement>) {
                 estará encantado de atenderte y responder a todas tus preguntas
               </p>
             </div>
-            <CalDialog />
+            <Button href="/citas">Agendar cita</Button>
           </div>
         </div>
       </Container>

@@ -8,7 +8,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import CalDialog from "@/components/calDialog";
 import { Button } from "@/components/ui/core/button";
 import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";
@@ -51,7 +50,7 @@ const Hero = () => {
             Hiperbárica del sur Perú.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
-            <CalDialog />
+            <Button href="/citas">Agendar cita</Button>
             <Button color="outline" href="/#certificaciones" nativeAnchor>
               Más información ↓
             </Button>

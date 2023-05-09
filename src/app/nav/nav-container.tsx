@@ -2,7 +2,6 @@
 
 import { cn } from "@/utils/cn";
 import { useEffect, useState } from "react";
-import CalDialog from "@/components/calDialog";
 import { Button } from "@/components/ui/core/button";
 import { Separator } from "@/components/ui/separator";
 import { Cross as CrossHamburger } from "hamburger-react";
@@ -169,7 +168,9 @@ export default function NavContainer(
             ))}
             <Separator className="mx-auto mb-8 w-[calc(100%-4rem)]" />
             <li className="ml-12">
-              <CalDialog tabIndex={!hamburgerOpen ? -1 : 0} />
+              <Button href="/citas" tabIndex={!hamburgerOpen ? -1 : 0}>
+                Agendar cita
+              </Button>
             </li>
           </ul>
         </nav>
