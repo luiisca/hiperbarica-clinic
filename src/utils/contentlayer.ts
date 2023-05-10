@@ -46,7 +46,7 @@ export const treatments = {
     diseases: [
       {
         title: "Osteoporosis",
-        url: "/blog/osteoporosis/og.jpg",
+        url: "/blog/osteoporosis",
         image: "/blog/osteoporosis/og.jpg",
         description:
           "La terapia de oxígeno hiperbárico (TOHB) puede aumentar la densidad ósea y reducir el riesgo de fracturas en pacientes con Osteoporosis",
