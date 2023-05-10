@@ -200,16 +200,16 @@ function Treatments() {
 const benefitsCopy = [
   {
     url: "/blog/pie-diabetico",
-    percentage: 40,
+    percentage: 78,
     description:
-      "Reduce el riesgo de amputaciones mayores hasta en un 40% en pacientes con pie diabético.",
+      "Aumenta la tasa de curación de heridas en un 78.3% en pacientes diabéticos con más de 10 sesiones de TOHB",
     logo: "/treatments/icons/gland.png",
     blob: "/left-blob.png",
   },
   {
     url: "/blog/ictus",
     percentage: 86,
-    description: "Tasa de éxito del 86% en la mejora de pacientes post-ictus.",
+    description: "Tasa de éxito del 86% en la mejora de pacientes post-ictus",
     logo: "/treatments/icons/brain.png",
     blob: "/center-blob.png",
   },

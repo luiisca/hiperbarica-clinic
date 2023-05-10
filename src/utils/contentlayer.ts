@@ -15,7 +15,8 @@ export const treatments = {
         title: "Pie diabético",
         url: "/blog/pie-diabetico",
         image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        description:
+          "Una complicación de la diabetes que provoca cicatrización lenta de heridas, infecciones y amputaciones. La terapia de oxígeno hiperbárico puede acelerar el proceso de curación",
         icon: "",
       },
     ],
