@@ -32,9 +32,10 @@ export const treatments = {
       },
       {
         title: "Osteomielitis",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/osteomielitis",
+        image: "/blog/osteomielitis/og.jpg",
+        description:
+          "La osteomielitis es una infección ósea que puede provocar dolor, fiebre, inflamación y necrosis ósea. Nuestra clínica ofrece un tratamiento seguro y efectivo para casos crónicos y refractarios a través de la terapia con oxígeno hiperbárico.",
         icon: "",
       },
     ],

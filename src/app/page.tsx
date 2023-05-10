@@ -214,11 +214,11 @@ const benefitsCopy = [
     blob: "/center-blob.png",
   },
   {
-    url: "",
-    percentage: 27,
+    url: "/blog/osteomielitis",
+    percentage: 85,
     description:
-      "Aumento del 27% en la producción de células blancas en pacientes con enfermedades autoinmunes.",
-    logo: "/dna.svg",
+      "Inhibe la infección hasta en un 60-85% de los pacientes con osteomielitis crónica y refractaria",
+    logo: "/treatments/icons/bone.png",
     blob: "/right-blob.png",
   },
   {
