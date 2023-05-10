@@ -203,15 +203,14 @@ const benefitsCopy = [
     percentage: 40,
     description:
       "Reduce el riesgo de amputaciones mayores hasta en un 40% en pacientes con pie diabético.",
-    logo: "/hospital.svg",
+    logo: "/treatments/icons/gland.png",
     blob: "/left-blob.png",
   },
   {
-    url: "",
-    percentage: 92,
-    description:
-      "Tasa de éxito del 92% en la cicatrización de úlceras diabéticas.",
-    logo: "/patches.svg",
+    url: "/blog/ictus",
+    percentage: 86,
+    description: "Tasa de éxito del 86% en la mejora de pacientes post-ictus.",
+    logo: "/treatments/icons/brain.png",
     blob: "/center-blob.png",
   },
   {

@@ -24,7 +24,7 @@ export const treatments = {
     icon: "bone.png",
     diseases: [
       {
-        title: "Tratamiento de Fracturas no Consolidadas",
+        title: "Fracturas",
         url: "#",
         image: "/blog/pie-diabetico/og.jpg",
         description: "",
@@ -148,10 +148,11 @@ export const treatments = {
         icon: "",
       },
       {
-        title: "Accidente Cerebro Vascular,",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        title: "Post-ictus",
+        url: "/blog/ictus",
+        image: "/blog/ictus/og.jpg",
+        description:
+          "Aprenda cómo la oxigenoterapia hiperbárica puede ayudarlo a recuperarse de las secuelas del ictus. Esta enfermedad es una repentina interrupción del flujo sanguíneo al cerebro que puede causar daños duraderos en las habilidades cognitivas y motoras",
         icon: "",
       },
       {
