@@ -222,11 +222,11 @@ const benefitsCopy = [
     blob: "/right-blob.png",
   },
   {
-    url: "",
-    percentage: 70,
+    url: "/blog/intoxicacion-monoxido-de-carbono",
+    percentage: 89,
     description:
-      "Tasa de éxito del 70% en la reducción del dolor de espalda crónico.",
-    logo: "/heart.svg",
+      "Tasa de recuperación completa del 89% en pacientes con intoxicación por monóxido de carbono tratados con HBOT",
+    logo: "/treatments/icons/gas.png",
     blob: "/center-blob.png",
   },
 ];

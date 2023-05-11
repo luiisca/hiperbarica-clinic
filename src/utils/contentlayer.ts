@@ -268,9 +268,10 @@ export const treatments = {
       },
       {
         title: "Intoxicación por gases toxicos",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/intoxicacion-monoxido-de-carbono",
+        image: "/blog/intoxicacion-monoxido-de-carbono/og.jpg",
+        description:
+          "El envenenamiento por monóxido de carbono es una condición grave que puede causar daño cerebral o incluso la muerte. La TOHB puede aumentar significativamente las posibilidades de recuperación completa y prevenir complicaciones.",
         icon: "gas.png",
       },
       {
