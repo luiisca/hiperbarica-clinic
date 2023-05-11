@@ -8,7 +8,7 @@ export const treatments = {
         url: "/blog/diabetes-mellitus",
         image: "/blog/diabetes/og.jpg",
         description:
-          "La terapia de oxígeno hiperbárico (TOHB) puede ayudar a controlar los niveles de azúcar en sangre y reducir los síntomas diabéticos al mejorar la entrega de oxígeno a las células del cuerpo",
+          "La Diabetes Mellitus es una enfermedad crónica caracterizada por altos niveles de glucosa en la sangre debido a una deficiencia o resistencia a la insulina, lo que puede causar complicaciones graves, como el pie diabético",
         icon: "",
       },
       {
