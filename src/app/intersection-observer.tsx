@@ -61,7 +61,7 @@ export default function Observer() {
     });
 
     return () => observer.disconnect();
-  }, [pathName === "/"]);
+  }, [pathName === "/", pathName === "/tratamientos"]);
 
   return <></>;
 }
