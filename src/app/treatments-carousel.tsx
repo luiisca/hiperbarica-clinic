@@ -15,7 +15,7 @@ const treatmentsCopy = [
     url: "/blog/pie-diabetico",
     description:
       "El pie diabético puede provocar lesiones graves y, en algunos casos, llevar a la amputación. La terapia de oxígeno hiperbárico puede mejorar la circulación sanguínea y de oxígeno para acelerar la curación de las úlceras y prevenir la amputación",
-    img: "/treatments/diabetes.jpg",
+    img: "/treatments/pie-diabetico.jpg",
   },
   {
     title: "Heridas y Quemaduras",
@@ -26,14 +26,14 @@ const treatmentsCopy = [
   },
   {
     title: "Lesiones Deportivas",
-    url: "",
+    url: "/blog/lesiones-musculares",
     description:
-      "¿Lesiones deportivas dolorosas? ¿Tiempo de recuperación prolongado? La terapia de oxígeno hiperbárico puede acelerar la recuperación y permitir el retorno a la acción más rápido. Además, también puede ser útil para las lesiones de tejidos blandos.",
-    img: "/treatments/deporte.jpg",
+      "¿Lesiones deportivas dolorosas? ¿Tiempo de recuperación prolongado? La terapia de oxígeno hiperbárico puede acelerar la recuperación y permitir el retorno a la acción más rápido.",
+    img: "/treatments/lesiones-musculares.jpg",
   },
   {
     title: "Fatiga Crónica",
-    url: "",
+    url: "/blog/fatiga",
     description:
       "¿Sufres de fatiga crónica? La terapia de oxígeno hiperbárico puede ayudarte a reducir la fatiga y aumentar tus niveles de energía",
     img: "/treatments/fatiga.jpg",

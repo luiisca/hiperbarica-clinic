@@ -137,10 +137,19 @@ export const treatments = {
     diseases: [
       {
         title: "Parálisis cerebral",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/paralisis-cerebral",
+        image: "/blog/paralisis-cerebral/og.jpg",
+        description:
+          "Parálisis cerebral es una condición que afecta al sistema nervioso y causa problemas de movimiento y postura. Es causada por daño en el cerebro durante el desarrollo, a menudo antes del nacimiento",
         icon: "",
+      },
+      {
+        title: "Trastorno del espectro autista (TEA)",
+        url: "/blog/autismo",
+        image: "/blog/autismo/og.jpg",
+        description:
+          "Los Trastornos del Espectro Autista (TEA) son trastornos del desarrollo caracterizados por dificultades en la interacción social, comunicación y comportamiento. Los afecta de diferentes maneras y puede variar desde leve hasta grave",
+        icon: "blocks.png",
       },
       {
         title: "Migraña",
@@ -192,9 +201,18 @@ export const treatments = {
     diseases: [
       {
         title: "Lesiones musculares",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/lesiones-musculares",
+        image: "/blog/lesiones-musculares/og.jpg",
+        description:
+          "Las lesiones musculares son comunes en los deportistas y pueden ir desde pequeñas roturas de fibras hasta desgarros y contracturas más graves. El uso de terapia con oxígeno hiperbárico (TOHB) puede acelerar el proceso de curación.",
+        icon: "",
+      },
+      {
+        title: "Síndrome de fatiga aguda y cronica",
+        url: "/blog/fatiga",
+        image: "/blog/fatiga/og.jpg",
+        description:
+          "El Síndrome de Fatiga Crónica (SFC) es una condición crónica que se caracteriza por un cansancio persistente y debilitante que no mejora con el descanso. Puede causar otros síntomas como dolor muscular, problemas de sueño y dificultades cognitivas",
         icon: "",
       },
       {
@@ -211,16 +229,18 @@ export const treatments = {
     diseases: [
       {
         title: "Problemas de cicatrización en heridas",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/cicatrizacion",
+        image: "/blog/cicatrizacion/og.jpg",
+        description:
+          "La terapia con oxígeno hiperbárico (TOHB) es un tratamiento altamente efectivo para acelerar la cicatrización de heridas. La terapia reduce el dolor y la inflamación, previene complicaciones graves y potencia el efecto de otros tratamientos.",
         icon: "",
       },
       {
         title: "Infecciones necrotizantes de tejidos blandos",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/infecciones-necrotizantes",
+        image: "/blog/infecciones-necrotizantes/og.jpg",
+        description:
+          "Infecciones Necrotizantes de Tejidos Blandos (INTB) es una grave infección bacteriana que ataca los tejidos blandos. Puede causar daño tisular, inflamación e incluso necrosis",
         icon: "",
       },
     ],
@@ -230,9 +250,10 @@ export const treatments = {
     diseases: [
       {
         title: "Oclusión de arteria central de la retina",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/OACR",
+        image: "/blog/OACR/og.jpg",
+        description:
+          "Una obstrucción súbita en la circulación sanguínea de la retina que puede resultar en pérdida de visión irreversible. La terapia con oxígeno hiperbárico (TOHB) puede mejorar el pronóstico visual de los pacientes con OACR",
         icon: "",
       },
     ],
@@ -258,13 +279,6 @@ export const treatments = {
         image: "/blog/pie-diabetico/og.jpg",
         description: "",
         icon: "blood.png",
-      },
-      {
-        title: "Neurología infantil",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
-        icon: "blocks.png",
       },
       {
         title: "Intoxicación por gases toxicos",
