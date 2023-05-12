@@ -63,7 +63,8 @@ const Hero = () => {
           )}
         >
           <Image
-            src="/hero.png"
+            src="/hero.webp"
+            priority={true}
             alt="mujer acostada dentro de una cámara hiperbárica"
             fill
             sizes="100vw"
