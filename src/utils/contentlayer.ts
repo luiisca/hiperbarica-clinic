@@ -54,30 +54,34 @@ export const treatments = {
       },
       {
         title: "Fibromialgia",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/fibromalgia",
+        image: "/blog/fibromalgia/og.webp",
+        description:
+          "La fibromialgia es un síndrome de dolor crónico que afecta a millones de personas en todo el mundo. Aunque su causa es desconocida, se cree que está relacionada con alteraciones en las vías del procesamiento del dolor en el cerebro",
         icon: "",
       },
       {
         title: "Vasculitis",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/vasculitis",
+        image: "/blog/vasculitis/og.webp",
+        description:
+          "La vasculitis es una afección en la que el sistema inmunológico del cuerpo ataca y daña los vasos sanguíneos, lo que puede causar síntomas como fiebre, fatiga, dolor en las articulaciones y erupciones en la piel",
         icon: "",
       },
       {
         title: "Esclerodermia",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/esclerodermia",
+        image: "/blog/esclerodermia/og.webp",
+        description:
+          "La esclerodermia es una enfermedad autoinmune crónica que afecta la piel y otros órganos del cuerpo. Causa endurecimiento y engrosamiento de la piel y puede provocar complicaciones como dolor articular, dificultad para tragar y problemas pulmonares",
         icon: "",
       },
       {
         title: "Artritis",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/artritis",
+        image: "/blog/artritis/og.webp",
+        description:
+          "La artritis reumatoide es una enfermedad inflamatoria crónica que causa dolor, hinchazón, rigidez y pérdida de movilidad en las articulaciones",
         icon: "",
       },
     ],
@@ -87,9 +91,10 @@ export const treatments = {
     diseases: [
       {
         title: "Lesiones por radioterapia",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/lesiones-por-radioterapia",
+        image: "/blog/lesiones-por-radioterapia/og.webp",
+        description:
+          "Las lesiones de tejidos inducidas por la radiación son condiciones crónicas y dolorosas que resultan de la radioterapia utilizada para tratar el cáncer. Estas lesiones pueden ocurrir en varias partes del cuerpo y pueden ser debilitantes",
         icon: "",
       },
     ],
@@ -113,9 +118,10 @@ export const treatments = {
       },
       {
         title: "heridas post-quirúrgicas",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/heridas-post-quirurgicas",
+        image: "/blog/heridas-post-quirurgicas/og.webp",
+        description:
+          "Las heridas postoperatorias pueden ser complicadas y difíciles de curar, especialmente en pacientes con factores de riesgo como diabetes, mala circulación, tabaquismo, obesidad o radioterapia",
         icon: "",
       },
     ],
@@ -150,6 +156,14 @@ export const treatments = {
         description:
           "Los Trastornos del Espectro Autista (TEA) son trastornos del desarrollo caracterizados por dificultades en la interacción social, comunicación y comportamiento. Los afecta de diferentes maneras y puede variar desde leve hasta grave",
         icon: "blocks.png",
+      },
+      {
+        title: "Neurología infantil",
+        url: "/blog/neurologia-infantil",
+        image: "/blog/neurologia-infantil/og.webp",
+        description:
+          "La terapia con oxígeno hiperbárico (TOHB) puede beneficiar a niños con condiciones neurológicas como la parálisis cerebral, el síndrome post-conmoción cerebral, el autismo y el TDAH. Los estudios actuales sugieren que el TOHB puede mejorar la función cognitiva, la espasticidad muscular y la calidad de vida en general",
+        icon: "",
       },
       {
         title: "Migraña",
@@ -263,9 +277,10 @@ export const treatments = {
     diseases: [
       {
         title: "Íleo paralítico",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/ileo-paralitico",
+        image: "/blog/ileo-paralitico/og.webp",
+        description:
+          "Íleo paralítico postoperatorio y obstrucción intestinal son dos condiciones que pueden ocurrir después de una cirugía abdominal y afectar la actividad normal del intestino. La terapia con oxígeno hiperbárico (TOHB) es un tratamiento seguro y efectivo para aliviar estos síntomas",
         icon: "",
       },
     ],
@@ -275,9 +290,10 @@ export const treatments = {
     diseases: [
       {
         title: "Anemia de difícil tratamiento",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/anemia",
+        image: "/blog/anemia/og.webp",
+        description:
+          "La anemia es una condición en la que el cuerpo carece de suficientes glóbulos rojos para transportar oxígeno adecuado a los tejidos. Puede causar fatiga, debilidad y falta de aire, entre otros síntomas",
         icon: "blood.png",
       },
       {
@@ -297,16 +313,18 @@ export const treatments = {
       },
       {
         title: "Fertilidad",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/fertilidad",
+        image: "/blog/fertilidad/og.webp",
+        description:
+          "La infertilidad es una condición médica que afecta a un número significativo de parejas en todo el mundo. Se caracteriza por la incapacidad de concebir después de un año de relaciones sexuales sin protección",
         icon: "mother.png",
       },
       {
         title: "Antienjecimiento",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/antienvejecimiento",
+        image: "/blog/antienvejecimiento/og.webp",
+        description:
+          "La terapia con oxígeno hiperbárico (TOHB) ha demostrado tener implicaciones terapéuticas en el envejecimiento saludable y la prevención de enfermedades relacionadas con la edad",
         icon: "hourglass.png",
       },
     ],
