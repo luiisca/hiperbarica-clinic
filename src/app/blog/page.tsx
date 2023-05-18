@@ -26,7 +26,7 @@ export default function BlogPage() {
       {/* carousel  */}
       <div className="mb-20 mt-8 md:mt-14">
         <Heading type="subHeading">Lo ultimo</Heading>
-        <Carousel content={latestPosts} />
+        <Carousel content={latestPosts.slice(0, 5)} />
       </div>
       <Separator className="mb-20" />
 
