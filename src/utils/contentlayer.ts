@@ -26,9 +26,10 @@ export const treatments = {
     diseases: [
       {
         title: "Fracturas",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/trauma-extremidades-inferiores",
+        image: "/blog/trauma-extremidades-inferiores/og.webp",
+        description:
+          "Trauma de extremidad inferior es una lesión común que puede afectar a los tejidos blandos, los huesos y las estructuras neurovasculares de la pierna o el pie. Puede causar complicaciones como necrosis, infección, cicatrización deficiente o amputación",
         icon: "",
       },
       {
@@ -102,18 +103,19 @@ export const treatments = {
   heridas: {
     icon: "bandage.png",
     diseases: [
-      {
-        title: "Úlcera",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
-        icon: "",
-      },
+      // {
+      //   title: "Úlcera",
+      //   url: "#",
+      //   image: "/blog/pie-diabetico/og.jpg",
+      //   description: "",
+      //   icon: "",
+      // },
       {
         title: "Quemaduras",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/quemaduras",
+        image: "/blog/quemaduras/og.webp",
+        description:
+          "Las quemaduras térmicas son lesiones graves que requieren un tratamiento adecuado para evitar complicaciones y cicatrices. La Terapia con Oxígeno Hiperbárico (TOHB) puede ser una herramienta valiosa en el tratamiento de quemaduras térmicas",
         icon: "",
       },
       {
@@ -131,9 +133,10 @@ export const treatments = {
     diseases: [
       {
         title: "Sordera súbita",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/sordera-subita",
+        image: "/blog/sordera-subita/og.webp",
+        description:
+          "La sordera súbita es una pérdida rápida de la audición que puede ocurrir sin una causa obvia. La mayoría de los casos son unilaterales y pueden ir acompañados de otros síntomas como acúfenos, vértigo o sensación de presión en el oído",
         icon: "",
       },
     ],
@@ -167,9 +170,10 @@ export const treatments = {
       },
       {
         title: "Migraña",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/migrana",
+        image: "/blog/migrana/og.webp",
+        description:
+          "La migraña es un trastorno neurológico que causa dolores de cabeza intensos y una serie de otros síntomas",
         icon: "",
       },
       {
@@ -180,32 +184,35 @@ export const treatments = {
           "Aprenda cómo la oxigenoterapia hiperbárica puede ayudarlo a recuperarse de las secuelas del ictus. Esta enfermedad es una repentina interrupción del flujo sanguíneo al cerebro que puede causar daños duraderos en las habilidades cognitivas y motoras",
         icon: "",
       },
-      {
-        title: "Esclerosis Múltiple",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
-        icon: "",
-      },
+      // {
+      //   title: "Esclerosis Múltiple",
+      //   url: "#",
+      //   image: "/blog/pie-diabetico/og.jpg",
+      //   description: "",
+      //   icon: "",
+      // },
       {
         title: "Alzheimer",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/alzheimer",
+        image: "/blog/alzheimer/og.webp",
+        description:
+          "El Alzheimer es una enfermedad grave que afecta al cerebro y causa problemas de memoria y cognición",
         icon: "",
       },
       {
         title: "Lesiones de la médula espinal",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/lesiones-de-medula-espinal",
+        image: "/blog/lesiones-de-medula-espinal/og.webp",
+        description:
+          "Lesión de la médula espinal es una condición que afecta la capacidad de transmitir señales nerviosas entre el cerebro y el resto del cuerpo. Puede provocar pérdida de sensibilidad, movilidad, control de funciones corporales e incluso funciones sexuales dependiendo de la gravedad y el nivel de la lesión",
         icon: "",
       },
       {
         title: "Parkinson",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/parkinson",
+        image: "/blog/parkinson/og.webp",
+        description:
+          "La enfermedad de Parkinson es un trastorno neurodegenerativo que afecta el movimiento. Es causada por la pérdida de neuronas productoras de dopamina en el cerebro. Los síntomas incluyen temblores, rigidez y problemas de equilibrio y coordinación",
         icon: "",
       },
     ],
@@ -229,13 +236,13 @@ export const treatments = {
           "El Síndrome de Fatiga Crónica (SFC) es una condición crónica que se caracteriza por un cansancio persistente y debilitante que no mejora con el descanso. Puede causar otros síntomas como dolor muscular, problemas de sueño y dificultades cognitivas",
         icon: "",
       },
-      {
-        title: "Recuperación post-ejercicio",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
-        icon: "",
-      },
+      // {
+      //   title: "Recuperación post-ejercicio",
+      //   url: "#",
+      //   image: "/blog/pie-diabetico/og.jpg",
+      //   description: "",
+      //   icon: "",
+      // },
     ],
   },
   dermatología: {
@@ -306,9 +313,10 @@ export const treatments = {
       },
       {
         title: "Procesos infecciosos",
-        url: "#",
-        image: "/blog/pie-diabetico/og.jpg",
-        description: "",
+        url: "/blog/procesos-infecciosos",
+        image: "/blog/procesos-infecciosos/og.webp",
+        description:
+          "La oxigenoterapia hiperbárica (TOHB) es un tratamiento que puede ayudar a tratar infecciones y estimular el sistema inmunológico. Se puede usar para tratar diferentes tipos de infecciones, como úlceras diabéticas, osteomielitis crónica refractaria, lesiones por radiación y gangrena gaseosa",
         icon: "virus.png",
       },
       {

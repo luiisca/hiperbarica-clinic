@@ -5,18 +5,14 @@ const directoryPath = "./";
 const targetPath = "../";
 
 const elements = [
-  // "vasculitis",
-  // "lesiones-por-radioterapia",
-  // "antienvejecimiento",
-  "fertilidad",
-  "neurologia-infantil",
-  "ileo-paralitico",
-  "anemia",
-  "artritis",
-  // "heridas",
-  "heridas-post-quirurgicas",
-  "esclerodermia",
-  "fibromalgia",
+  "trauma-extremidades-inferiores",
+  "quemaduras",
+  "sordera-subita",
+  "migrana",
+  "alzheimer",
+  "lesiones-de-medula-espinal",
+  "parkinson",
+  "procesos-infecciosos",
 ];
 
 elements.forEach((element, index) => {
@@ -25,7 +21,7 @@ elements.forEach((element, index) => {
   fs.mkdirSync(elementPath);
 
   // Get the image file with name index + 1
-  const imageFile = `${index + 4}.webp`;
+  const imageFile = `${index + 1}.webp`;
 
   // Move the image file to the new directory and rename it to 'og.jpg'
   fs.renameSync(

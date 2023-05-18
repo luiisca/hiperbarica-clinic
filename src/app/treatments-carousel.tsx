@@ -19,10 +19,10 @@ const treatmentsCopy = [
   },
   {
     title: "Heridas y Quemaduras",
-    url: "",
+    url: "/blog/quemaduras",
     description:
       "La terapia de oxígeno hiperbárico puede ayudarte a curar heridas y quemaduras crónicas de forma efectiva y reducir el riesgo de infección",
-    img: "/treatments/herida.jpg",
+    img: "/blog/quemaduras/og.webp",
   },
   {
     title: "Lesiones Deportivas",

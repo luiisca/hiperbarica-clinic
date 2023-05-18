@@ -1,18 +1,14 @@
 import * as fs from "fs";
 
 const elements = [
-  "vasculitis",
-  "lesiones-por-radioterapia",
-  "antienvejecimiento",
-  "fertilidad",
-  "neurologia-infantil",
-  "ileo-paralitico",
-  "anemia",
-  "artritis",
-  // "heridas",
-  "heridas-post-quirurgicas",
-  "esclerodermia",
-  "fibromalgia",
+  "trauma-extremidades-inferiores",
+  "quemaduras",
+  "sordera-subita",
+  "migrana",
+  "alzheimer",
+  "lesiones-de-medula-espinal",
+  "parkinson",
+  "procesos-infecciosos",
 ];
 
 elements.forEach((element) => {
