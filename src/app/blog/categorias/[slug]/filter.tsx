@@ -33,6 +33,7 @@ export default function Filter({ ...props }: TabsProps) {
             className="max-blog-lg:hidden"
             tabIndex={-1}
             key={i}
+            asChild
           >
             <Link href={`/blog/categorias/${category}`}>
               {capitalize(category)}
