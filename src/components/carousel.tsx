@@ -51,7 +51,9 @@ export default function BaseCarousel<T>({
   dotClasses?: Partial<{ list: string; dot: string }>;
   children: (copy: T) => React.ReactNode;
   slidesCopy: Array<T>;
-  onSwiperFn?: (swiper: SwiperType) => void;
+  onSwiperFn?: (
+    swiper: SwiperType
+  ) => void | React.Dispatch<React.SetStateAction<null>>;
 }) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [swiperReady, setSwiperReady] = useState(false);
@@ -70,7 +72,7 @@ export default function BaseCarousel<T>({
           dotClasses?.list,
           dotClasses?.dot
         )}
-        modules={[Navigation, Pagination, A11y]}
+        modules={[Navigation, Pagination, A11y, ...(props.modules || [])]}
         pagination={{
           enabled: !!props.pagination,
           clickable: true,

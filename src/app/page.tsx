@@ -19,6 +19,7 @@ import CountUp from "./countup";
 import TreatmentsCarousel from "./treatments-carousel";
 import ArticlesCarousel from "./articles-carousel";
 import Cta from "./cta";
+import HeroCarousel from "./hero-carousel";
 
 const Container = ({
   className,
@@ -33,46 +34,8 @@ const Container = ({
 
 const Hero = () => {
   return (
-    <section className="-mt-32 w-full bg-primary-100 pt-32">
-      <Container className="flex flex-col-reverse items-center justify-items-end text-center max-xl:pt-0 xl:flex-row xl:space-x-12 xl:text-left 2xl:max-w-screen-2xl">
-        <div
-          className={cn(
-            "xl:w-2/5 2xl:w-1/2",
-            "animate-in fade-in slide-in-from-bottom-16 duration-1000"
-          )}
-        >
-          <Heading>
-            Experimenta la tecnología de última generación en terapias
-            hiperbáricas
-          </Heading>
-          <p className="mb-12 max-w-[50ch] max-xl:mx-auto xl:mr-6">
-            Obtén un diagnóstico personalizado y un tratamiento eficaz con
-            Hiperbárica del sur Perú.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
-            <Button href="/citas">Agendar cita</Button>
-            <Button color="outline" href="/#certificaciones" nativeAnchor>
-              Más información ↓
-            </Button>
-          </div>
-        </div>
-        <div
-          className={cn(
-            "relative h-80 w-full max-w-2xl py-8 max-xl:mb-16 max-xl:pr-12 sm:h-[28rem] xl:h-[40rem] xl:w-3/5 2xl:w-1/2",
-            "animate-in fade-in slide-in-from-right-32 duration-1000"
-          )}
-        >
-          <Image
-            src="/hero.webp"
-            priority={true}
-            alt="mujer acostada dentro de una cámara hiperbárica"
-            fill
-            sizes="100vw"
-            className="relative z-10 object-contain"
-          />
-          <SquircleShape className="absolute left-[10%] top-[5%] z-0 h-[90%] w-4/5 md:left-[15%] xl:w-[90%]" />
-        </div>
-      </Container>
+    <section className="relative -mt-32 w-full bg-primary-100 pt-32">
+      <HeroCarousel />
     </section>
   );
 };
@@ -234,7 +197,7 @@ const benefitsCopy = [
 
 const Benefits = () => {
   return (
-    <section className="w-full">
+    <section className="w-full" id="beneficios">
       <Container className="max-w-screen-2xl">
         <div
           id="benefits"
