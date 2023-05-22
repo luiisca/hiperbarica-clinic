@@ -18,6 +18,7 @@ import { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
 import Observer from "./intersection-observer";
+import Bot from "@/components/bot";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -357,6 +358,7 @@ export default function RootLayout({
           <Analytics />
         </main>
         <Footer />
+        <Bot />
       </body>
     </html>
   );
