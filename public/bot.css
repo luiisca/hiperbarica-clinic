@@ -25,11 +25,18 @@
 /* Floating Button */
 .bpw-floating-button {
   border-radius: 100%;
-  background-color: #3f9cf5;
+  width: 3.5rem;
+  height: 3.5rem;
+  position: fixed;
+  box-shadow: none;
+  bottom: 0;
+  right: 0;
+  background-color: #74c0fc;
 }
 
-.bpw-floating-button:hover {
-  background-color: #398cdd;
+.bpw-floating-button:hover,
+.bpw-floating-button:focus {
+  background-color: #3f9cf5;
 }
 
 .bpw-floating-button .bpw-floating-button-unread {

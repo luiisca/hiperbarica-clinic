@@ -13,13 +13,13 @@ import {
   PHONE,
   WEB_URL,
 } from "@/utils/constants";
-import WhatsApp from "./whatsapp";
 import { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
 import Observer from "./intersection-observer";
 import Bot from "@/components/bot";
-import WhatsAppLink from "./WhatsAppLink";
+import WhatsAppLink from "./whatsAppLink";
+import ToTopBttn from "./toTopBttn";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -284,7 +284,7 @@ function Footer() {
             <a href={FB_PAGE} target="_blank" className="hover:text-[#9e9e9d] ">
               <BsFacebook />
             </a>
-            <WhatsApp className="hover:text-[#9e9e9d]" />
+            <WhatsAppLink className="hover:text-[#9e9e9d]" />
           </div>
         </div>
         <div className="flex w-full flex-col gap-12 sm:flex-row">
@@ -360,6 +360,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppLink />
+        <ToTopBttn />
         <Bot />
       </body>
     </html>

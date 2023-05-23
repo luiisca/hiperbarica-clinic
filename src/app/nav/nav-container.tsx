@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/core/button";
 import { Separator } from "@/components/ui/separator";
 import { Cross as CrossHamburger } from "hamburger-react";
 import { WEB_URL } from "@/utils/constants";
+import { useScrollVisibility } from "@/hooks/useScrollVisibility";
 
 const navItems = [
   {
@@ -79,29 +80,13 @@ function Overlay({
 export default function NavContainer(
   props: React.HTMLAttributes<HTMLDivElement>
 ) {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState<boolean | null>(null);
   const [hamburgerOpen, setHamburgerOpen] = useState<boolean | undefined>(
     undefined
   );
-
-  const handleScroll = () => {
-    const currentScrollPos = window.scrollY;
-    if (currentScrollPos > prevScrollPos) {
-      setVisible(false);
+  const visible = useScrollVisibility({
+    onScrollDown: () => {
       hamburgerOpen && setHamburgerOpen(false);
-    } else {
-      setVisible(true);
-    }
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    },
   });
 
   return (
