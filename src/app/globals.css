@@ -133,7 +133,7 @@ table {
 }
 @media (min-width: 768px) {
   #bp-web-widget-container .bp-widget-web {
-    width: 408px;
+    width: 508px;
   }
   #bp-web-widget-container .bp-widget-web .bpw-layout {
     margin: 1rem 1.5rem;
