@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
 import Observer from "./intersection-observer";
 import Bot from "@/components/bot";
+import WhatsAppLink from "./WhatsAppLink";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -358,6 +359,7 @@ export default function RootLayout({
           <Analytics />
         </main>
         <Footer />
+        <WhatsAppLink />
         <Bot />
       </body>
     </html>
