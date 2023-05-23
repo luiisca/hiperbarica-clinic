@@ -17,7 +17,6 @@ function Bot() {
         stylesheet: "https://hiperbaricadelsurperu.com/bot.css",
         botName: "Hiperbárica Bot",
         avatarUrl: "https://hiperbaricadelsurperu.com/logo.svg",
-        // coverPictureUrl: "https://hiperbaricadelsurperu.com/og.png",
         botConversationDescription:
           "¡Hola! Soy un bot de Hiperbárica del Sur Perú y estoy aquí para ayudarlo a navegar por nuestro sitio web y responder cualquier pregunta que pueda tener. Si no tengo una respuesta a su pregunta, le recomendaré que hable con uno de nuestros especialistas a través de una cita o por Whatsapp. ¡No dude en hacerme cualquier pregunta que pueda tener!",
         phoneNumber: "+51992569407",
@@ -26,7 +25,6 @@ function Bot() {
         showBotInfoPage: true,
         enableConversationDeletion: true,
         showConversationsButton: false,
-        closeOnEscape: true,
         enableTranscriptDownload: false,
       });
     };
@@ -37,7 +35,7 @@ function Bot() {
     };
   }, []);
 
-  return <div></div>;
+  return <></>;
 }
 
 export default Bot;
