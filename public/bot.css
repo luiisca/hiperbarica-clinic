@@ -122,12 +122,12 @@
 .bpw-from-bot .bpw-chat-bubble .bpw-chat-bubble-content {
   border-radius: 9px;
   color: #fff;
-  background-color: var(--primary-400);
+  background-color: var(--primary-500);
 }
 .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
   border-radius: 9px;
   color: #fff;
-  background-color: var(--primary-500);
+  background-color: var(--primary-400);
 }
 
 /* Keyboard */

@@ -126,6 +126,8 @@ table {
 
 #bp-web-widget-container .bp-widget-web {
   width: 100%;
+}
+#bp-web-widget-container .bp-widget-widget {
   right: 1.5rem;
   bottom: 1.5rem;
 }
