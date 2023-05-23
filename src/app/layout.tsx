@@ -361,7 +361,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppLink />
         <ToTopBttn />
-        <Bot />
+        {/* <Bot /> */}
       </body>
     </html>
   );
