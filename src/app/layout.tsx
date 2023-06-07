@@ -2,7 +2,6 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Lora } from "next/font/google";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 import {
@@ -20,13 +19,15 @@ import Observer from "./intersection-observer";
 import Bot from "@/components/bot";
 import WhatsAppLink from "./whatsAppLink";
 import ToTopBttn from "./toTopBttn";
+import localFont from 'next/font/local';
+import Test from "@/components/test";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../public/fonts/Inter/Inter-VariableFont_slnt,wght.ttf",
   variable: "--inter-font",
 });
-const lora = Lora({
-  subsets: ["latin"],
+const lora = localFont({
+  src: "../../public/fonts/Lora/Lora-VariableFont_wght.ttf",
   variable: "--lora-font",
 });
 
@@ -253,20 +254,22 @@ function Nav() {
         <ul className="flex list-none items-center max-lg:hidden">
           {navItems.map((item, i) => (
             <li key={i}>
-              <Button
-                href={item.href}
-                className={cn(
-                  "bg-transparent text-base text-gray-500 hover:bg-transparent hover:text-primary-600 max-xl:px-4",
-                  "focus-visible:text-primary-600"
-                )}
-                nativeAnchor={item.href.includes("#")}
-              >
-                {item.name}
-              </Button>
+              {/* <Button */}
+              {/*   href={item.href} */}
+              {/*   className={cn( */}
+              {/*     "bg-transparent text-base text-gray-500 hover:bg-transparent hover:text-primary-600 max-xl:px-4", */}
+              {/*     "focus-visible:text-primary-600" */}
+              {/*   )} */}
+              {/*   nativeAnchor={item.href.includes("#")} */}
+              {/* > */}
+              {/*   {item.name} */}
+              {/* </Button> */}
+              {item.name}
             </li>
           ))}
           <li className="ml-4">
-            <Button href="/citas">Agendar cita</Button>
+            {/* <Button href="/citas">Agendar cita</Button> */}
+            Agendar cita
           </li>
         </ul>
       </nav>
@@ -361,7 +364,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppLink />
         <ToTopBttn />
-        {/* <Bot /> */}
+        <Bot />
       </body>
     </html>
   );

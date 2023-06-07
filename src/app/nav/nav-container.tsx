@@ -137,25 +137,27 @@ export default function NavContainer(
           >
             {navItems.map((item, i) => (
               <li key={i} onClick={() => setHamburgerOpen(false)}>
-                <Button
-                  href={item.href}
-                  tabIndex={!hamburgerOpen ? -1 : 0}
-                  className={cn(
-                    "relative w-full justify-start bg-transparent px-12 py-8 text-base text-gray-500 transition-all hover:bg-transparent hover:text-primary-600",
-                    "focus-visible:text-primary-600",
-                    i === 0 ? "pt-8" : "pt-0"
-                  )}
-                  nativeAnchor={item.href.includes("#")}
-                >
-                  {item.name}
-                </Button>
+                {item.name}
+                {/* <Button */}
+                {/*   href={item.href} */}
+                {/*   tabIndex={!hamburgerOpen ? -1 : 0} */}
+                {/*   className={cn( */}
+                {/*     "relative w-full justify-start bg-transparent px-12 py-8 text-base text-gray-500 transition-all hover:bg-transparent hover:text-primary-600", */}
+                {/*     "focus-visible:text-primary-600", */}
+                {/*     i === 0 ? "pt-8" : "pt-0" */}
+                {/*   )} */}
+                {/*   nativeAnchor={item.href.includes("#")} */}
+                {/* > */}
+                {/*   {item.name} */}
+                {/* </Button> */}
               </li>
             ))}
             <Separator className="mx-auto mb-8 w-[calc(100%-4rem)]" />
             <li className="ml-12" onClick={() => setHamburgerOpen(false)}>
-              <Button href="/citas" tabIndex={!hamburgerOpen ? -1 : 0}>
+              {/* <Button href="/citas" tabIndex={!hamburgerOpen ? -1 : 0}> */}
+              {/*   Agendar cita */}
+              {/* </Button> */}
                 Agendar cita
-              </Button>
             </li>
           </ul>
         </nav>

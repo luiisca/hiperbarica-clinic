@@ -501,13 +501,13 @@ export default function HomePage() {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <Hero />
+      {/* <Hero /> */}
       <Certificates />
-      <Treatments />
-      <Benefits />
+      {/* <Treatments /> */}
+      {/* <Benefits /> */}
       <Process />
       <Cta />
-      <Articles />
+      {/* <Articles /> */}
       <Faq />
     </>
   );

@@ -7,7 +7,7 @@ export const config = {
 };
 
 const font = fetch(
-  new URL("../../../public/fonts/static/Lora-Medium.ttf", import.meta.url)
+  new URL("../../../public/fonts/Lora/Lora-VariableFont_wght.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
