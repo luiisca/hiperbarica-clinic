@@ -20,6 +20,7 @@ import TreatmentsCarousel from "./treatments-carousel";
 import ArticlesCarousel from "./articles-carousel";
 import Cta from "./cta";
 import HeroCarousel from "./hero-carousel";
+import { allBlogs } from "contentlayer/generated";
 
 const Container = ({
   className,
@@ -342,7 +343,7 @@ const Process = () => {
                   sizes="50vw"
                   className="object-contain object-center"
                   style={{
-                    height: "auto",
+                    height: "100%",
                     width: "100%",
                   }}
                 />
@@ -373,6 +374,13 @@ const Process = () => {
 };
 
 function Articles() {
+  const latestPosts = allBlogs.sort((a, b) => {
+    if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+      return -1;
+    }
+    return 1;
+  });
+
   return (
     <section className="w-full">
       <Container className="relative flex flex-col space-y-10 md:grid md:grid-cols-[37.5%_62.5%] md:items-end md:gap-4 blog-lg:grid-cols-[35%_65%]">
@@ -389,7 +397,7 @@ function Articles() {
             Ver todos
           </Button>
         </div>
-        <ArticlesCarousel />
+        <ArticlesCarousel content={latestPosts} />
       </Container>
     </section>
   );
@@ -501,13 +509,13 @@ export default function HomePage() {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      {/* <Hero /> */}
+      <Hero />
       <Certificates />
-      {/* <Treatments /> */}
-      {/* <Benefits /> */}
+      <Treatments />
+      <Benefits />
       <Process />
       <Cta />
-      {/* <Articles /> */}
+      <Articles />
       <Faq />
     </>
   );

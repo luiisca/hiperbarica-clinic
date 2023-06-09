@@ -16,7 +16,7 @@ export default function Post({ post }: { post: Blog }) {
       {/* image */}
       <div
         className={cn(
-          "relative h-[clamp(250px,_25vh,_600px)] overflow-hidden rounded-md"
+          "relative min-h-[250px] h-[25vh] max-h-[600px] overflow-hidden rounded-md"
         )}
       >
         <Image

@@ -1,7 +1,7 @@
 import Heading from "@/components/ui/core/heading";
 import { cn } from "@/utils/cn";
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Filter from "./filter";
 
 export const metadata: Metadata = {

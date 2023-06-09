@@ -2,10 +2,10 @@
 
 import React, { useRef, useState } from "react";
 import { cn } from "@/utils/cn";
-import { Button, ButtonProps } from "./ui/core/button";
+import { Button, type ButtonProps } from "./ui/core/button";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
-import { Swiper, SwiperProps, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination, A11y, Swiper as SwiperType } from "swiper";
+import { Swiper, type SwiperProps, SwiperSlide, useSwiper } from "swiper/react";
+import { Navigation, Pagination, A11y, type Swiper as SwiperType } from "swiper";
 import "swiper/css/a11y";
 
 function Arrow({ ...props }: ButtonProps & { next?: boolean; prev?: boolean }) {

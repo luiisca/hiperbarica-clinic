@@ -3,9 +3,10 @@ import { cn } from "@/utils/cn";
 import { allBlogs } from "contentlayer/generated";
 import Heading from "@/components/ui/core/heading";
 import Carousel from "./carousel";
-import Filter from "./filter";
 import Aside from "./aside";
 import { Separator } from "@/components/ui/separator";
+import TabsContent from "./filter/tabs-content";
+import Filter from "./filter";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -36,7 +37,9 @@ export default function BlogPage() {
           "mb-24 blog-lg:mb-[7.5rem]"
         )}
       >
-        <Filter />
+        <Filter>
+          <TabsContent content={allBlogs}/>
+        </Filter>
         <Aside />
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TabsProps } from "@radix-ui/react-tabs";
+import type { TabsProps } from "@radix-ui/react-tabs";
 import { capitalize, categories } from "@/utils/contentlayer";
 import Link from "next/link";
 import {
@@ -11,7 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Content } from "../../filter";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -62,7 +61,7 @@ export default function Filter({ ...props }: TabsProps) {
           </Select>
         </div>
       </TabsList>
-      <Content />
+      {props.children}
     </Tabs>
   );
 }

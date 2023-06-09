@@ -48,7 +48,7 @@ function Post({
         )}
       />
       {/* images */}
-      <div className="relative !mt-0 h-[clamp(250px,_25vh,_400px)] w-full">
+      <div className="relative !mt-0 min-h-[250px] h-[25vh] max-h-[400px] w-full">
         <div className="relative h-full w-full overflow-hidden rounded-md">
           <Image
             src={(post.url !== "#" ? post.image : "/blog/default.jpg") || ""}

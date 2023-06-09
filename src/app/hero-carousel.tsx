@@ -79,8 +79,8 @@ function TextCarousel({
         arrowsClasses={{
           container:
             "pl-1 max-xl:absolute max-xl:left-0 max-xl:top-1/2 max-xl:-translate-y-1/2 w-full xl:space-x-3",
-          prev: "top-0 xl:relative translate-y-0 translate-x-0 max-md:h-8 max-md:w-8 max-md:p-1 left-2 md:left-4 xl:left-0",
-          next: "top-0 xl:relative translate-x-0 translate-y-0 max-md:h-8 max-md:w-8 max-md:p-1 right-2 md:right-4 xl:right-0",
+          prev: "top-0 xl:relative translate-y-0 translate-x-0 max-md:h-8 max-md:w-8 max-md:px-1 left-2 md:left-4 xl:left-0",
+          next: "top-0 xl:relative translate-x-0 translate-y-0 max-md:h-8 max-md:w-8 max-md:px-1 right-2 md:right-4 xl:right-0",
         }}
         onInit={() => {
           setTransitionEnd(true);
