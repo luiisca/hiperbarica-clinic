@@ -277,9 +277,9 @@ function Nav() {
 function Footer() {
   return (
     <section className="w-full bg-primary-100" id="footer">
-      <Container className="flex flex-col space-y-12 md:flex-row">
+      <Container className="flex flex-col max-md:space-y-12 md:space-x-12 md:flex-row">
         <div className="flex w-1/4 shrink-0 flex-col justify-start space-y-8">
-          <Logo className="flex-col lg:flex-row space-y-3 lg:space-x-3" />
+          <Logo className="flex-col lg:flex-row max-lg:space-y-3 lg:space-x-3" />
           <div className="flex space-x-6 text-2xl text-[#AFAFAE] md:text-[1.35rem]">
             <a href={FB_PAGE} target="_blank" className="hover:text-[#9e9e9d] ">
               <BsFacebook />
@@ -287,7 +287,7 @@ function Footer() {
             <WhatsAppLink className="hover:text-[#9e9e9d]" />
           </div>
         </div>
-        <div className="flex w-full flex-col space-y-12 sm:flex-row">
+        <div className="flex w-full flex-col max-sm:space-y-12 sm:space-x-12 sm:flex-row">
           <div className="w-1/2 shrink-0">
             <p className="mb-8 text-lg font-medium sm:mb-10">Contacto</p>
             <address className="text-base not-italic leading-[1.6]">
@@ -347,22 +347,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <html lang="es" className={cn(lora.variable, inter.variable)}>
-      <body className="flex flex-col items-center overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
-        <Observer />
-        <NavContainer>
-          <Nav />
-        </NavContainer>
-        <main className="relative z-0 w-full min-w-0">
-          {children}
-          <Analytics />
-        </main>
-        <Footer />
-        <WhatsAppLink />
-        <ToTopBttn />
-        <Bot />
-      </body>
-    </html>
-  );
+    return (
+      <html lang="es" className={cn(lora.variable, inter.variable)}>
+        <body className="overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
+          <Observer />
+          <NavContainer>
+            <Nav />
+          </NavContainer>
+          <main className="relative z-0 w-full min-w-0">
+            {children}
+            <Analytics />
+          </main>
+          <Footer />
+          <WhatsAppLink />
+          <ToTopBttn />
+          <Bot />
+        </body>
+      </html>
+    )
 }
