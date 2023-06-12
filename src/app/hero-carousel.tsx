@@ -186,7 +186,7 @@ export default function HeroCarousel() {
           progress={progress}
           setProgress={setProgress}
         />
-        <div className="flex flex-col items-center justify-center gap-4 mob-me:flex-row xl:justify-start">
+        <div className="flex flex-col items-center justify-center max-mob-me:space-y-4 mob-me:space-x-4 mob-me:flex-row xl:justify-start">
           <Button href="/citas">Agendar cita</Button>
           <Button
             color="outline"
