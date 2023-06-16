@@ -8,6 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/core/button";
 import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";
@@ -21,6 +22,22 @@ import ArticlesCarousel from "./articles-carousel";
 import Cta from "./cta";
 import HeroCarousel from "./hero-carousel";
 import { allBlogs } from "contentlayer/generated";
+import dynamic from "next/dynamic";
+
+const DynamicMap = dynamic(() => import("@/components/map"), {
+  loading: () => (
+    <div className="mx-auto h-[450px] w-full max-w-[900px] overflow-hidden rounded-2xl blog-lg:h-[500px]">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15600.817508002872!2d-76.9609675!3d-12.1664846!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9f8f2833d65%3A0xad490f379af13ee0!2sHiperb%C3%A1rica%20Del%20Sur!5e0!3m2!1sen!2spe!4v1687279341569!5m2!1sen!2spe"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        loading="lazy"
+      ></iframe>
+    </div>
+  ),
+  ssr: false,
+});
 
 const Container = ({
   className,
@@ -214,7 +231,7 @@ const Benefits = () => {
             rápido
           </Heading>
         </div>
-        <div className="mx-auto grid w-fit justify-center gap-8 2xl:space-x-8 sm:grid-cols-2 2xl:flex">
+        <div className="mx-auto grid w-fit justify-center gap-8 sm:grid-cols-2 2xl:flex 2xl:space-x-8">
           {benefitsCopy.map((copy, i) => (
             <div
               className="group relative flex max-w-xs flex-col rounded-md bg-primary-100 p-6"
@@ -373,6 +390,29 @@ const Process = () => {
   );
 };
 
+function Map() {
+  return (
+    <section className="w-full">
+      <Container className="pb-44 text-center">
+        <div
+          id="map"
+          data-intersect="false"
+          className={cn(
+            "mb-8 flex flex-col items-center",
+            "data-[intersect=false]:opacity-0 data-[intersect=true]:animate-in data-[intersect=true]:fade-in data-[intersect=true]:slide-in-from-bottom-16 data-[intersect=true]:duration-1000"
+          )}
+        >
+          <Heading type="subHeading">Ubicación</Heading>
+          <Heading type="secondary" className="max-w-xl">
+            Dónde encontrarnos?
+          </Heading>
+        </div>
+        <DynamicMap />
+      </Container>
+    </section>
+  );
+}
+
 function Articles() {
   const latestPosts = allBlogs.sort((a, b) => {
     if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
@@ -514,6 +554,7 @@ export default function HomePage() {
       <Treatments />
       <Benefits />
       <Process />
+      <Map />
       <Cta />
       <Articles />
       <Faq />

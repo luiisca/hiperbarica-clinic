@@ -8,6 +8,7 @@ const targetElementIds = [
   "treatments",
   "benefits",
   "process",
+  "map",
   ...Array.from({ length: 3 }).map((_, i) => `process-step-image-${i}`),
   ...Array.from({ length: 3 }).map((_, i) => `process-step-text-${i}`),
   "cta",
