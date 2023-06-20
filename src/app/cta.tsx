@@ -16,8 +16,8 @@ const Container = ({
 export default function Cta(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <section {...props} className={cn("w-full", props.className)}>
-      <Container className="p-0">
-        <div className="mx-auto w-11/12 rounded-3xl bg-primary-200 px-8 py-24 xl:w-full">
+      <Container className="px-8">
+        <div className="mx-auto w-11/12 rounded-3xl bg-primary-200 py-24 xl:w-full">
           <div
             id="cta"
             data-intersect="false"
