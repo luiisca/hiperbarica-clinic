@@ -157,10 +157,6 @@ const PlaceDetails = React.forwardRef<
     useState<google.maps.places.PlaceResult | null>(null);
   useEffect(() => {
     if (!placeDetails && mapState.mapInstance) {
-      console.log(
-        "📍ON_USEFFECT_PLACE_DETAILS: Map Instance",
-        mapState.mapInstance
-      );
       const service = new google.maps.places.PlacesService(
         mapState.mapInstance
       );
@@ -174,9 +170,7 @@ const PlaceDetails = React.forwardRef<
           results: google.maps.places.PlaceResult | null,
           status: google.maps.places.PlacesServiceStatus
         ) => {
-          console.log("📍ON_USEFFECT_PLACE_DETAILS: GOt results", results);
           if (status == google.maps.places.PlacesServiceStatus.OK) {
-            console.log("📍ON_USEFFECT_PLACE_DETAILS: GOt data", results);
             setPlaceDetails(results);
           }
         }
@@ -360,7 +354,7 @@ const PlaceDetails = React.forwardRef<
           )}
         </div>
       ) : (
-        <Skeleton className="h-full w-full">
+        <div className="h-full w-full">
           <Skeleton className="h-2/5 w-full" />
           <div className="flex flex-col space-y-6 px-4 py-3">
             {/* stars */}
@@ -372,10 +366,14 @@ const PlaceDetails = React.forwardRef<
             <div>
               <Separator className="mb-4" />
               <Skeleton className="mb-3 h-7 " />
+              <Skeleton className="mb-3 h-7 " />
               <Separator className="mt-4" />
             </div>
+            {/* photos */}
+            <Skeleton className="mb-1 h-7" />
+            <Skeleton className="h-56 w-full rounded-[9px] px-4" />
           </div>
-        </Skeleton>
+        </div>
       )}
     </animated.div>
   );
@@ -562,7 +560,6 @@ function Map() {
   });
 
   const storeMapInstance = useCallback((map: google.maps.Map) => {
-    console.log("🗺️ON_MAP_LOAD: Map Instance", map);
     dispatchMap({ type: "STORE_MAP_INSTANCE", map });
   }, []);
 
