@@ -18,6 +18,7 @@ const config = {
     appDir: true,
   },
   images: {
+    domains: ["hiperbaricadelsurperu.com"],
     remotePatterns: [
       {
         protocol: "http",
