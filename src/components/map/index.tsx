@@ -126,7 +126,7 @@ function Stars({ rating }: { rating: number }) {
   return (
     <div className="flex">
       {/* display whole stars */}
-      {[...new Array(Math.trunc(rating))].map((_, i) => (
+      {Array.from({ length: Math.trunc(rating) }, (_, i) => (
         <StarImage src={"/stars/star_rate.png"} key={i} />
       ))}
       {/* display star for decimal part */}
@@ -141,7 +141,7 @@ function Stars({ rating }: { rating: number }) {
       )}
       {/* display empty stars */}
       {MAX_STARS - (Math.trunc(rating) + 1) > 0 &&
-        [...new Array(MAX_STARS - (Math.trunc(rating) + 1))].map((_, i) => (
+        Array.from({ length: MAX_STARS - (Math.trunc(rating) + 1) }, (_, i) => (
           <StarImage src="/stars/star_rate_empty.png" key={i} />
         ))}
     </div>
