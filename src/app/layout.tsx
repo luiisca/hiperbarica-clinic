@@ -119,7 +119,7 @@ function Logo({ className }: { className?: string }) {
   return (
     <div className="relative">
       <Link href="/" className="absolute left-0 top-0 z-10 h-full w-full" />
-      <div className={cn("flex items-start ", className)}>
+      <div className={cn("flex items-start space-x-3", className)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="48"
@@ -243,12 +243,12 @@ function Nav() {
     <div className="px-6 py-4">
       <nav
         className={cn(
-          "flex h-24 w-full items-center justify-between rounded-lg bg-primary-300 px-8 ",
+          "flex h-16 w-full items-center justify-between rounded-lg bg-primary-300 px-4 md:h-24 md:px-8",
           "ring-1 ring-gray-100 ring-offset-0"
         )}
       >
         <div className="flex h-full items-center justify-between max-lg:w-full">
-          <Logo />
+          <Logo className="space-x-2 md:space-x-3" />
         </div>
         <ul className="flex list-none items-center max-lg:hidden">
           {navItems.map((item, i) => (
@@ -279,7 +279,7 @@ function Footer() {
     <section className="w-full bg-primary-100" id="footer">
       <Container className="flex flex-col max-md:space-y-12 md:flex-row md:space-x-12">
         <div className="flex w-1/4 shrink-0 flex-col justify-start space-y-8">
-          <Logo className="flex-col max-lg:space-y-3 lg:flex-row lg:space-x-3" />
+          <Logo className="flex-col max-lg:space-x-0 max-lg:space-y-3 lg:flex-row lg:space-x-3" />
           <div className="flex space-x-6 text-2xl text-[#AFAFAE] md:text-[1.35rem]">
             <a href={FB_PAGE} target="_blank" className="hover:text-[#9e9e9d] ">
               <BsFacebook />

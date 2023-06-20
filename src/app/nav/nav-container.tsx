@@ -35,9 +35,9 @@ function HamburgerMenu({
   setOpen: React.Dispatch<React.SetStateAction<boolean | undefined>>;
 }) {
   return (
-    <div className="absolute right-0 top-0 z-10 px-6 py-4 ">
+    <div className="absolute right-8 top-0 z-10 py-4 ">
       <Overlay hamburgerOpen={isOpen} setHamburgerOpen={setOpen} />
-      <div className="flex h-24 items-center justify-between rounded-lg bg-primary-300 px-8 lg:hidden">
+      <div className="flex h-16 items-center justify-between rounded-lg bg-primary-300 md:h-24 md:px-8 lg:hidden">
         <CrossHamburger
           toggled={isOpen}
           toggle={setOpen as React.Dispatch<React.SetStateAction<boolean>>}
