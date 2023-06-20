@@ -6,14 +6,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
-import { Blog } from "contentlayer/generated";
+import type { Blog } from "contentlayer/generated";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Carousel({ content }: { content: Array<Blog> }) {
   return (
     <BaseCarousel
       Skeleton={() => (
-        <Skeleton className="h-[clamp(450px,_25vh,_600px)] w-full " />
+        <Skeleton className="min-h-[450px] h-[25vh] max-h-[600px] w-full " />
       )}
       slidesCopy={content}
       className={cn(
@@ -36,7 +36,7 @@ export default function Carousel({ content }: { content: Array<Blog> }) {
           <div
             className={cn(
               "!mt-0 w-full overflow-hidden rounded-md blog-lg:h-full blog-lg:w-[55%]",
-              "relative h-[clamp(250px,_25vh,_600px)] max-h-[400px]",
+              "relative min-h-[250px] h-[25vh] max-h-[400px]",
               "sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-auto"
             )}
           >

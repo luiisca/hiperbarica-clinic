@@ -1,26 +1,27 @@
-Lora Variable Font
-==================
+Inter Variable Font
+===================
 
-This download contains Lora as both variable fonts and static fonts.
+This download contains Inter as both a variable font and static fonts.
 
-Lora is a variable font with this axis:
+Inter is a variable font with these axes:
+  slnt
   wght
 
-This means all the styles are contained in these files:
-  Lora-VariableFont_wght.ttf
-  Lora-Italic-VariableFont_wght.ttf
+This means all the styles are contained in a single file:
+  Inter/Inter-VariableFont_slnt,wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Lora:
-  static/Lora-Regular.ttf
-  static/Lora-Medium.ttf
-  static/Lora-SemiBold.ttf
-  static/Lora-Bold.ttf
-  static/Lora-Italic.ttf
-  static/Lora-MediumItalic.ttf
-  static/Lora-SemiBoldItalic.ttf
-  static/Lora-BoldItalic.ttf
+in those cases you can use the static font files for Inter:
+  Inter/static/Inter-Thin.ttf
+  Inter/static/Inter-ExtraLight.ttf
+  Inter/static/Inter-Light.ttf
+  Inter/static/Inter-Regular.ttf
+  Inter/static/Inter-Medium.ttf
+  Inter/static/Inter-SemiBold.ttf
+  Inter/static/Inter-Bold.ttf
+  Inter/static/Inter-ExtraBold.ttf
+  Inter/static/Inter-Black.ttf
 
 Get started
 -----------

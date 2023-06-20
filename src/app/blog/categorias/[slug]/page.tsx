@@ -4,7 +4,9 @@ import { capitalize, categories } from "@/utils/contentlayer";
 import Aside from "../../aside";
 import Filter from "./filter";
 import { Separator } from "@/components/ui/separator";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { allBlogs } from "contentlayer/generated";
+import TabsContent from "@/app/blog/filter/tabs-content";
 
 export function generateStaticParams() {
   return categories.map((category) => ({
@@ -45,7 +47,9 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           "mb-24 blog-lg:mb-[7.5rem]"
         )}
       >
-        <Filter value={params.slug} />
+        <Filter value={params.slug}>
+          <TabsContent content={allBlogs} />
+        </Filter>
         <Aside />
       </div>
     </div>

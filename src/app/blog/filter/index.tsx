@@ -1,8 +1,6 @@
 "use client";
 
-import { allBlogs } from "contentlayer/generated";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { TabsProps } from "@radix-ui/react-tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { capitalize, categories } from "@/utils/contentlayer";
 import {
   Select,
@@ -12,41 +10,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
-import Post from "./post";
-
-export function Content() {
-  return (
-    <>
-      <TabsContent
-        value="all"
-        className="grid gap-[3.75rem] blog-lg:grid-cols-2"
-      >
-        {allBlogs.map((post, i) => (
-          <Post post={post} key={i} />
-        ))}
-      </TabsContent>
-      {categories.map((category, i) => (
-        <TabsContent
-          key={i}
-          value={category}
-          className="grid gap-[3.75rem] blog-lg:grid-cols-2"
-        >
-          {allBlogs.map((post, i) => {
-            if (post.category === category) {
-              return <Post key={i} post={post} />;
-            }
-          })}
-        </TabsContent>
-      ))}
-    </>
-  );
-}
+import type { TabsProps } from "@radix-ui/react-tabs";
 
 export default function Filter({
   ...props
-}: TabsProps & {
-  panel?: React.ReactNode;
-}) {
+}: TabsProps) {
   const [active, setActive] = useState("all");
   const [open, setOpen] = useState(false);
 
@@ -89,7 +57,7 @@ export default function Filter({
           </Select>
         </div>
       </TabsList>
-      <Content />
+      {props.children}
     </Tabs>
   );
 }

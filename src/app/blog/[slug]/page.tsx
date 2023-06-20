@@ -118,7 +118,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         <div
           className={cn(
             "relative overflow-hidden rounded-md",
-            "h-[clamp(250px,_25vh,_600px)] max-h-[400px] w-full sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-full blog-lg:max-h-full blog-lg:min-h-full blog-lg:w-1/2",
+            "min-h-[250px] h-[25vh] max-h-[400px] w-full sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-full blog-lg:max-h-full blog-lg:min-h-full blog-lg:w-1/2",
             "mb-7 w-full blog-lg:mb-0 blog-lg:w-1/2"
           )}
         >

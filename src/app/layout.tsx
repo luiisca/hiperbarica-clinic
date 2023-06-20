@@ -2,7 +2,6 @@ import "./globals.css";
 import React from "react";
 import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Lora } from "next/font/google";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
 import {
@@ -13,20 +12,21 @@ import {
   PHONE,
   WEB_URL,
 } from "@/utils/constants";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
 import Observer from "./intersection-observer";
 import Bot from "@/components/bot";
 import WhatsAppLink from "./whatsAppLink";
 import ToTopBttn from "./toTopBttn";
+import localFont from "next/font/local";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../public/fonts/Inter/Inter-VariableFont_slnt,wght.ttf",
   variable: "--inter-font",
 });
-const lora = Lora({
-  subsets: ["latin"],
+const lora = localFont({
+  src: "../../public/fonts/Lora/Lora-VariableFont_wght.ttf",
   variable: "--lora-font",
 });
 
@@ -119,7 +119,7 @@ function Logo({ className }: { className?: string }) {
   return (
     <div className="relative">
       <Link href="/" className="absolute left-0 top-0 z-10 h-full w-full" />
-      <div className={cn("flex items-start gap-3", className)}>
+      <div className={cn("flex items-start space-x-3", className)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="48"
@@ -243,12 +243,12 @@ function Nav() {
     <div className="px-6 py-4">
       <nav
         className={cn(
-          "flex h-24 w-full items-center justify-between rounded-lg bg-primary-300 px-8 ",
+          "flex h-16 w-full items-center justify-between rounded-lg bg-primary-300 px-4 md:h-24 md:px-8",
           "ring-1 ring-gray-100 ring-offset-0"
         )}
       >
         <div className="flex h-full items-center justify-between max-lg:w-full">
-          <Logo />
+          <Logo className="space-x-2 md:space-x-3" />
         </div>
         <ul className="flex list-none items-center max-lg:hidden">
           {navItems.map((item, i) => (
@@ -277,17 +277,17 @@ function Nav() {
 function Footer() {
   return (
     <section className="w-full bg-primary-100" id="footer">
-      <Container className="flex flex-col gap-12 md:flex-row">
-        <div className="flex w-1/4 shrink-0 flex-col justify-start gap-8">
-          <Logo className="flex-col lg:flex-row " />
-          <div className="flex gap-6 text-2xl text-[#AFAFAE] md:text-[1.35rem]">
+      <Container className="flex flex-col max-md:space-y-12 md:flex-row md:space-x-12">
+        <div className="flex w-1/4 shrink-0 flex-col justify-start space-y-8">
+          <Logo className="flex-col max-lg:space-x-0 max-lg:space-y-3 lg:flex-row lg:space-x-3" />
+          <div className="flex space-x-6 text-2xl text-[#AFAFAE] md:text-[1.35rem]">
             <a href={FB_PAGE} target="_blank" className="hover:text-[#9e9e9d] ">
               <BsFacebook />
             </a>
             <WhatsAppLink className="hover:text-[#9e9e9d]" />
           </div>
         </div>
-        <div className="flex w-full flex-col gap-12 sm:flex-row">
+        <div className="flex w-full flex-col max-sm:space-y-12 sm:flex-row sm:space-x-12">
           <div className="w-1/2 shrink-0">
             <p className="mb-8 text-lg font-medium sm:mb-10">Contacto</p>
             <address className="text-base not-italic leading-[1.6]">
@@ -314,7 +314,7 @@ function Footer() {
           </div>
           <div className="w-1/2 shrink-0">
             <p className="mb-8 text-lg font-medium sm:mb-10">Clínica</p>
-            <div className="flex flex-col gap-4 text-sm text-[#767676] sm:gap-6">
+            <div className="flex flex-col space-y-4 text-sm text-[#767676] sm:space-y-6">
               {/* @TODO: change copy */}
               <Link
                 href="/tratamientos"
@@ -349,19 +349,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(lora.variable, inter.variable)}>
-      <body className="flex flex-col items-center overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
+      <body className="overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
         <Observer />
         <NavContainer>
           <Nav />
         </NavContainer>
-        <main className="relative z-0 flex w-full min-w-0 flex-auto flex-col items-center justify-center">
+        <main className="relative z-0 w-full min-w-0">
           {children}
           <Analytics />
         </main>
         <Footer />
         <WhatsAppLink />
         <ToTopBttn />
-        {/* <Bot /> */}
+        <Bot />
       </body>
     </html>
   );
