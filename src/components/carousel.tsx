@@ -5,7 +5,12 @@ import { cn } from "@/utils/cn";
 import { Button, type ButtonProps } from "./ui/core/button";
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import { Swiper, type SwiperProps, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination, A11y, type Swiper as SwiperType } from "swiper";
+import {
+  Navigation,
+  Pagination,
+  A11y,
+  type Swiper as SwiperType,
+} from "swiper";
 import "swiper/css/a11y";
 
 function Arrow({ ...props }: ButtonProps & { next?: boolean; prev?: boolean }) {
@@ -49,7 +54,7 @@ export default function BaseCarousel<T>({
     next: string;
   }>;
   dotClasses?: Partial<{ list: string; dot: string }>;
-  children: (copy: T) => React.ReactNode;
+  children: (copy: T, i?: number) => React.ReactNode;
   slidesCopy: Array<T>;
   onSwiperFn?: (
     swiper: SwiperType
@@ -94,7 +99,7 @@ export default function BaseCarousel<T>({
             )}
             key={i}
           >
-            {children(copy)}
+            {children(copy, i)}
           </SwiperSlide>
         ))}
         <div className={cn("", arrowsClasses?.container)}>

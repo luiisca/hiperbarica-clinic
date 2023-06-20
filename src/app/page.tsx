@@ -8,7 +8,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/core/button";
 import Image from "next/image";
 import { shimmer, toBase64 } from "@/utils/blur";

@@ -4,7 +4,6 @@ import BaseCarousel from "@/components/carousel";
 import { SquircleShape } from "@/components/shapes";
 import { Button } from "@/components/ui/core/button";
 import Heading from "@/components/ui/core/heading";
-import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useState } from "react";
@@ -68,11 +67,23 @@ function TextCarousel({
   setProgress: React.Dispatch<React.SetStateAction<number>>;
 }) {
   const [transitionEnd, setTransitionEnd] = useState(false);
+  const [animationActive, setAnimationActive] = useState(false);
 
   return (
     <>
       <BaseCarousel
-        Skeleton={() => <Skeleton className="h-80 w-full" />}
+        Skeleton={() => (
+          <div className="opacity-100 animate-in fade-in slide-in-from-bottom-16 duration-1000">
+            <Heading className="text-3xl sm:text-5xl">
+              Experimenta la tecnología de última generación en terapias
+              hiperbáricas
+            </Heading>
+            <p className="mb-12 max-w-[50ch] max-xl:mx-auto xl:mr-6">
+              Obtén un diagnóstico personalizado y un tratamiento eficaz con
+              Hiperbárica del sur Perú.
+            </p>
+          </div>
+        )}
         slidesCopy={copy}
         className="overflow-hidden xl:pb-14"
         slideClassName="pt-2 md:py-2 xl:p-0 bg-transparent"
@@ -90,6 +101,7 @@ function TextCarousel({
         }}
         onSlideChangeTransitionStart={(swiper) => {
           setTransitionEnd(false);
+          setAnimationActive(true);
           setProgress(swiper.realIndex + 1);
         }}
         allowTouchMove={false}
@@ -103,7 +115,9 @@ function TextCarousel({
             className={cn(
               "opacity-0",
               transitionEnd &&
-                "opacity-100 animate-in fade-in slide-in-from-bottom-16 duration-1000"
+                animationActive &&
+                "opacity-100 animate-in fade-in slide-in-from-bottom-16 duration-1000",
+              !animationActive && "opacity-100"
             )}
           >
             <Heading className="text-3xl sm:text-5xl">{copy.title}</Heading>
@@ -133,7 +147,16 @@ function ImgCarousel(
     <>
       <BaseCarousel
         Skeleton={() => (
-          <Skeleton className="absolute top-0 z-10 h-full w-full shrink-0" />
+          <div className="absolute top-0 h-full w-full overflow-hidden rounded-md xl:h-[calc(100%-56px)]">
+            <Image
+              src="/hero/01.webp"
+              priority={true}
+              alt="mujer acostada dentro de una cámara hiperbárica"
+              fill
+              sizes="100vw"
+              className="relative object-contain"
+            />
+          </div>
         )}
         slidesCopy={images}
         className="relative z-10 h-full overflow-hidden xl:pb-14 [&_.swiper-wrapper]:h-full"
@@ -186,7 +209,7 @@ export default function HeroCarousel() {
           progress={progress}
           setProgress={setProgress}
         />
-        <div className="flex flex-col items-center justify-center max-mob-me:space-y-4 mob-me:space-x-4 mob-me:flex-row xl:justify-start">
+        <div className="flex flex-col items-center justify-center max-mob-me:space-y-4 mob-me:flex-row mob-me:space-x-4 xl:justify-start">
           <Button href="/citas">Agendar cita</Button>
           <Button
             color="outline"
