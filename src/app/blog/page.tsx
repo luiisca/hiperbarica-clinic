@@ -27,7 +27,7 @@ export default function BlogPage() {
       {/* carousel  */}
       <div className="mb-20 mt-8 md:mt-14">
         <Heading type="subHeading">Lo ultimo</Heading>
-        <Carousel content={latestPosts.slice(0, 5)} />
+        <Carousel content={latestPosts.slice(0, 10)} />
       </div>
       <Separator className="mb-20" />
 
@@ -38,7 +38,7 @@ export default function BlogPage() {
         )}
       >
         <Filter>
-          <TabsContent content={allBlogs}/>
+          <TabsContent content={allBlogs} />
         </Filter>
         <Aside />
       </div>
