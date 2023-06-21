@@ -90,6 +90,7 @@ export default function BaseCarousel<T>({
         {...props}
       >
         {!swiperReady && Skeleton && <Skeleton />}
+        {/* <Skeleton /> */}
         {slidesCopy?.map((copy, i) => (
           <SwiperSlide
             className={cn(
