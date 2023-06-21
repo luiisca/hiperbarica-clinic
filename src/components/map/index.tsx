@@ -24,6 +24,7 @@ import {
   ZOOM,
   getBusinessDirections,
   getUserLocation,
+  loader,
 } from "./helpers";
 import React, {
   type Dispatch,
@@ -210,6 +211,7 @@ const PlaceDetails = React.forwardRef<
           {/* image */}
           <div className="relative h-2/5 w-full">
             <Image
+              loader={loader}
               src={details.img.src}
               alt={details.img.alt}
               fill
@@ -268,6 +270,7 @@ const PlaceDetails = React.forwardRef<
                 {(photo) => (
                   <div className="relative h-full w-full overflow-hidden rounded-[9px]">
                     <Image
+                      loader={loader}
                       src={photo.getUrl()}
                       fill
                       placeholder="blur"
