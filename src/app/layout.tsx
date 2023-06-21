@@ -243,7 +243,7 @@ function Nav() {
     <div className="px-6 py-4">
       <nav
         className={cn(
-          "flex h-16 w-full items-center justify-between rounded-lg bg-primary-300 px-4 md:h-24 md:px-8",
+          "flex h-24 w-full items-center justify-between rounded-lg bg-primary-300 px-4 md:px-8",
           "ring-1 ring-gray-100 ring-offset-0"
         )}
       >
