@@ -3,11 +3,9 @@
 import BaseCarousel from "@/components/carousel";
 import { Button } from "@/components/ui/core/button";
 import Heading from "@/components/ui/core/heading";
-import { Skeleton } from "@/components/ui/skeleton";
 import { shimmer, toBase64 } from "@/utils/blur";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
-import { useState } from "react";
 
 const treatmentsCopy = [
   {
@@ -111,8 +109,6 @@ function Treatment({ copy }: { copy: (typeof treatmentsCopy)[0] }) {
 }
 
 export default function TreatmentsCarousel() {
-  const [swiperReady, setSwiperReady] = useState(false);
-
   return (
     <>
       <div className="absolute mx-auto flex h-full w-full justify-center pt-6 md:py-8 xl:hidden">
@@ -133,9 +129,6 @@ export default function TreatmentsCarousel() {
             </div>
           </div>
         )}
-        onSwiperFn={() => {
-          setSwiperReady(true);
-        }}
         slidesCopy={treatmentsCopy}
         className="xl:overflow-hidden xl:pb-14"
         slideClassName={cn("pt-2 md:py-2 xl:p-0 bg-transparent")}

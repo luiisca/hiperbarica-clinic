@@ -422,7 +422,7 @@ function Articles() {
 
   return (
     <section className="w-full">
-      <Container className="relative flex flex-col space-y-10 md:grid md:grid-cols-[37.5%_62.5%] md:items-end md:gap-4 blog-lg:grid-cols-[35%_65%]">
+      <Container className="relative max-md:flex max-md:flex-col max-md:space-y-10 md:grid md:grid-cols-[37.5%_62.5%] md:items-end md:gap-4 blog-lg:grid-cols-[35%_65%]">
         <div className="md:mb-0 md:h-[max-content] md:pb-24 md:pr-5 blog-lg:pr-14">
           <Heading type="subHeading">Articulos</Heading>
           <Heading type="secondary" className="mb-6">
@@ -436,7 +436,7 @@ function Articles() {
             Ver todos
           </Button>
         </div>
-        <ArticlesCarousel content={latestPosts} />
+        <ArticlesCarousel content={latestPosts.slice(0, 10)} />
       </Container>
     </section>
   );
