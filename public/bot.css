@@ -5,7 +5,6 @@
   --primary-500: #3f9cf5;
 }
 
-
 /* Layout */
 .bpw-layout {
   color: var(--gray-500);
@@ -161,21 +160,19 @@
 }
 
 @media (max-device-width: 768px) {
-    html {
-        font-size: 16px;
-    }
+  html {
+    font-size: 16px;
+  }
 
-    .bpw-layout {
-        width: 100%!important
-    }
+  .bpw-bot-avatar img,
+  .bpw-bot-avatar svg {
+    height: 40px;
+    width: 40px;
+  }
 
-    .bpw-bot-avatar img,.bpw-bot-avatar svg {
-        height: 40px;
-        width: 40px;
-    }
-
-    .bpw-header-icon,.bpw-header-icon svg {
-        height: 16px;
-        width: 16px;
-    }
+  .bpw-header-icon,
+  .bpw-header-icon svg {
+    height: 16px;
+    width: 16px;
+  }
 }
