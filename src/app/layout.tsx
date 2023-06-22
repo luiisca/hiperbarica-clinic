@@ -4,14 +4,7 @@ import { cn } from "@/utils/cn";
 import { Analytics } from "@vercel/analytics/react";
 import { BsFacebook } from "react-icons/bs";
 import Link from "next/link";
-import {
-  ADDRESS,
-  FB_PAGE,
-  KEYWORDS,
-  MAIL,
-  PHONE,
-  WEB_URL,
-} from "@/utils/constants";
+import { ADDRESS, FB_PAGE, KEYWORDS, MAIL, PHONE } from "@/utils/constants";
 import type { Metadata } from "next";
 import { Button } from "@/components/ui/core/button";
 import NavContainer from "./nav/nav-container";
@@ -230,7 +223,11 @@ const navItems = [
   },
   {
     name: "Proceso",
-    href: `${WEB_URL}#proceso`,
+    href: "/#proceso",
+  },
+  {
+    name: "Encuéntranos",
+    href: "/#mapa",
   },
   {
     name: "Blog",
@@ -292,7 +289,12 @@ function Footer() {
             <p className="mb-8 text-lg font-medium sm:mb-10">Contacto</p>
             <address className="text-base not-italic leading-[1.6]">
               {/* @TODO: add link to map */}
-              <p className="mb-4 text-sm sm:mb-6">{ADDRESS}</p>
+              <Link
+                href="/#mapa"
+                className="mb-4 inline-block text-sm text-gray-200 hover:text-gray-500 sm:mb-6"
+              >
+                {ADDRESS}
+              </Link>
               <div className="flex flex-col text-sm text-[#767676]">
                 <a
                   href={`tel:${PHONE}`}
@@ -323,7 +325,7 @@ function Footer() {
                 Tratamientos
               </Link>
               <a
-                href={`${WEB_URL}#proceso`}
+                href={"/#proceso"}
                 className="transition-all duration-300 hover:text-gray-500"
               >
                 Proceso

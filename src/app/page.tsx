@@ -391,7 +391,7 @@ const Process = () => {
 
 function Map() {
   return (
-    <section className="w-full">
+    <section className="w-full" id="mapa">
       <Container className="pb-44 text-center">
         <div
           id="map"

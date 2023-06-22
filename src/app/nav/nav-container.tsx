@@ -1,11 +1,10 @@
 "use client";
 
 import { cn } from "@/utils/cn";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/core/button";
 import { Separator } from "@/components/ui/separator";
 import { Cross as CrossHamburger } from "hamburger-react";
-import { WEB_URL } from "@/utils/constants";
 import { useScrollVisibility } from "@/hooks/useScrollVisibility";
 
 const navItems = [
@@ -19,7 +18,11 @@ const navItems = [
   },
   {
     name: "Proceso",
-    href: `${WEB_URL}#proceso`,
+    href: "/#proceso",
+  },
+  {
+    name: "Encuéntranos",
+    href: "/#mapa",
   },
   {
     name: "Blog",
