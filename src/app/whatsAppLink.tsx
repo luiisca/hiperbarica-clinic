@@ -1,11 +1,13 @@
+"use client";
+
 import { PHONE } from "@/utils/constants";
 import { BsWhatsapp } from "react-icons/bs";
 import { isMobile } from "react-device-detect";
 import { cn } from "@/utils/cn";
 
-export const getWhatsappLink: (mobile: boolean) => string = (mobile) =>
+export const getWhatsappLink = () =>
   `https://${
-    mobile ? "api" : "web"
+    isMobile ? "api" : "web"
   }.whatsapp.com/send?phone=${PHONE}&text=${encodeURIComponent(
     "Hola. Me gustaría que me contactaran para poder resolver unas dudas."
   )}`;
@@ -15,7 +17,7 @@ export default function WhatsAppLink(
 ) {
   return (
     <a
-      href={getWhatsappLink(isMobile)}
+      href={getWhatsappLink()}
       target="_blank"
       rel="noreferrer"
       className={cn(
