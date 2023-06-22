@@ -8,7 +8,6 @@ import {
 } from "@react-google-maps/api";
 import { isMobile } from "react-device-detect";
 import Image from "next/image";
-import { animated, useSpring } from "@react-spring/web";
 
 import { RiFullscreenExitFill, RiFullscreenFill } from "react-icons/ri";
 import { FaRoute } from "react-icons/fa";
@@ -181,7 +180,7 @@ const PlaceDetails = React.forwardRef<
 
   const details = {
     img: {
-      src: placeDetails?.photos?.at(0)?.getUrl() || "/logo.svg",
+      src: placeDetails?.photos?.[0]?.getUrl() || "/logo.svg",
       alt: placeDetails?.name || "",
     },
     name: placeDetails?.name,
@@ -193,17 +192,13 @@ const PlaceDetails = React.forwardRef<
     reviews: placeDetails?.reviews || [],
   };
 
-  const detailsSpring = useSpring({
-    opacity: mapState.placeDetailsInvisible ? 0 : 1,
-    transform: mapState.placeDetailsOpen
-      ? "translateX(0%)"
-      : "translateX(-100%)",
-  });
-
   return (
-    <animated.div
-      className="relative z-10 inline-block h-full w-[75%] -translate-x-full overflow-visible bg-primary-200 text-sm opacity-100 mob-me:w-[50%] md:w-[35%]"
-      style={detailsSpring}
+    <div
+      className={cn(
+        "relative z-10 inline-block h-full w-[75%] -translate-x-full overflow-visible bg-primary-200 text-sm opacity-100 transition-all duration-300 mob-me:w-[50%] md:w-[35%]",
+        mapState.placeDetailsInvisible ? "opacity-0" : "animate-opacity-100",
+        mapState.placeDetailsOpen ? "translate-x-0" : "-translate-x-full"
+      )}
       ref={ref}
     >
       {placeDetails ? (
@@ -378,7 +373,7 @@ const PlaceDetails = React.forwardRef<
           </div>
         </div>
       )}
-    </animated.div>
+    </div>
   );
 });
 
