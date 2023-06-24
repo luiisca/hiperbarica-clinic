@@ -51,13 +51,7 @@ export const metadata: Metadata = {
     "Lee cómo la terapia de oxígeno hiperbárico puede mejorar tu salud y calidad de vida. Conoce todo sobre la terapia, desde sus múltiples beneficios hasta sus efectos secundarios y cómo funciona",
 };
 
-export default function BlogPage({
-  params,
-  searchParams,
-}: {
-  params: { slug: string };
-  searchParams: { [key: string]: string | undefined };
-}) {
+export default function BlogPage() {
   const latestPosts = allBlogs.sort((a, b) => {
     if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
       return -1;
@@ -127,7 +121,6 @@ export default function BlogPage({
 
   return (
     <div className="w-full">
-      <div>{JSON.stringify(searchParams)}</div>
       <>
         {/* carousel  */}
         <div className="mb-20 mt-8 md:mt-14">
@@ -151,4 +144,3 @@ export default function BlogPage({
     </div>
   );
 }
-export const dynamic = "force-dynamic";
