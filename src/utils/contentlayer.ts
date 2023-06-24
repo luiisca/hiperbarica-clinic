@@ -344,3 +344,7 @@ export function formatSlug(slug: string) {
 export function capitalize(str: string): string {
   return str.replace(/^\W*\w/, (match) => match.toUpperCase());
 }
+
+export function removeDiacritics(str: string): string {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}

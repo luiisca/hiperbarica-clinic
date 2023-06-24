@@ -1,3 +1,4 @@
+export const CLINIC_NAME = "Hiperbárica del Sur Perú";
 export const WEB_URL =
   process.env.NODE_ENV === "production"
     ? "https://hiperbaricadelsurperu.com"

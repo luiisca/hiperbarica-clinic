@@ -1,11 +1,24 @@
+import { Button } from "@/components/ui/core/button";
 import Heading from "@/components/ui/core/heading";
 import { Separator } from "@/components/ui/separator";
 import { allBlogs } from "contentlayer/generated";
+
+function Search() {
+  return (
+    <form className="flex flex-col items-start space-y-2">
+      <input type="search" name="q" />
+      <Button className="px-3 py-2" type="submit">
+        Buscar
+      </Button>
+    </form>
+  );
+}
 
 export default function Aside() {
   return (
     <div className="mt-24 self-start md:sticky md:top-24 md:ml-[60px]">
       <Heading type="subHeading">Recomendados</Heading>
+      <Search />
       <div className="flex flex-col first:pt-0">
         {allBlogs.map((post, i) => {
           if (post.featured) {
