@@ -14,9 +14,6 @@ const config = {
    *
    * @see https://github.com/vercel/next.js/issues/41980
    */
-  experimental: {
-    appDir: true,
-  },
   images: {
     domains: ["hiperbaricadelsurperu.com"],
     remotePatterns: [
@@ -45,10 +42,6 @@ const config = {
         pathname: "/**",
       },
     ],
-  },
-  i18n: {
-    locales: ["es"],
-    defaultLocale: "es",
   },
   headers() {
     return [
