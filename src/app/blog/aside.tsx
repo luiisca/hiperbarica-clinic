@@ -5,8 +5,11 @@ import { allBlogs } from "contentlayer/generated";
 
 function Search() {
   return (
-    <form className="flex flex-col items-start space-y-2">
-      <input type="search" name="q" />
+    <form
+      className="flex flex-col items-start space-y-2"
+      action={"/blog/buscar"}
+    >
+      <input type="search" name="query" />
       <Button className="px-3 py-2" type="submit">
         Buscar
       </Button>
