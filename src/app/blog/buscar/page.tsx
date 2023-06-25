@@ -19,6 +19,7 @@ const htmlToReactProcessor = unified()
   .use(rehypeParse, { fragment: true })
   .use(rehypeReact, {
     createElement,
+    Fragment,
     components: {
       h1: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
       h2: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
@@ -41,47 +42,99 @@ const htmlToReactProcessor = unified()
 export default function SearchPage({
   searchParams,
 }: {
-  searchParams: { query: string };
+  searchParams?: { query?: string };
 }) {
-  const searchQuery = searchParams.query?.toLowerCase().trim() || "";
-  console.log("RUNNING BLOGPAGE!");
+  function generateSearchQueryRegExp(searchQuery: string) {
+    const searchQueryRegExp = searchQuery
+      .replace(/[aáàäâ]/giu, "[aáàäâ]")
+      .replace(/[eéèëê]/giu, "[eéèëê]")
+      .replace(/[iíìïî]/giu, "[iíìïî]")
+      .replace(/[oóòöô]/giu, "[oóòöô]")
+      .replace(/[uúùüû]/giu, "[uúùüû]")
+      .replace(/\(/giu, "\\(")
+      .replace(/\)/giu, "\\)");
+    return new RegExp(searchQueryRegExp, "giu");
+  }
+  function normalize(text: string) {
+    return removeDiacritics(text).toLowerCase().trim();
+  }
+
+  const searchQuery = normalize(searchParams?.query || "");
 
   const filteredResults = (() => {
-    console.log("RUNING filteredBlogs");
-    console.log("ALLBLOGS", allBlogs.length);
     const filteredBlogs = allBlogs.map((post) => {
-      const title = removeDiacritics(post.title.toLowerCase());
-      const content = removeDiacritics(post.body.raw.toLowerCase());
-      // console.log("TITLE: ", title);
+      if (
+        normalize(post.title).includes(searchQuery) ||
+        normalize(post.body.raw).includes(searchQuery)
+      ) {
+        let foundParagraphPosition: null | "first" | "last" = null;
 
-      if (title.includes("alzheimer")) {
-        // console.log("🤯 INSIDE FILTEREDBLOGS TITLE: ", title);
-        // console.log("SEARCHQUERY: ", searchQuery);
-        // console.log("CONTENT: ", content);
-        // console.log("CONTENT INCLUDES: ", content.includes(searchQuery));
-      }
-
-      if (title.includes(searchQuery) || content.includes(searchQuery)) {
-        // 1. find first paragraph where query is mentioned
+        // 1. Find first paragraph where query is mentioned
         const paragraph =
-          post.body.raw
-            .split("\n\n")
-            .find((paragraph) =>
-              paragraph.toLowerCase().includes(searchQuery)
-            ) || post.summary;
+          post.body.raw.split("\n\n").find((paragraph, i, arr) => {
+            if (normalize(paragraph).includes(searchQuery)) {
+              foundParagraphPosition =
+                i === 0 ? "first" : i === arr.length - 1 ? "last" : null;
 
-        // 2. parse paragraph to HTML and highlight query word
-        const htmlParagraph = markdownToHtmlProcessor
-          .processSync(paragraph)
-          .toString();
-        const highlightedHtmlParagraph = htmlParagraph.replace(
-          new RegExp(`\\b${searchQuery}\\w*`, "gi"),
-          (match) => `<b>${match}</b>`
+              return true;
+            }
+            return false;
+          }) || post.summary;
+
+        // 2. Format paragraph
+        // 2.1 Replace all occurences of query with ** to highlight them
+        const highlightedMdParagraph = paragraph.replace(
+          generateSearchQueryRegExp(searchQuery),
+          (match) => `**${match}**`
         );
+        // 2.2 Convert markdown to html
+        let htmlParagraph = markdownToHtmlProcessor
+          .processSync(highlightedMdParagraph)
+          .toString();
+        // 2.3 Add elipsis where needed
+        let htmlParagraphArr = htmlParagraph.split(" ");
+        // start
+        if (foundParagraphPosition !== "first" && htmlParagraphArr[0]) {
+          let firstTagFound = false;
+          htmlParagraphArr[0] = htmlParagraphArr[0]
+            ?.split("")
+            .map((el, i, arr) => {
+              if (i > 0 && arr[i - 1] === ">" && !firstTagFound) {
+                firstTagFound = true;
+
+                return `... ${el}`;
+              }
+
+              return el;
+            })
+            .join("");
+        }
+        // end
+        if (
+          foundParagraphPosition !== "last" &&
+          htmlParagraphArr[htmlParagraphArr.length - 1]
+        ) {
+          let lastTagFound = false;
+          htmlParagraphArr[htmlParagraphArr.length - 1] = htmlParagraphArr[
+            htmlParagraphArr.length - 1
+          ]
+            ?.split("")
+            .reverse()
+            .map((el, i, arr) => {
+              if (i > 0 && arr[i - 1] === "<" && !lastTagFound) {
+                lastTagFound = true;
+
+                return `${el} ...`;
+              }
+              return el;
+            })
+            .reverse()
+            .join("") as string;
+        }
 
         // 3. parse html to react element
         const reactParagraph = htmlToReactProcessor.processSync(
-          highlightedHtmlParagraph
+          htmlParagraphArr.join(" ")
         ).result;
 
         return {
@@ -105,18 +158,18 @@ export default function SearchPage({
   })();
 
   return (
-    <main>
+    <>
       {filteredResults.map((post) => (
-        <Fragment key={post?.title}>
+        <div key={post?.title}>
           <Link
             className="mb-4 text-2xl text-primary-700"
             href={post?.href || ""}
           >
             {post?.title}
           </Link>
-          <p>{post?.content}</p>
-        </Fragment>
+          {post?.content}
+        </div>
       ))}
-    </main>
+    </>
   );
 }
