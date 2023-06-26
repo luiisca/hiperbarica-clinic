@@ -12,15 +12,13 @@ import {
 import { useState } from "react";
 import type { TabsProps } from "@radix-ui/react-tabs";
 
-export default function Filter({
-  ...props
-}: TabsProps) {
+export default function Filter({ ...props }: TabsProps) {
   const [active, setActive] = useState("all");
   const [open, setOpen] = useState(false);
 
   return (
     <Tabs {...props} value={active} onValueChange={setActive} className="z-10">
-      <TabsList>
+      <TabsList className="max-md:mb-4">
         <TabsTrigger
           value="all"
           className="shrink-0 text-base uppercase text-primary-600 hover:text-primary-700 data-[state=active]:text-primary-700 data-[state=active]:decoration-transparent focus-visible:data-[state=active]:decoration-primary-700"

@@ -351,7 +351,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={cn(lora.variable, inter.variable)}>
-      <body className="overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
+      <body className="flex min-h-screen flex-col justify-between overflow-x-hidden font-inter text-gray-200 antialiased md:text-lg">
         <Observer />
         <NavContainer>
           <Nav />
