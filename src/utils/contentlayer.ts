@@ -1,6 +1,7 @@
 export const categories = ["tratamientos", "efectividad", "general"] as const;
 export const treatments = {
-  endocrinología: {
+  endocrinologia: {
+    title: "Endocrinología",
     icon: "gland.png",
     diseases: [
       {
@@ -21,7 +22,8 @@ export const treatments = {
       },
     ],
   },
-  traumatología: {
+  traumatologia: {
+    title: "Traumatología",
     icon: "bone.png",
     diseases: [
       {
@@ -42,7 +44,8 @@ export const treatments = {
       },
     ],
   },
-  reumatología: {
+  reumatologia: {
+    title: "Reumatología",
     icon: "joint.png",
     diseases: [
       {
@@ -87,7 +90,8 @@ export const treatments = {
       },
     ],
   },
-  "secuelas oncológicas": {
+  "secuelas-oncologicas": {
+    title: "Secuelas oncológicas",
     icon: "cancer.png",
     diseases: [
       {
@@ -101,6 +105,7 @@ export const treatments = {
     ],
   },
   heridas: {
+    title: "Heridas",
     icon: "bandage.png",
     diseases: [
       // {
@@ -128,7 +133,8 @@ export const treatments = {
       },
     ],
   },
-  oído: {
+  oido: {
+    title: "Oído",
     icon: "ear.png",
     diseases: [
       {
@@ -141,7 +147,8 @@ export const treatments = {
       },
     ],
   },
-  neurología: {
+  neurologia: {
+    title: "Neurología",
     icon: "brain.png",
     diseases: [
       {
@@ -218,6 +225,7 @@ export const treatments = {
     ],
   },
   deporte: {
+    title: "Deporte",
     icon: "soccer.png",
     diseases: [
       {
@@ -245,7 +253,8 @@ export const treatments = {
       // },
     ],
   },
-  dermatología: {
+  dermatologia: {
+    title: "Dermatología",
     icon: "skin.png",
     diseases: [
       {
@@ -266,7 +275,8 @@ export const treatments = {
       },
     ],
   },
-  oftalmológia: {
+  oftalmologia: {
+    title: "Oftalmología",
     icon: "eye.png",
     diseases: [
       {
@@ -279,7 +289,8 @@ export const treatments = {
       },
     ],
   },
-  gastroenterología: {
+  gastroenterologia: {
+    title: "Gastroenterología",
     icon: "intestines.png",
     diseases: [
       {
@@ -293,6 +304,7 @@ export const treatments = {
     ],
   },
   otros: {
+    title: "Otros",
     icon: "",
     diseases: [
       {

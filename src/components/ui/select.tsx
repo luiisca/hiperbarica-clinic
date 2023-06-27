@@ -59,44 +59,33 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
-    open: boolean;
-    setOpen: (open: boolean) => void;
-  }
->(
-  (
-    { className, children, position = "popper", open, setOpen, ...props },
-    ref
-  ) => (
-    <SelectPrimitive.Portal>
-      <>
-        {/* Workaround for https://github.com/radix-ui/primitives/issues/1658 */}
-        <SelectOverlay open={open} />
-        <SelectPrimitive.Content
-          ref={ref}
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
+>(({ className, children, position = "popper", ...props }, ref) => (
+  <SelectPrimitive.Portal>
+    <>
+      <SelectPrimitive.Content
+        ref={ref}
+        className={cn(
+          "relative isolate z-20 min-w-[8rem] select-text overflow-hidden rounded-md border border-primary-500 bg-white animate-in fade-in-80",
+          position === "popper" && "translate-y-1",
+          className
+        )}
+        position={position}
+        {...props}
+      >
+        <SelectPrimitive.Viewport
           className={cn(
-            "relative isolate z-20 min-w-[8rem] select-text overflow-hidden rounded-md border border-primary-500 bg-white px-5 animate-in fade-in-80",
-            position === "popper" && "translate-y-1",
-            className
+            "p-1",
+            position === "popper" &&
+              "h-min w-full min-w-[var(--radix-select-trigger-width)]"
           )}
-          position={position}
-          onEscapeKeyDown={() => setOpen(false)}
-          {...props}
         >
-          <SelectPrimitive.Viewport
-            className={cn(
-              "p-1",
-              position === "popper" &&
-                "h-min w-full min-w-[var(--radix-select-trigger-width)]"
-            )}
-          >
-            {children}
-          </SelectPrimitive.Viewport>
-        </SelectPrimitive.Content>
-      </>
-    </SelectPrimitive.Portal>
-  )
-);
+          {children}
+        </SelectPrimitive.Viewport>
+      </SelectPrimitive.Content>
+    </>
+  </SelectPrimitive.Portal>
+));
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef<
@@ -118,7 +107,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "w-full cursor-pointer py-2.5 pr-1.5",
+      "w-full cursor-pointer px-5 py-2.5",
       "font-medium tracking-[.02px] text-gray-500 hover:text-primary-500",
       "[&:not(:focus-visible)]:data-[state=checked]:text-primary-500",
       "flex items-center space-x-2 whitespace-nowrap text-sm transition-all focus-visible:text-primary-700 focus-visible:outline-none focus-visible:outline-0 disabled:pointer-events-none disabled:opacity-50 ",
@@ -126,13 +115,15 @@ const SelectItem = React.forwardRef<
     )}
     {...props}
   >
-    <span className="flex h-3.5 w-3.5 items-center justify-center">
-      <SelectPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
-      </SelectPrimitive.ItemIndicator>
-    </span>
+    <>
+      <span className="flex h-3.5 w-3.5 items-center justify-center">
+        <SelectPrimitive.ItemIndicator>
+          <Check className="h-4 w-4" />
+        </SelectPrimitive.ItemIndicator>
+      </span>
 
-    <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+    </>
   </SelectPrimitive.Item>
 ));
 SelectItem.displayName = SelectPrimitive.Item.displayName;
