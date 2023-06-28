@@ -9,6 +9,7 @@ import rehypeReact from "rehype-react";
 import { removeDiacritics } from "@/utils/contentlayer";
 
 export function formatRegex(searchQuery: string) {
+  const w = "[a-zA-Z0-9_áéíóúÁÉÍÓÚñÑüÜ]";
   const formattedSearchQuery = searchQuery
     .replace(/[aáàäâ]/giu, "[aáàäâ]")
     .replace(/[eéèëê]/giu, "[eéèëê]")
@@ -18,7 +19,7 @@ export function formatRegex(searchQuery: string) {
     .replace(/\(/giu, "\\(")
     .replace(/\)/giu, "\\)");
 
-  return new RegExp(`\\b\\w*${formattedSearchQuery}\\w*\\b`, "giu");
+  return new RegExp(`\\b${w}*${formattedSearchQuery}${w}*\\b`, "giu");
 }
 
 export function normalize(text: string) {
