@@ -1,69 +1,17 @@
-import { HTMLProps, createElement, Fragment } from "react";
 import { capitalize, categories, removeDiacritics } from "@/utils/contentlayer";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import rehypeParse from "rehype-parse";
-import rehypeStringify from "rehype-stringify";
-import rehypeReact from "rehype-react";
 import { CLINIC_NAME } from "@/utils/constants";
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
-import Search from "../search";
 import { ArrowLeft } from "lucide-react";
 import Heading from "@/components/ui/core/heading";
 import { Separator } from "@/components/ui/separator";
-
-const markdownToHtmlProcessor = unified()
-  .use(remarkParse)
-  .use(remarkRehype)
-  .use(rehypeStringify);
-
-const htmlToReactProcessor = unified()
-  .use(rehypeParse, { fragment: true })
-  .use(rehypeReact, {
-    createElement,
-    Fragment,
-    components: {
-      a: (props: HTMLProps<HTMLAnchorElement>) => (
-        <a
-          {...props}
-          className="z-20 font-medium text-[#111827] underline decoration-[#a3a3a3] decoration-[0.1em] underline-offset-2"
-        />
-      ),
-      h1: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
-      h2: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
-      h3: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
-      h4: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
-      h5: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
-      h6: (props: HTMLProps<HTMLHeadingElement>) => <p {...props} />,
-      ul: (props: HTMLProps<HTMLUListElement>) => (
-        <p {...(props as unknown as HTMLProps<HTMLParagraphElement>)} />
-      ),
-      ol: (props: HTMLProps<HTMLOListElement>) => (
-        <p {...(props as unknown as HTMLProps<HTMLParagraphElement>)} />
-      ),
-      li: (props: HTMLProps<HTMLLIElement>) => (
-        <p {...(props as unknown as HTMLProps<HTMLParagraphElement>)} />
-      ),
-    },
-  });
-
-function generateSearchQueryRegExp(searchQuery: string) {
-  const formattedSearchQuery = searchQuery
-    .replace(/[aáàäâ]/giu, "[aáàäâ]")
-    .replace(/[eéèëê]/giu, "[eéèëê]")
-    .replace(/[iíìïî]/giu, "[iíìïî]")
-    .replace(/[oóòöô]/giu, "[oóòöô]")
-    .replace(/[uúùüû]/giu, "[uúùüû]")
-    .replace(/\(/giu, "\\(")
-    .replace(/\)/giu, "\\)");
-
-  return new RegExp(`\\b${formattedSearchQuery}\\w*`, "giu");
-}
-function normalize(text: string) {
-  return removeDiacritics(text).toLowerCase().trim();
-}
+import Search from "@/components/search";
+import {
+  formatRegex,
+  htmlToReactProcessor,
+  markdownToHtmlProcessor,
+  normalize,
+} from "@/utils/search";
 
 export default function SearchPage({
   searchParams,
@@ -94,7 +42,7 @@ export default function SearchPage({
       // 2. Format paragraph
       // 2.1 Replace all occurences of query with ** to highlight them
       const highlightedMdParagraph = paragraph.replace(
-        generateSearchQueryRegExp(searchQuery),
+        formatRegex(searchQuery),
         (match) => `**${match}**`
       );
       // 2.2 Convert markdown to html

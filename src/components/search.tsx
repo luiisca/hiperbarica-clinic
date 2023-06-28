@@ -4,15 +4,17 @@ import { cn } from "@/utils/cn";
 import { ArrowRight } from "lucide-react";
 import { HTMLProps } from "react";
 
-export default function Search(props: HTMLProps<HTMLFormElement>) {
+export default function Search(
+  props: HTMLProps<HTMLFormElement> & { placeholder?: string }
+) {
   return (
     <form
       {...props}
       className={cn("relative", props.className)}
-      action={"/blog/buscar"}
+      action={props.action || "/blog/buscar"}
     >
       <Input
-        placeholder="Buscar posts"
+        placeholder={props.placeholder || "Buscar posts"}
         type="search"
         name="query"
         className="pr-9"

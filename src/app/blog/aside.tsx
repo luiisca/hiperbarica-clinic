@@ -1,7 +1,7 @@
+import Search from "@/components/search";
 import Heading from "@/components/ui/core/heading";
 import { Separator } from "@/components/ui/separator";
 import { allBlogs } from "contentlayer/generated";
-import Search from "./search";
 
 export default function Aside() {
   return (

@@ -7,7 +7,7 @@ import Aside from "./aside";
 import { Separator } from "@/components/ui/separator";
 import TabsContent from "./filter/tabs-content";
 import Filter from "./filter";
-import Search from "./search";
+import Search from "@/components/search";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -40,7 +40,7 @@ export default function BlogPage() {
           )}
         >
           <Filter>
-            <Search className="mb-7 md:hidden">hello</Search>
+            <Search className="mb-7 md:hidden" />
             <TabsContent content={allBlogs} />
           </Filter>
           <Aside />
