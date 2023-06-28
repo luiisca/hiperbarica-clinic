@@ -30,6 +30,7 @@ export default function SelectItemsMobile() {
         <SelectContent>
           {["all", ...Object.keys(treatments)].map((treatmentTitle, i) => (
             <div
+              key={i}
               className="group relative"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -51,7 +52,6 @@ export default function SelectItemsMobile() {
               />
               <SelectItem
                 value={treatmentTitle}
-                key={i}
                 className="group-hover:text-primary-500"
               >
                 {capitalize(

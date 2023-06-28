@@ -46,11 +46,11 @@ export default function SearchPage({
         (match) => `**${match}**`
       );
       // 2.2 Convert markdown to html
-      let htmlParagraph = markdownToHtmlProcessor
+      const htmlParagraph = markdownToHtmlProcessor
         .processSync(highlightedMdParagraph)
         .toString();
       // 2.3 Add elipsis where needed
-      let htmlParagraphArr = htmlParagraph.split(" ");
+      const htmlParagraphArr = htmlParagraph.split(" ");
       // start
       if (foundParagraphPosition !== "first" && htmlParagraphArr[0]) {
         let firstTagFound = false;
@@ -138,7 +138,7 @@ export default function SearchPage({
             type="primary"
             className="m-0 text-2xl text-primary-700 md:w-9/12 md:text-3xl"
           >
-            Resultados para "{searchParams?.query}"
+            Resultados para `&quot;`{searchParams?.query}`&quot;`
           </Heading>
           <Search className="md:w-3/12" />
         </div>

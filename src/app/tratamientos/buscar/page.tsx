@@ -49,16 +49,16 @@ export default function SearchPage({
 
   return (
     <Filter
-      treatment="todos"
+      treatment="all"
       Content={() => (
         <>
           {filteredTreatments.length > 0 ? (
             filteredTreatments.map((treatment, i) => (
               <Post
                 key={i}
-                icon={treatment.icon as string}
+                icon={treatment.icon}
                 post={treatment.post}
-                category={treatment.category as keyof typeof treatments}
+                category={treatment.category}
               />
             ))
           ) : (
