@@ -9,7 +9,7 @@ export default function Filter({
   treatment,
   Content,
 }: {
-  treatment: keyof typeof treatments | "todos";
+  treatment: keyof typeof treatments | "all";
   Content?: React.ComponentType;
 }) {
   return (
@@ -52,7 +52,7 @@ export default function Filter({
       {/* treatments */}
       <div className="mt-2 grid p-0 mob-me:grid-cols-2 md:gap-8 blog-lg:grid-cols-3">
         {(Content && <Content />) ||
-          (treatment === "todos"
+          (treatment === "all"
             ? Object.entries(treatments).map(([_, treatment]) =>
                 treatment.diseases.map((disease, i) => (
                   <Post

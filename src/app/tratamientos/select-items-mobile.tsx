@@ -17,22 +17,36 @@ export default function SelectItemsMobile() {
 
   return (
     <div className="blog-lg:hidden">
-      <Select value={pathName?.split("/").reverse()[0] as string}>
+      <Select
+        value={
+          pathName === "/tratamientos"
+            ? "all"
+            : (pathName?.split("/").reverse()[0] as string)
+        }
+      >
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
-          {["todos", ...Object.keys(treatments)].map((treatmentTitle, i) => (
+          {["all", ...Object.keys(treatments)].map((treatmentTitle, i) => (
             <div
               className="group relative"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  router.push(`/tratamientos/${treatmentTitle}`);
+                  router.push(
+                    treatmentTitle === "all"
+                      ? "tratamientos"
+                      : `/tratamientos/${treatmentTitle}`
+                  );
                 }
               }}
             >
               <Link
-                href={`/tratamientos/${treatmentTitle}`}
+                href={
+                  treatmentTitle === "all"
+                    ? "/tratamientos"
+                    : `/tratamientos/${treatmentTitle}`
+                }
                 className="absolute left-0 top-0 z-10 h-full w-full"
               />
               <SelectItem
@@ -41,7 +55,7 @@ export default function SelectItemsMobile() {
                 className="group-hover:text-primary-500"
               >
                 {capitalize(
-                  treatmentTitle === "todos"
+                  treatmentTitle === "all"
                     ? "todos"
                     : treatments[treatmentTitle as keyof typeof treatments]
                         .title
