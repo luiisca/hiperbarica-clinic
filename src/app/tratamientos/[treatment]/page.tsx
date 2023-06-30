@@ -6,7 +6,7 @@ import { Separator } from "@/components/ui/separator";
 import Filter from "../filter";
 
 export function generateStaticParams() {
-  return ["todos", ...Object.keys(treatments)].map((treatment) => ({
+  return Object.keys(treatments).map((treatment) => ({
     treatment,
   }));
 }
@@ -16,7 +16,7 @@ export function generateMetadata({
 }: {
   params: { treatment: string };
 }): Metadata | undefined {
-  const treatment = ["todos", ...Object.keys(treatments)].find(
+  const treatment = Object.keys(treatments).find(
     (treatment) => treatment === params.treatment
   );
   if (!treatment) {
