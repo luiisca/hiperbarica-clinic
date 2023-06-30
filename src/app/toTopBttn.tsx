@@ -15,7 +15,7 @@ export default function ToTopBttn() {
   return (
     <Button
       className={cn(
-        "fixed bottom-[88px] left-[52px] -z-10 -translate-x-1/2 transition-all",
+        "fixed bottom-[88px] right-[52px] -z-10 translate-x-1/2 transition-all",
         isVisible ? "z-10 opacity-100" : "-z-10 opacity-0"
       )}
       disabled={!isVisible}

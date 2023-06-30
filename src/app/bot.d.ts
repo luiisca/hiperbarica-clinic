@@ -139,6 +139,8 @@ declare global {
   interface Window {
     botpressWebChat: {
       init: (initConfig: InitConfig) => void;
+      onEvent: (fn: () => void, event: string[]) => void;
+      sendEvent: ({ type: string }) => void;
     };
   }
 }
