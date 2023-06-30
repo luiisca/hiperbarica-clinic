@@ -1,4 +1,4 @@
-import { categories } from "@/utils/contentlayer";
+import { capitalize, categories } from "@/utils/contentlayer";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
 import { HTMLProps } from "react";
@@ -43,7 +43,7 @@ export default function Filter<T extends typeof categories | string[]>({
                 : ""
             )}
           >
-            {categoryTitle}
+            {capitalize(categoryTitle)}
           </Link>
         ))}
 

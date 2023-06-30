@@ -14,6 +14,15 @@ const config = {
    *
    * @see https://github.com/vercel/next.js/issues/41980
    */
+  async redirects() {
+    return [
+      {
+        source: "/blog/categorias",
+        destination: "/blog",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     domains: ["hiperbaricadelsurperu.com"],
     remotePatterns: [

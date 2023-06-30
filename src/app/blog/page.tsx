@@ -9,9 +9,7 @@ import Search from "@/components/search";
 import dynamic from "next/dynamic";
 import TabsContent from "./filter/tabs-content";
 
-const Filter = dynamic(() => import("./filter"), {
-  loading: () => <div>Skeleton</div>,
-});
+const Filter = dynamic(() => import("./filter"));
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -44,9 +42,9 @@ export default function BlogPage() {
           )}
         >
           <Filter>
+            <Search className="mb-7 md:hidden" />
             <TabsContent content={allBlogs} />
           </Filter>
-          <Search className="mb-7 md:hidden" />
           <Aside />
         </div>
       </>

@@ -21,10 +21,6 @@ const navItems = [
     href: "/#proceso",
   },
   {
-    name: "Encuéntranos",
-    href: "/#mapa",
-  },
-  {
     name: "Blog",
     href: "/blog",
   },

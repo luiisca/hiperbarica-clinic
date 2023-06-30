@@ -9,7 +9,7 @@ import Filter from "../filter";
 
 export function generateStaticParams() {
   return categories.map((category) => ({
-    slug: category,
+    category,
   }));
 }
 

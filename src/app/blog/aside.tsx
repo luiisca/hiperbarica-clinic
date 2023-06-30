@@ -5,9 +5,11 @@ import { allBlogs } from "contentlayer/generated";
 
 export default function Aside() {
   return (
-    <div className="mt-24 self-start md:sticky md:top-24 md:ml-[60px]">
-      <Heading type="subHeading">Recomendados</Heading>
-      <Search />
+    <div className="self-start md:sticky md:top-32 md:ml-[60px]">
+      <Search className="mb-8" />
+      <Heading type="subHeading" className="mb-0">
+        Recomendados
+      </Heading>
       <div className="flex flex-col first:pt-0">
         {allBlogs.map((post, i) => {
           if (post.featured) {

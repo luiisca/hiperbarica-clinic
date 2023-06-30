@@ -17,7 +17,12 @@ export default function Filter({ ...props }: TabsProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <Tabs {...props} value={active} onValueChange={setActive} className="z-10">
+    <Tabs
+      {...props}
+      value={active}
+      onValueChange={setActive}
+      className="z-10 max-md:max-md:max-md:max-md:max-md:max-md:max-md:max-md:mb-12"
+    >
       <TabsList className="max-md:mb-4">
         <TabsTrigger
           value="all"

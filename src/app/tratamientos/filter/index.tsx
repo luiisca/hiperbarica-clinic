@@ -25,6 +25,11 @@ export default function Filter({
       )}
       SelectItemsMobile={SelectItemsMobile}
     >
+      <Search
+        placeholder="Buscar tratamientos"
+        action="/tratamientos/buscar"
+        className="mb-7"
+      />
       <div className="mt-2 grid p-0 mob-me:grid-cols-2 md:gap-8 blog-lg:grid-cols-3">
         {(Content && <Content />) ||
           (treatmentParam === "all"
