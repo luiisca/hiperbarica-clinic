@@ -1,4 +1,4 @@
-import { capitalize, categories, removeDiacritics } from "@/utils/contentlayer";
+import { capitalize, categories } from "@/utils/contentlayer";
 import { CLINIC_NAME } from "@/utils/constants";
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";

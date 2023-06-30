@@ -6,7 +6,7 @@ import {
   normalize,
 } from "@/utils/search";
 import Filter from "../filter";
-import Post, { PostType } from "../post";
+import Post, { PostType } from "../filter/post";
 
 export default function SearchPage({
   searchParams,
@@ -49,7 +49,7 @@ export default function SearchPage({
 
   return (
     <Filter
-      treatment="all"
+      treatmentParam="all"
       Content={() => (
         <>
           {filteredTreatments.length > 0 ? (

@@ -1,6 +1,6 @@
 "use client";
 
-import { capitalize, treatments } from "@/utils/contentlayer";
+import { capitalize, categories } from "@/utils/contentlayer";
 import {
   Select,
   SelectContent,
@@ -10,16 +10,18 @@ import {
 } from "@/components/ui/select";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SelectItemsMobile() {
   const pathName = usePathname();
   const router = useRouter();
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="blog-lg:hidden">
       <Select
         value={
-          pathName === "/tratamientos"
+          pathName === "/blog"
             ? "all"
             : (pathName?.split("/").reverse()[0] as string)
         }
@@ -27,39 +29,34 @@ export default function SelectItemsMobile() {
         <SelectTrigger>
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
-          {["all", ...Object.keys(treatments)].map((treatmentTitle, i) => (
+        <SelectContent open={open} setOpen={setOpen}>
+          {["all", ...categories].map((categoryTitle, i) => (
             <div
               key={i}
               className="group relative"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   router.push(
-                    treatmentTitle === "all"
-                      ? "tratamientos"
-                      : `/tratamientos/${treatmentTitle}`
+                    categoryTitle === "all"
+                      ? "/blog"
+                      : `/blog/categorias/${categoryTitle}`
                   );
                 }
               }}
             >
               <Link
                 href={
-                  treatmentTitle === "all"
-                    ? "/tratamientos"
-                    : `/tratamientos/${treatmentTitle}`
+                  categoryTitle === "all"
+                    ? "/blog"
+                    : `/blog/categorias/${categoryTitle}`
                 }
                 className="absolute left-0 top-0 z-10 h-full w-full"
               />
               <SelectItem
-                value={treatmentTitle}
+                value={categoryTitle}
                 className="group-hover:text-primary-500"
               >
-                {capitalize(
-                  treatmentTitle === "all"
-                    ? "todos"
-                    : treatments[treatmentTitle as keyof typeof treatments]
-                        .title
-                )}
+                {capitalize(categoryTitle === "all" ? "todos" : categoryTitle)}
               </SelectItem>
             </div>
           ))}

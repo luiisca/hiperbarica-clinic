@@ -34,7 +34,6 @@ export default function TreatmentsPage({
   params: { treatment: string };
 }) {
   const treatment = params.treatment as keyof typeof treatments;
-  console.log("TREATMENT", treatment);
 
   return (
     <div>
@@ -49,7 +48,7 @@ export default function TreatmentsPage({
         </Heading>
       </div>
       <Separator className="mb-20" />
-      <Filter treatment={treatment} />
+      <Filter treatmentParam={treatment} />
     </div>
   );
 }

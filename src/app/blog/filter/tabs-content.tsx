@@ -1,7 +1,7 @@
 import { TabsContent } from "@/components/ui/tabs";
-import Post from "../post";
 import type { Blog } from "contentlayer/generated";
 import { categories } from "@/utils/contentlayer";
+import Post from "./post";
 
 export default function Content({ content }: { content: Array<Blog> }) {
   return (

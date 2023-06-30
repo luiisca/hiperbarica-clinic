@@ -5,9 +5,13 @@ import Heading from "@/components/ui/core/heading";
 import Carousel from "./carousel";
 import Aside from "./aside";
 import { Separator } from "@/components/ui/separator";
-import TabsContent from "./filter/tabs-content";
-import Filter from "./filter";
 import Search from "@/components/search";
+import dynamic from "next/dynamic";
+import TabsContent from "./filter/tabs-content";
+
+const Filter = dynamic(() => import("./filter"), {
+  loading: () => <div>Skeleton</div>,
+});
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -40,9 +44,9 @@ export default function BlogPage() {
           )}
         >
           <Filter>
-            <Search className="mb-7 md:hidden" />
             <TabsContent content={allBlogs} />
           </Filter>
+          <Search className="mb-7 md:hidden" />
           <Aside />
         </div>
       </>

@@ -2,11 +2,10 @@ import Heading from "@/components/ui/core/heading";
 import { cn } from "@/utils/cn";
 import { capitalize, categories } from "@/utils/contentlayer";
 import Aside from "../../aside";
-import Filter from "./filter";
 import { Separator } from "@/components/ui/separator";
 import type { Metadata } from "next";
-import { allBlogs } from "contentlayer/generated";
-import TabsContent from "@/app/blog/filter/tabs-content";
+import SelectItemsMobile from "../filter/select-items-mobile";
+import Filter from "../filter";
 
 export function generateStaticParams() {
   return categories.map((category) => ({
@@ -17,9 +16,9 @@ export function generateStaticParams() {
 export function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { category: string };
 }): Metadata | undefined {
-  const category = categories.find((category) => category === params.slug);
+  const category = categories.find((category) => category === params.category);
   if (!category) {
     return;
   }
@@ -29,7 +28,13 @@ export function generateMetadata({
   };
 }
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
+export default function CategoryPage({
+  params,
+}: {
+  params: { category: string };
+}) {
+  const category = params.category as (typeof categories)[number];
+
   return (
     <div>
       <Heading
@@ -38,7 +43,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           "animate-fade-in-up duration-1000 delay-150 ease-in-out fill-mode-forwards"
         )}
       >
-        {capitalize(params.slug)}
+        {capitalize(category)}
       </Heading>
       <Separator className="mb-20" />
       <div
@@ -47,9 +52,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           "mb-24 blog-lg:mb-[7.5rem]"
         )}
       >
-        <Filter value={params.slug}>
-          <TabsContent content={allBlogs} />
-        </Filter>
+        <Filter
+          categoryParam={category}
+          url="/blog/categorias"
+          allUrl="/blog"
+          SelectItemsMob={SelectItemsMobile}
+        />
         <Aside />
       </div>
     </div>

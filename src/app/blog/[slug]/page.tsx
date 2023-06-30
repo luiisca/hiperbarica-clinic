@@ -14,8 +14,8 @@ import { format, parse, setGlobalDateI18n } from "fecha";
 import { Mdx } from "@/components/mdx";
 import { FacebookShare, WhatsappShare } from "./share-bttns";
 import Aside from "../aside";
-import Post from "../post";
 import { Metadata } from "next";
+import Post from "../filter/post";
 
 export function generateStaticParams() {
   return allBlogs.map((post) => ({
@@ -118,7 +118,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         <div
           className={cn(
             "relative overflow-hidden rounded-md",
-            "min-h-[250px] h-[25vh] max-h-[400px] w-full sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-full blog-lg:max-h-full blog-lg:min-h-full blog-lg:w-1/2",
+            "h-[25vh] max-h-[400px] min-h-[250px] w-full sm:max-h-[480px] md:max-h-[600px] md:min-h-[450px] blog-lg:h-full blog-lg:max-h-full blog-lg:min-h-full blog-lg:w-1/2",
             "mb-7 w-full blog-lg:mb-0 blog-lg:w-1/2"
           )}
         >

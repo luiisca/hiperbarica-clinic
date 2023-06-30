@@ -30,7 +30,7 @@ export default function CategoryPage() {
         </p>
       </div>
       <Separator className="mb-20" />
-      <Filter treatment="all" />
+      <Filter treatmentParam="all" />
     </div>
   );
 }

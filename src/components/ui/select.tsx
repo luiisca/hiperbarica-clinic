@@ -59,33 +59,43 @@ SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
 const SelectContent = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
->(({ className, children, position = "popper", ...props }, ref) => (
-  <SelectPrimitive.Portal>
-    <>
-      <SelectPrimitive.Content
-        ref={ref}
-        className={cn(
-          "relative isolate z-20 min-w-[8rem] select-text overflow-hidden rounded-md border border-primary-500 bg-white animate-in fade-in-80",
-          position === "popper" && "translate-y-1",
-          className
-        )}
-        position={position}
-        {...props}
-      >
-        <SelectPrimitive.Viewport
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+  }
+>(
+  (
+    { className, children, position = "popper", open, setOpen, ...props },
+    ref
+  ) => (
+    <SelectPrimitive.Portal>
+      <>
+        <SelectOverlay open={open} />
+        <SelectPrimitive.Content
+          ref={ref}
           className={cn(
-            "p-1",
-            position === "popper" &&
-              "h-min w-full min-w-[var(--radix-select-trigger-width)]"
+            "relative isolate z-20 min-w-[8rem] select-text overflow-hidden rounded-md border border-primary-500 bg-white animate-in fade-in-80",
+            position === "popper" && "translate-y-1",
+            className
           )}
+          position={position}
+          onEscapeKeyDown={() => setOpen(false)}
+          {...props}
         >
-          {children}
-        </SelectPrimitive.Viewport>
-      </SelectPrimitive.Content>
-    </>
-  </SelectPrimitive.Portal>
-));
+          <SelectPrimitive.Viewport
+            className={cn(
+              "p-1",
+              position === "popper" &&
+                "h-min w-full min-w-[var(--radix-select-trigger-width)]"
+            )}
+          >
+            {children}
+          </SelectPrimitive.Viewport>
+        </SelectPrimitive.Content>
+      </>
+    </SelectPrimitive.Portal>
+  )
+);
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
 const SelectLabel = React.forwardRef<
