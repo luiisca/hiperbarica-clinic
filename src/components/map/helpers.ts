@@ -32,13 +32,17 @@ export function getUserLocation(): Promise<google.maps.LatLngLiteral> {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
+          console.log("🗺 COORS INSIDE navigator: ", position);
           const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
           resolve(pos);
         },
-        () => reject("Error: the location service failed")
+        () => {
+          console.log("❌ Error: the location service failed");
+          reject("Error: the location service failed");
+        }
       );
     } else {
       reject("Error: your browser doesn't support geolocation");

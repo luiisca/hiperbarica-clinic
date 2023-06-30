@@ -480,7 +480,9 @@ function ToggleRouteBttn({ className }: React.HTMLProps<typeof Button>) {
 
   const storeUserCoors = useCallback(async (): Promise<void> => {
     setLoadingRoute(true);
+    console.log("🤯 GETTING COORS");
     const pos = await getUserLocation();
+    console.log("🗺️ COORS: ", pos);
     setLoadingRoute(false);
     dispatchMap({ type: "USER_COORS", userCoors: pos });
   }, [dispatchMap]);
@@ -510,6 +512,7 @@ function ToggleRouteBttn({ className }: React.HTMLProps<typeof Button>) {
             color="icon"
             onClick={() => {
               if (!userCoors) {
+                console.log("🤯 ABOUT TO GET COORS:");
                 void storeUserCoors();
               } else {
                 toggleRoute();
