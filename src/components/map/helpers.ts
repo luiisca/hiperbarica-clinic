@@ -30,6 +30,7 @@ export function getBusinessDirections(
 export function getUserLocation(): Promise<google.maps.LatLngLiteral> {
   return new Promise<google.maps.LatLngLiteral>((resolve, reject) => {
     if (navigator.geolocation) {
+      console.log("🧭 navigator: ", navigator.geolocation);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           console.log("🗺 COORS INSIDE navigator: ", position);

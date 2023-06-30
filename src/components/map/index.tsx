@@ -593,9 +593,9 @@ function Map() {
             </button>
           </div>
         </div>
-        <ToggleRouteBttn
-          className={cn(isFullscreen ? "bottom-0 mx-auto mb-6" : "top-full")}
-        />
+        {/*   <ToggleRouteBttn */}
+        {/*     className={cn(isFullscreen ? "bottom-0 mx-auto mb-6" : "top-full")} */}
+        {/*   /> */}
       </div>
     </MapContext.Provider>
   );
