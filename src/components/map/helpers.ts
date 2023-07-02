@@ -30,10 +30,8 @@ export function getBusinessDirections(
 export function getUserLocation(): Promise<google.maps.LatLngLiteral> {
   return new Promise<google.maps.LatLngLiteral>((resolve, reject) => {
     if (navigator.geolocation) {
-      console.log("🧭 navigator: ", navigator.geolocation);
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log("🗺 COORS INSIDE navigator: ", position);
           const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
@@ -41,7 +39,6 @@ export function getUserLocation(): Promise<google.maps.LatLngLiteral> {
           resolve(pos);
         },
         () => {
-          console.log("❌ Error: the location service failed");
           reject("Error: the location service failed");
         }
       );
